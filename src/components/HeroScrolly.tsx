@@ -37,11 +37,11 @@ export default function HeroScrolly() {
   return (
     <motion.section 
       ref={containerRef} 
-      className="relative h-[208vh] md:h-[371vh] pt-24 transition-colors duration-500"
+      className="relative h-[208vh] md:h-[371vh] pt-16 md:pt-48 transition-colors duration-500"
       style={{ backgroundColor: bgColor }}
     >
       {/* Sticky Container */}
-      <div className="sticky top-24 h-[calc(100vh-6rem)] w-full flex flex-col md:flex-row items-center px-6 md:px-12">
+      <div className="sticky top-16 md:top-48 h-[calc(100vh-6rem)] md:h-[calc(100vh-14rem)] w-full flex flex-col md:flex-row items-center px-6 md:px-12">
         
         {/* Left Side: Animation Frames */}
         <div className="relative w-full h-[40vh] md:h-full md:w-1/2 overflow-hidden">
@@ -73,7 +73,7 @@ export default function HeroScrolly() {
         </div>
 
         {/* Right Side: Text Blocks */}
-        <div className="relative w-full flex-1 md:w-1/2 flex items-center justify-center md:justify-start md:pl-12 pb-20">
+        <div className="relative w-full flex-1 md:w-1/2 flex items-center justify-center md:justify-start md:pl-12 md:pb-24">
           {TEXT_BLOCKS.map((block, index) => {
             // Text stays visible longer or stays fixed
             const opacity = useTransform(
@@ -101,7 +101,7 @@ export default function HeroScrolly() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start"
+                  className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start"
                 >
                   <button className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-bold hover:bg-black transition-colors shadow-lg">
                     Get Started
