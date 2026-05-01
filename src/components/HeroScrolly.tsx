@@ -18,11 +18,28 @@ export default function HeroScrolly() {
     offset: ["start start", "end end"]
   });
 
-  // Calculate current frame (1 to 25)
+  // Dynamic background colors that shift with the scroll/frames
+  const bgColor = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [
+      "#FFFFFF", // Start
+      "#FCFCFC", // Very Light Grey
+      "#FAFAFA", // Off-White
+      "#F8F8F8", // Neutral Grey
+      "#FAFAFA", // Off-White
+      "#FFFFFF"  // End
+    ]
+  );
+  // Calculate current frame (1 to 26)
   const currentFrame = useTransform(scrollYProgress, [0, 1], [1, TOTAL_FRAMES]);
 
   return (
-    <section ref={containerRef} className="relative h-[208vh] md:h-[371vh] bg-white pt-24">
+    <motion.section 
+      ref={containerRef} 
+      className="relative h-[208vh] md:h-[371vh] pt-24 transition-colors duration-500"
+      style={{ backgroundColor: bgColor }}
+    >
       {/* Sticky Container */}
       <div className="sticky top-24 h-[calc(100vh-6rem)] w-full flex flex-col md:flex-row items-center px-6 md:px-12">
         
@@ -98,6 +115,6 @@ export default function HeroScrolly() {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

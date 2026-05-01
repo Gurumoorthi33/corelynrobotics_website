@@ -42,9 +42,17 @@ export default function Navbar() {
         <div className="flex flex-col">
           <span className={cn(
             "font-heading font-bold text-2xl tracking-tight leading-none transition-colors duration-300",
-            "text-[#1A1A1A]"
+            "text-[#1A1A1A] flex items-center"
           )}>
-            CORELYN
+            C
+            <motion.img 
+              src="/assets/wheel/wheel.png" 
+              alt="O" 
+              className="w-[0.85em] h-[0.85em] mx-[0.02em] inline-block"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            />
+            RELYN
           </span>
           <span className={cn(
             "text-xs mt-1 transition-colors duration-300",
@@ -103,9 +111,17 @@ export default function Navbar() {
       >
         <div className="p-6 md:px-12 flex justify-between items-center border-b border-[#D0D0D0]">
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-2xl tracking-tight text-[#1A1A1A] leading-none">
-              CORELYN
-            </span>
+          <span className="font-heading font-bold text-2xl tracking-tight text-[#1A1A1A] leading-none flex items-center">
+            C
+            <motion.img 
+              src="/assets/wheel/wheel.png" 
+              alt="O" 
+              className="w-[0.85em] h-[0.85em] mx-[0.02em] inline-block"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            />
+            RELYN
+          </span>
             <span className="text-xs text-[#4A4A4A] mt-1">by Transista</span>
           </div>
           <button
