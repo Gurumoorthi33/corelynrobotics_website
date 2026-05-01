@@ -24,10 +24,10 @@ export default function HeroScrolly() {
     [0, 0.2, 0.4, 0.6, 0.8, 1],
     [
       "#FFFFFF", // Start
-      "#FCFCFC", // Very Light Grey
-      "#FAFAFA", // Off-White
-      "#F8F8F8", // Neutral Grey
-      "#FAFAFA", // Off-White
+      "#FAF9F7", // Very Light Warm Grey
+      "#F9F9F7", // Exact Match Mid-Frame
+      "#F9F9F7", // Exact Match Mid-Frame
+      "#FAF9F7", // Very Light Warm Grey
       "#FFFFFF"  // End
     ]
   );
@@ -73,7 +73,7 @@ export default function HeroScrolly() {
         </div>
 
         {/* Right Side: Text Blocks */}
-        <div className="relative w-full flex-1 md:w-1/2 flex items-center justify-center md:justify-start md:pl-12">
+        <div className="relative w-full flex-1 md:w-1/2 flex items-center justify-center md:justify-start md:pl-12 pb-20">
           {TEXT_BLOCKS.map((block, index) => {
             // Text stays visible longer or stays fixed
             const opacity = useTransform(
