@@ -72,25 +72,45 @@ export default function WheelLetter() {
   const endRange = (anchors.end?.y ?? 0) - 100;
 
   // Interpolate between the two anchor points
-  const rawX = useTransform(scrollY, [startRange, endRange], [anchors.start?.x ?? 0, anchors.end?.x ?? 0]);
-  const currentWidth = useTransform(scrollY, [startRange, endRange], [anchors.start?.width ?? 0, anchors.end?.width ?? 0]);
+  const midRange = (startRange + endRange) / 2;
+
+  const rawX = useTransform(scrollY, [startRange, midRange, endRange], [
+    anchors.start?.x ?? 0, 
+    (typeof window !== "undefined" ? window.innerWidth * 0.8 : 500), // Swerve to the right
+    anchors.end?.x ?? 0
+  ]);
+
+  const currentWidth = useTransform(scrollY, [startRange, midRange, endRange], [
+    anchors.start?.width ?? 0, 
+    (anchors.start?.width ?? 0) * 1.5, // Slight width expansion during swerve
+    anchors.end?.width ?? 0
+  ]);
+
   const currentPageY = useTransform(scrollY, [startRange, endRange], [anchors.start?.y ?? 0, anchors.end?.y ?? 0]);
-  const currentSize = useTransform(scrollY, [startRange, endRange], [anchors.start?.size ?? 0, anchors.end?.size ?? 0]);
+
+  // Size increases in the middle
+  const baseSize = useTransform(scrollY, [startRange, midRange, endRange], [
+    anchors.start?.size ?? 0,
+    (anchors.start?.size ?? 0) * 2.5, // Scale up to 2.5x in the middle
+    anchors.end?.size ?? 0
+  ]);
 
   // Centering logic: start position + (available width - wheel size) / 2
-  // Added a 1.3x multiplier to the base size to make the wheel more prominent
+  // We use the baseSize with the multiplier for the final look
   const sizeMultiplier = 1.3;
-  const currentX = useTransform([rawX, currentWidth, currentSize], (latest) => {
-    const [rx, cw, cs] = latest as [number, number, number];
-    return rx + (cw - cs * sizeMultiplier) / 2;
+  const currentX = useTransform([rawX, currentWidth, baseSize], (latest) => {
+    const [rx, cw, bs] = latest as [number, number, number];
+    return rx + (cw - bs * sizeMultiplier) / 2;
   });
-  const displaySize = useTransform(currentSize, (s: number) => s * sizeMultiplier);
+
+  const displaySize = useTransform(baseSize, (s: number) => s * sizeMultiplier);
 
   // Convert page Y to viewport Y for position: fixed
-  // Center vertically as well
-  const viewportY = useTransform([currentPageY, scrollY, currentSize], (latest) => {
-    const [py, sy, cs] = latest as [number, number, number];
-    return py - sy - (cs * (sizeMultiplier - 1)) / 2;
+  // Add a "bounce" effect to the Y position in the middle
+  const yBounce = useTransform(scrollY, [startRange, midRange, endRange], [0, -100, 0]);
+  const viewportY = useTransform([currentPageY, scrollY, baseSize, yBounce], (latest) => {
+    const [py, sy, bs, bounce] = latest as [number, number, number, number];
+    return py - sy - (bs * (sizeMultiplier - 1)) / 2 + bounce;
   });
 
   if (!anchors.start || !anchors.end) return null;
