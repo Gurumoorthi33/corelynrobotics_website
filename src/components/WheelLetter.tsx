@@ -80,12 +80,18 @@ export default function WheelLetter() {
   // Centering logic: start position + (available width - wheel size) / 2
   // Added a 1.3x multiplier to the base size to make the wheel more prominent
   const sizeMultiplier = 1.3;
-  const currentX = useTransform([rawX, currentWidth, currentSize], ([rx, cw, cs]) => rx + (cw - cs * sizeMultiplier) / 2);
-  const displaySize = useTransform(currentSize, (s) => s * sizeMultiplier);
+  const currentX = useTransform([rawX, currentWidth, currentSize], (latest) => {
+    const [rx, cw, cs] = latest as [number, number, number];
+    return rx + (cw - cs * sizeMultiplier) / 2;
+  });
+  const displaySize = useTransform(currentSize, (s: number) => s * sizeMultiplier);
 
   // Convert page Y to viewport Y for position: fixed
   // Center vertically as well
-  const viewportY = useTransform([currentPageY, scrollY, currentSize], ([py, sy, cs]) => py - sy - (cs * (sizeMultiplier - 1)) / 2);
+  const viewportY = useTransform([currentPageY, scrollY, currentSize], (latest) => {
+    const [py, sy, cs] = latest as [number, number, number];
+    return py - sy - (cs * (sizeMultiplier - 1)) / 2;
+  });
 
   if (!anchors.start || !anchors.end) return null;
 
