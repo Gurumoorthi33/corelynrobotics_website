@@ -1,22 +1,93 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Platforms", href: "#platforms" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Industries", href: "#industries" },
-  { name: "Technology", href: "#technology" },
-  { name: "Partners", href: "#partners" },
-  { name: "Contact", href: "#contact" },
+  {
+    name: "Platform",
+    items: [
+      { name: "Platforms", href: "/platforms", description: "Our robotic fleet and software stack." },
+      { name: "Technology", href: "#technology", description: "The core innovation behind Corelyn." },
+      { name: "How It Works", href: "#how-it-works", description: "Step-by-step process of our RaaS model." },
+    ],
+  },
+  {
+    name: "Impact",
+    items: [
+      { name: "Industries", href: "#industries", description: "Sectors we currently serve." },
+      { name: "ROI Calculator", href: "#roi-calculator", description: "Calculate your savings with Corelyn." },
+    ],
+  },
+  {
+    name: "Company",
+    items: [
+      { name: "Partners", href: "#partners", description: "Our global network of collaborators." },
+      { name: "Contact", href: "#contact", description: "Get in touch with our team." },
+    ],
+  },
 ];
+
+function NavDropdown({ category }: { category: typeof navLinks[0] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <li 
+      className="relative group"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        className={cn(
+          "flex items-center space-x-1 text-[16px] transition-colors duration-300 font-medium py-2",
+          "text-[#4A4A4A] group-hover:text-[#1A1A1A]"
+        )}
+      >
+        <span>{category.name}</span>
+        <ChevronDown 
+          size={16} 
+          className={cn("transition-transform duration-300", isOpen && "rotate-180")} 
+        />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-50"
+          >
+            <div className="bg-white/98 backdrop-blur-xl border border-[#E0E0E0] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] overflow-hidden p-2 ring-1 ring-black/5 relative">
+              <div className="flex flex-col space-y-1">
+                {category.items.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="flex flex-col p-3 rounded-xl hover:bg-[#F5F5F5] transition-all duration-200 group/item"
+                  >
+                    <span className="text-[15px] font-semibold text-[#1A1A1A] group-hover/item:text-black">
+                      {item.name}
+                    </span>
+                    <span className="text-[12px] text-[#4A4A4A] leading-snug mt-0.5">
+                      {item.description}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const { scrollY } = useScroll();
@@ -57,18 +128,8 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-8">
           <ul className="flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className={cn(
-                    "text-[16px] transition-colors duration-300 font-medium",
-                    "text-[#4A4A4A] hover:text-[#1A1A1A]"
-                  )}
-                >
-                  {link.name}
-                </a>
-              </li>
+            {navLinks.map((category) => (
+              <NavDropdown key={category.name} category={category} />
             ))}
           </ul>
           <a
@@ -117,16 +178,25 @@ export default function Navbar() {
           </button>
         </div>
         
-        <div className="flex flex-col p-6 space-y-6 overflow-y-auto">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-heading font-bold text-[#1A1A1A]"
-            >
-              {link.name}
-            </a>
+        <div className="flex flex-col p-6 space-y-8 overflow-y-auto">
+          {navLinks.map((category) => (
+            <div key={category.name} className="flex flex-col space-y-4">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#999999]">
+                {category.name}
+              </h3>
+              <div className="flex flex-col space-y-4 pl-2">
+                {category.items.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-2xl font-heading font-bold text-[#1A1A1A]"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
           ))}
           <div className="pt-8">
             <a

@@ -7,6 +7,7 @@ import Platforms from "@/components/Platforms";
 import Industries from "@/components/Industries";
 import TechStack from "@/components/TechStack";
 import Partners from "@/components/Partners";
+import ROICalculator from "@/components/ROICalculator";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WheelLetter from "@/components/WheelLetter";
@@ -24,6 +25,7 @@ export default function Home() {
       <Industries />
       <TechStack />
       <Partners />
+      <ROICalculator />
       <Contact />
       <Footer />
     </main>

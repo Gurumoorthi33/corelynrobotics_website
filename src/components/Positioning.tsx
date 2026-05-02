@@ -1,29 +1,27 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function Positioning() {
   return (
-    <section className="bg-white py-24 md:py-32 relative overflow-visible">
+    <section className="bg-white py-24 md:py-32 relative overflow-visible mt-20 md:mt-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Side: Image */}
+          {/* Left Side: Video */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shadow-xl"
+            className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shadow-xl bg-black"
           >
-            <img 
-              src="/assets/section/image_1.jpeg" 
-              alt="Corelyn Robotics Operation" 
+            <video 
+              src="/assets/section/vdo_1.mp4" 
               className="w-full h-full object-cover"
-              onLoad={() => {
-                window.dispatchEvent(new Event('resize'));
-                setTimeout(() => window.dispatchEvent(new Event('resize')), 500);
-              }}
+              autoPlay 
+              muted 
+              loop
+              playsInline
             />
           </motion.div>
 

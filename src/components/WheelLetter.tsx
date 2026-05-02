@@ -106,8 +106,8 @@ export default function WheelLetter() {
   const displaySize = useTransform(baseSize, (s: number) => s * sizeMultiplier);
 
   // Convert page Y to viewport Y for position: fixed
-  // Add a "bounce" effect to the Y position in the middle
-  const yBounce = useTransform(scrollY, [startRange, midRange, endRange], [0, -100, 0]);
+  // Add a softened "bounce" effect to the Y position in the middle
+  const yBounce = useTransform(scrollY, [startRange, midRange, endRange], [0, -40, 0]);
   const viewportY = useTransform([currentPageY, scrollY, baseSize, yBounce], (latest) => {
     const [py, sy, bs, bounce] = latest as [number, number, number, number];
     return py - sy - (bs * (sizeMultiplier - 1)) / 2 + bounce;
@@ -123,7 +123,7 @@ export default function WheelLetter() {
         top: viewportY,
         width: displaySize,
         height: displaySize,
-        zIndex: 9999,
+        zIndex: 40,
       }}
       animate={{ rotate: 360 }}
       transition={{
