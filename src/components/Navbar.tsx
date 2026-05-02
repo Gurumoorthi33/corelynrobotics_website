@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -105,14 +105,14 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300 backdrop-blur-md",
         isScrolled 
-          ? "bg-white border-b border-[#D0D0D0] py-4 shadow-sm" 
-          : "bg-white py-6"
+          ? "bg-white/95 border-b border-[#D0D0D0] py-3 md:py-4 shadow-sm" 
+          : "bg-white/90 py-4 md:py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         <div className="flex flex-col">
           <span className={cn(
-            "font-heading font-bold text-2xl tracking-tight leading-none transition-colors duration-300",
+            "font-heading font-bold text-xl md:text-2xl tracking-tight leading-none transition-colors duration-300",
             "text-[#1A1A1A]"
           )}>
             CORELYN
@@ -145,12 +145,12 @@ export default function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(true)}
             className={cn(
-              "p-2 transition-colors duration-300",
+              "p-2 transition-all duration-500 active:rotate-180",
               "text-[#1A1A1A]"
             )}
             aria-label="Open menu"
           >
-            <Menu size={28} />
+            <Settings size={28} />
           </button>
         </div>
       </div>
@@ -158,13 +158,13 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-[60] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden",
+          "fixed top-0 left-0 w-full h-[100dvh] z-[60] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="p-6 md:px-12 flex justify-between items-center border-b border-[#D0D0D0]">
+        <div className="p-6 md:px-12 flex justify-between items-center border-b border-[#D0D0D0] h-[80px] shrink-0">
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-2xl tracking-tight text-[#1A1A1A] leading-none">
+            <span className="font-heading font-bold text-xl md:text-2xl tracking-tight text-[#1A1A1A] leading-none">
               CORELYN
             </span>
             <span className="text-xs text-[#4A4A4A] mt-1">by Transista</span>
@@ -178,7 +178,7 @@ export default function Navbar() {
           </button>
         </div>
         
-        <div className="flex flex-col p-6 space-y-8 overflow-y-auto">
+        <div className="flex flex-col p-6 space-y-6 md:space-y-8 overflow-y-auto h-[calc(100dvh-80px)] pb-12">
           {navLinks.map((category) => (
             <div key={category.name} className="flex flex-col space-y-4">
               <h3 className="text-sm font-bold uppercase tracking-widest text-[#999999]">
@@ -190,7 +190,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-2xl font-heading font-bold text-[#1A1A1A]"
+                    className="text-xl md:text-2xl font-heading font-bold text-[#1A1A1A]"
                   >
                     {item.name}
                   </a>
