@@ -83,14 +83,14 @@ function StepCard({ step, index, scrollYProgress }: StepCardProps) {
         <motion.path
           d="M 50 0 L 0 0 L 0 100 L 50 100"
           fill="none"
-          stroke="#1A1A1A"
+          stroke="#2DBD6E"
           strokeWidth="1"
           style={{ pathLength: borderProgress }}
         />
         <motion.path
           d="M 50 0 L 100 0 L 100 100 L 50 100"
           fill="none"
-          stroke="#1A1A1A"
+          stroke="#2DBD6E"
           strokeWidth="1"
           style={{ pathLength: borderProgress }}
         />
@@ -115,9 +115,9 @@ function Connector({ index, scrollYProgress }: { index: number, scrollYProgress:
   return (
     <div className="relative w-full h-24 md:h-32 flex justify-center">
       <div className="w-[2px] h-full bg-black/10 relative">
-        <motion.div className="absolute top-0 left-0 w-full bg-black shadow-[0_0_10px_#fff]" style={{ height: heightProgress }} />
+        <motion.div className="absolute top-0 left-0 w-full bg-[#2DBD6E]" style={{ height: heightProgress }} />
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_15px_#fff,0_0_30px_#fff] z-10"
+          className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-[#2DBD6E] rounded-full shadow-[0_0_15px_rgba(45,189,110,0.8)] z-10"
           style={{ 
             top: heightProgress,
             scale: useTransform(scrollYProgress, [start, end], [0, 1.2]),
@@ -148,7 +148,7 @@ function InclusionCard({ text, start, end, scrollYProgress }: InclusionCardProps
       className="flex items-start bg-white p-6 rounded-lg border border-[#EEEEEE] shadow-sm relative overflow-hidden"
     >
       <motion.div 
-        className="absolute top-0 left-0 w-full h-[2px] bg-black"
+        className="absolute top-0 left-0 w-full h-[2px] bg-[#2DBD6E]"
         style={{ 
           scaleX: lineScaleX,
           transformOrigin: "left"
@@ -231,7 +231,7 @@ export default function HowItWorks() {
           <div className="w-full h-32 flex justify-center relative">
             <div className="w-[2px] h-full bg-black/10 relative">
                <motion.div 
-                className="absolute top-0 left-0 w-full bg-black shadow-[0_0_10px_#fff]"
+                className="absolute top-0 left-0 w-full bg-[#2DBD6E]"
                 style={{ height: useTransform(stepsProgress, [0.95, 1], ["0%", "100%"]) }}
               />
               
@@ -240,17 +240,17 @@ export default function HowItWorks() {
                 {/* Outer Black Wave */}
                 <motion.div 
                   style={{ scale: blastScale1, opacity: blastOpacity }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-black rounded-full border-2 border-black/50"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#2DBD6E] rounded-full border-2 border-[#22A05C]"
                 />
                 {/* Middle Grey Wave */}
                 <motion.div 
                   style={{ scale: blastScale2, opacity: blastOpacity }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#4A4A4A] rounded-full border border-white/20"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#22A05C] rounded-full border border-white/20"
                 />
                 {/* Inner White Core */}
                 <motion.div 
                   style={{ scale: blastScale3, opacity: blastOpacity }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-[0_0_30px_#fff,0_0_60px_#fff]"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-[0_0_30px_rgba(45,189,110,0.6),0_0_60px_rgba(45,189,110,0.3)]"
                 />
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function HowItWorks() {
         <div ref={inclusionsContainerRef} className="mt-32 flex flex-col gap-8 relative">
           <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[2px] h-[100px] bg-black/20 overflow-hidden">
              <motion.div 
-                className="absolute top-0 left-0 w-full bg-black"
+                className="absolute top-0 left-0 w-full bg-[#2DBD6E]"
                 style={{ height: useTransform(inclusionsProgress, [0, 0.1], ["0%", "100%"]) }}
               />
           </div>
@@ -273,3 +273,7 @@ export default function HowItWorks() {
     </section>
   );
 }
+
+
+
+

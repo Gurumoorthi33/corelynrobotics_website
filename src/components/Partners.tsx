@@ -139,3 +139,7 @@ export default function Partners() {
     </section>
   );
 }
+
+
+
+

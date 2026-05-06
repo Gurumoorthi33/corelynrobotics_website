@@ -141,7 +141,7 @@ export default function ROICalculator() {
               />
             </div>
 
-            <div className={`rounded-xl p-8 border-2 ${results.savings >= 0 ? "bg-[#1A1A1A] border-[#1A1A1A] text-white" : "bg-[#F5F5F5] border-[#D0D0D0] text-[#1A1A1A]"}`}>
+            <div className={`rounded-xl p-8 border-2 ${results.savings >= 0 ? "bg-[#2DBD6E] border-[#2DBD6E] text-white" : "bg-[#F5F5F5] border-[#D0D0D0] text-[#1A1A1A]"}`}>
               <div className="flex items-center gap-3 mb-2">
                 <TrendingDown className="w-6 h-6" />
                 <span className="text-sm font-bold tracking-wider uppercase opacity-70">
@@ -175,7 +175,7 @@ export default function ROICalculator() {
 
             <a
               href="#contact"
-              className="block w-full bg-[#1A1A1A] text-white text-center py-4 rounded-lg font-bold text-[18px] hover:bg-[#2B2B2B] transition-colors"
+              className="block w-full bg-[#2DBD6E] text-white text-center py-4 rounded-lg font-bold text-[18px] hover:bg-[#22A05C] transition-colors"
             >
               Get a Deployment Quote →
             </a>
@@ -205,7 +205,7 @@ function SliderField({
         min={min} max={max} step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-2 bg-[#D0D0D0] rounded-full appearance-none cursor-pointer accent-[#1A1A1A]"
+        className="w-full h-2 bg-[#D0D0D0] rounded-full appearance-none cursor-pointer accent-[#2DBD6E]"
       />
       <div className="flex justify-between text-[12px] text-[#4A4A4A] mt-1">
         <span>{min}</span><span>{max}</span>
@@ -218,7 +218,7 @@ function ResultCard({ icon, label, value, sub, highlight }: {
   icon: React.ReactNode; label: string; value: string; sub: string; highlight: boolean;
 }) {
   return (
-    <div className={`p-6 rounded-xl border ${highlight ? "bg-[#1A1A1A] text-white border-[#1A1A1A]" : "bg-[#F5F5F5] border-[#EEEEEE] text-[#1A1A1A]"}`}>
+    <div className={`p-6 rounded-xl border ${highlight ? "bg-[#2DBD6E] text-white border-[#2DBD6E]" : "bg-[#F5F5F5] border-[#EEEEEE] text-[#1A1A1A]"}`}>
       <div className={`mb-3 ${highlight ? "text-white" : "text-[#4A4A4A]"}`}>{icon}</div>
       <p className={`text-[13px] font-bold tracking-wider uppercase mb-1 ${highlight ? "opacity-70" : "text-[#4A4A4A]"}`}>{label}</p>
       <p className="font-heading font-bold text-[28px] leading-tight">{value}</p>
@@ -226,3 +226,7 @@ function ResultCard({ icon, label, value, sub, highlight }: {
     </div>
   );
 }
+
+
+
+

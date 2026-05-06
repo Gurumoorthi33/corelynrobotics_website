@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1A1A] text-white pt-20 pb-8">
+    <footer className="bg-[rgb(45,189,110)] text-white pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="font-heading font-bold text-3xl tracking-tight mb-4 leading-none">
               CORELYN
             </span>
-            <p className="text-[#D0D0D0] text-[16px] leading-[1.7] max-w-xs">
+            <p className="text-white/80 text-[16px] leading-[1.7] max-w-xs">
               Robotics infrastructure for Indian industry — subscription-based,
               locally supported, built to last.
             </p>
@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Col 2 */}
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-[18px] mb-6">Platforms</h4>
-            <ul className="space-y-3 text-[#D0D0D0] text-[16px]">
+            <ul className="space-y-3 text-white/80 text-[16px]">
               <li><a href="#platforms" className="hover:text-white transition-colors">C100</a></li>
               <li><a href="#platforms" className="hover:text-white transition-colors">C100 4WD</a></li>
               <li><a href="#platforms" className="hover:text-white transition-colors">C500</a></li>
@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Col 3 */}
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-[18px] mb-6">Company</h4>
-            <ul className="space-y-3 text-[#D0D0D0] text-[16px]">
+            <ul className="space-y-3 text-white/80 text-[16px]">
               <li><a href="#" className="hover:text-white transition-colors">About</a></li>
               <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
               <li><a href="#roi-calculator" className="hover:text-white transition-colors">ROI Calculator</a></li>
@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Col 4 */}
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-[18px] mb-6">Contact</h4>
-            <ul className="space-y-3 text-[#D0D0D0] text-[16px]">
+            <ul className="space-y-3 text-white/80 text-[16px]">
               <li>
                 <a href="mailto:info@transista.in" className="hover:text-white transition-colors">
                   info@transista.in
@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#2B2B2B] pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-[#D0D0D0] text-[14px]">
+        <div className="border-t border-white/20 pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-white/80 text-[14px]">
           <p>© 2026 Corelyn Robotics. Made in India 🇮🇳</p>
           <p className="text-left lg:text-right max-w-xl leading-[1.6]">
             A Transista Technologies Company | Incubated at R Shivakumar Foundation – TBIF,
@@ -74,3 +74,7 @@ export default function Footer() {
     </footer>
   );
 }
+
+
+
+

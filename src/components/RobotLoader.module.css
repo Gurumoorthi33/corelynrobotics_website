@@ -1,0 +1,53 @@
+.face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background-color: rgb(45,189,110);
+  width: 180px;
+  height: 120px;
+  border-radius: 60px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.sm {
+  transform: scale(0.6);
+}
+
+.md {
+  transform: scale(1);
+}
+
+.lg {
+  transform: scale(1.4);
+}
+
+.eyeTrack {
+  width: 26px; /* 14px eye + 12px translate */
+  height: 28px;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+
+.eye {
+  width: 14px;
+  height: 28px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  animation: eyeSlide 2.4s ease-in-out infinite;
+}
+
+@keyframes eyeSlide {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(12px); }
+  100% { transform: translateX(0px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eye {
+    animation-play-state: paused !important;
+  }
+}

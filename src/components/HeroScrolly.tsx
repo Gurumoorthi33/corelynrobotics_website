@@ -61,7 +61,7 @@ function FrameImage({ frameNum, currentFrame }: FrameImageProps) {
         src={`/assets/hero/newframe/${fileName}`}
         alt={`Hero frame ${frameNum}`}
         fill
-        className="object-contain"
+        className="object-contain scale-[1.15] md:scale-100"
         priority={frameNum <= 5}
       />
     </motion.div>
@@ -86,7 +86,7 @@ function TextBlock({ block, scrollYProgress }: TextBlockProps) {
       style={{ opacity }}
     >
       <h1 className="font-heading font-bold text-[40px] md:text-[64px] lg:text-[80px] leading-[1.05] tracking-tight">
-        {block.line1}
+        <span className="text-[rgb(45,189,110)]">{block.line1}</span>
         <br />
         <span className="text-[#4A4A4A]">{block.line2}</span>
       </h1>
@@ -99,10 +99,10 @@ function TextBlock({ block, scrollYProgress }: TextBlockProps) {
         transition={{ delay: 0.5 }}
         className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start"
       >
-        <a href="#platforms" className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-bold hover:bg-black transition-colors shadow-lg">
+        <a href="#platforms" className="bg-[#2DBD6E] text-white px-8 py-4 rounded-full font-bold hover:bg-[#22A05C] transition-colors shadow-lg">
           Explore Platforms
         </a>
-        <a href="#contact" className="border-2 border-[#1A1A1A] text-[#1A1A1A] px-8 py-4 rounded-full font-bold hover:bg-[#F5F5F5] transition-colors">
+        <a href="#contact" className="border-2 border-[#2DBD6E] text-[#1A1A1A] px-8 py-4 rounded-full font-bold hover:bg-[#E8F9F0] transition-colors">
           Get a Deployment Quote
         </a>
       </motion.div>
@@ -138,10 +138,10 @@ export default function HeroScrolly() {
       <div className="absolute inset-0 bg-white/40 pointer-events-none z-0" />
 
       {/* Sticky Container */}
-      <div className="sticky top-28 md:top-32 h-[80vh] md:h-[85vh] w-full flex flex-col md:flex-row items-center px-6 md:px-12 z-10">
+      <div className="sticky top-28 md:top-32 h-[90vh] md:h-[85vh] w-full flex flex-col md:flex-row items-center px-6 md:px-12 z-10">
         
         {/* Left Side: Animation Frames */}
-        <div className="relative w-full h-[45vh] md:h-full md:w-1/2 overflow-hidden flex items-center justify-center">
+        <div className="relative w-full md:w-1/2 h-[65vh] md:h-full overflow-visible flex items-center justify-center">
           {Array.from({ length: TOTAL_FRAMES }).map((_, i) => (
             <FrameImage key={i + 1} frameNum={i + 1} currentFrame={currentFrame} />
           ))}
@@ -157,3 +157,7 @@ export default function HeroScrolly() {
     </motion.section>
   );
 }
+
+
+
+

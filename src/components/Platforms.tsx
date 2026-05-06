@@ -23,7 +23,7 @@ const platforms = [
     },
     tags: ["ROS-ready", "Compact footprint", "Sensor integration", "Education"],
     bestFor: ["Sorting lines", "Robotics education", "R&D prototyping"],
-    accentColor: "#2B2B2B",
+    accentColor: "#22A05C",
   },
   {
     id: "C100 4WD",
@@ -42,7 +42,7 @@ const platforms = [
     },
     tags: ["All-terrain", "Camera integration", "Outdoor rated", "4WD"],
     bestFor: ["Perimeter inspection", "Surveillance", "Agriculture", "Defence"],
-    accentColor: "#2B2B2B",
+    accentColor: "#22A05C",
   },
   {
     id: "C500",
@@ -61,7 +61,7 @@ const platforms = [
     },
     tags: ["500 kg payload", "Multi-shift", "High-torque", "Auto components"],
     bestFor: ["In-plant logistics", "Material handling", "Auto components"],
-    accentColor: "#2B2B2B",
+    accentColor: "#22A05C",
   },
   {
     id: "C1000",
@@ -80,7 +80,7 @@ const platforms = [
     },
     tags: ["1,000 kg payload", "Continuous duty", "Reinforced frame", "Cold chain"],
     bestFor: ["Heavy manufacturing", "Warehousing", "Mining", "Cold chain"],
-    accentColor: "#2B2B2B",
+    accentColor: "#22A05C",
   },
 ];
 
@@ -121,7 +121,7 @@ export default function Platforms() {
               onClick={() => setActive(i)}
               className={`shrink-0 flex items-center gap-2 px-5 py-3 rounded-full text-[14px] font-bold transition-all duration-200 border ${
                 active === i
-                  ? "bg-[#1A1A1A] text-white border-[#1A1A1A]"
+                  ? "bg-[#2DBD6E] text-white border-[#2DBD6E]"
                   : "bg-white text-[#4A4A4A] border-[#EEEEEE] hover:border-[#D0D0D0] hover:text-[#1A1A1A]"
               }`}
             >
@@ -208,7 +208,7 @@ export default function Platforms() {
                   </div>
                   <div className="h-2 bg-[#EEEEEE] rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-[#1A1A1A] rounded-full"
+                      className="h-full bg-[#2DBD6E] rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: `${platform.specs.payloadBar}%` }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -251,7 +251,7 @@ export default function Platforms() {
                 <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                   <a
                     href="/platforms"
-                    className="flex-1 bg-[#1A1A1A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#2B2B2B] transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 bg-[#2DBD6E] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#22A05C] transition-colors flex items-center justify-center gap-2"
                   >
                     View Platform <ArrowRight className="w-4 h-4" />
                   </a>
@@ -287,7 +287,7 @@ export default function Platforms() {
               onClick={() => setActive(i)}
               className={`group p-5 rounded-xl border text-left transition-all duration-200 ${
                 active === i
-                  ? "bg-[#1A1A1A] border-[#1A1A1A]"
+                  ? "bg-[#2DBD6E] border-[#2DBD6E]"
                   : "bg-white border-[#EEEEEE] hover:border-[#D0D0D0]"
               }`}
             >
@@ -303,7 +303,7 @@ export default function Platforms() {
               {/* Mini payload bar */}
               <div className={`mt-3 h-1 rounded-full overflow-hidden ${active === i ? "bg-white/20" : "bg-[#EEEEEE]"}`}>
                 <div
-                  className={`h-full rounded-full transition-all duration-500 ${active === i ? "bg-white" : "bg-[#1A1A1A]"}`}
+                  className={`h-full rounded-full transition-all duration-500 ${active === i ? "bg-white" : "bg-[#2DBD6E]"}`}
                   style={{ width: `${p.specs.payloadBar}%` }}
                 />
               </div>
@@ -326,3 +326,7 @@ function SpecTile({ icon, label, value }: { icon: React.ReactNode; label: string
     </div>
   );
 }
+
+
+
+

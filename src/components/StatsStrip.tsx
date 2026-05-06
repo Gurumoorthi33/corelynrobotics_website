@@ -70,13 +70,13 @@ function AnimatedNumber({ value, prefix, suffix }: { value: number; prefix: stri
 
 export default function StatsStrip() {
   return (
-    <section className="w-full bg-[#1A1A1A] relative overflow-hidden mt-20 md:mt-32">
+    <section className="w-full bg-[#2DBD6E] relative overflow-hidden mt-20 md:mt-32">
       {/* Subtle grid texture */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
@@ -85,7 +85,7 @@ export default function StatsStrip() {
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4A4A4A] to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#2B2B2B]">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#22A05C]">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -97,10 +97,10 @@ export default function StatsStrip() {
             >
               {/* Icon + accent badge */}
               <div className="flex items-center justify-between mb-6">
-                <div className="w-11 h-11 rounded-lg bg-[#2B2B2B] border border-[#3A3A3A] flex items-center justify-center text-[#D0D0D0] group-hover:border-[#555] transition-colors">
+                <div className="w-11 h-11 rounded-lg bg-white/20 border border-white/30 flex items-center justify-center text-white group-hover:border-white/50 transition-colors">
                   {stat.icon}
                 </div>
-                <span className="text-[12px] font-bold tracking-widest uppercase text-white bg-[#3A3A3A] border border-[#555] px-4 py-1.5 rounded-full shadow-lg">
+                <span className="text-[12px] font-bold tracking-widest uppercase text-white bg-white/20 border border-white/30 px-4 py-1.5 rounded-full">
                   {stat.accent}
                 </span>
               </div>
@@ -111,20 +111,20 @@ export default function StatsStrip() {
               </div>
 
               {/* Label */}
-              <h3 className="font-heading font-semibold text-[18px] text-[#D0D0D0] mb-2">
+              <h3 className="font-heading font-semibold text-[18px] text-white mb-2">
                 {stat.label}
               </h3>
 
               {/* Sub tags */}
-              <p className="text-[13px] text-[#888] tracking-wide mb-4 font-medium">
+              <p className="text-[13px] text-white/70 tracking-wide mb-4 font-medium">
                 {stat.sub}
               </p>
 
               {/* Divider */}
-              <div className="w-8 h-px bg-[#2B2B2B] mb-4" />
+              <div className="w-8 h-px bg-white/30 mb-4" />
 
               {/* Detail line */}
-              <p className="text-[15px] text-[#999] leading-[1.6]">
+              <p className="text-[15px] text-white/80 leading-[1.6]">
                 {stat.detail}
               </p>
             </motion.div>
@@ -137,16 +137,16 @@ export default function StatsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          className="mt-16 pt-10 border-t border-[#2B2B2B] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+          className="mt-16 pt-10 border-t border-white/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
         >
-          <p className="text-[16px] text-[#888] max-w-lg leading-[1.6]">
+          <p className="text-[16px] text-white/80 max-w-lg leading-[1.6]">
             All platforms available on a single subscription model.{" "}
             <span className="text-[#D0D0D0]">Scale up or down as your operation evolves — no lock-in.</span>
           </p>
           <div className="flex gap-4 shrink-0">
             <a
               href="#roi-calculator"
-              className="text-[15px] font-bold text-white border border-[#3A3A3A] px-6 py-3 rounded-lg hover:border-[#4A4A4A] hover:bg-[#2B2B2B] transition-all"
+              className="text-[15px] font-bold text-white border border-white/30 px-6 py-3 rounded-lg hover:bg-white/20 transition-all"
             >
               Calculate ROI
             </a>
@@ -165,3 +165,7 @@ export default function StatsStrip() {
     </section>
   );
 }
+
+
+
+

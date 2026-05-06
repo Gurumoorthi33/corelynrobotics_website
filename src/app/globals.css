@@ -2,16 +2,21 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #4A4A4A;
+  --foreground: rgb(45,189,110);
+  --accent: rgb(45,189,110);
+  --accent-dark: #22A05C;
+  --accent-light: #E8F9F0;
 }
 
 @theme inline {
   --color-corelyn-white: #ffffff;
   --color-corelyn-light: #F5F5F5;
   --color-corelyn-surface: #EEEEEE;
-  --color-corelyn-dark: #1A1A1A;
+  --color-corelyn-dark: rgb(45,189,110);
   --color-corelyn-body: #4A4A4A;
-  --color-corelyn-accent: #2B2B2B;
+  --color-corelyn-accent: rgb(45,189,110);
+  --color-corelyn-accent-dark: #22A05C;
+  --color-corelyn-accent-light: #E8F9F0;
   --color-corelyn-line: #D0D0D0;
 
   --font-sans: var(--font-inter);
@@ -22,5 +27,3 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
-
-/* Remove default dark mode preference to maintain strict color palette */

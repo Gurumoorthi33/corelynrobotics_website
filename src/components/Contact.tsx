@@ -29,7 +29,7 @@ export default function Contact() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 border border-[#D0D0D0] rounded-lg focus:outline-none focus:border-[#1A1A1A] bg-white text-[#1A1A1A] text-[16px] transition-colors";
+    "w-full px-4 py-3 border border-[#D0D0D0] rounded-lg focus:outline-none focus:border-[#2DBD6E] bg-white text-[#1A1A1A] text-[16px] transition-colors";
 
   return (
     <section id="contact" className="bg-[#F5F5F5] py-24 md:py-32">
@@ -94,7 +94,7 @@ export default function Contact() {
           >
             {submitted ? (
               <div className="bg-white p-10 rounded-xl border border-[#EEEEEE] flex flex-col items-center justify-center text-center h-full min-h-[400px]">
-                <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#2DBD6E] rounded-full flex items-center justify-center mb-6">
                   <span className="text-white text-2xl">✓</span>
                 </div>
                 <h3 className="font-heading font-bold text-[28px] text-[#1A1A1A] mb-4">Enquiry Received</h3>
@@ -172,7 +172,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full bg-[#1A1A1A] text-white py-4 rounded-lg hover:bg-[#2B2B2B] transition-colors font-bold text-[17px] mt-2"
+                    className="w-full bg-[#2DBD6E] text-white py-4 rounded-lg hover:bg-[#22A05C] transition-colors font-bold text-[17px] mt-2"
                   >
                     Send Deployment Enquiry →
                   </button>
@@ -207,3 +207,7 @@ function ContactDetail({ icon, label, value, href }: {
     </div>
   );
 }
+
+
+
+

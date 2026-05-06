@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
+import SplashScreen from "@/components/SplashScreen";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,9 +28,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${dmSans.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-sans text-[18px] leading-[1.7] text-[#4A4A4A] bg-white">
+      <body className="min-h-full flex flex-col font-sans text-[18px] leading-[1.7] text-[#1A1A1A] bg-white">
+        <SplashScreen />
         {children}
       </body>
     </html>
   );
 }
+
