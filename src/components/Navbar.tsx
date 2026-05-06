@@ -59,7 +59,7 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-[100]"
+            className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-[999]"
           >
             <div className="bg-white backdrop-blur-xl border border-[#E0E0E0] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.3),0_10px_25px_rgba(0,0,0,0.15)] overflow-hidden p-2 ring-1 ring-black/10 relative">
               <div className="flex flex-col space-y-1">
@@ -109,7 +109,7 @@ export default function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={cn(
-            "pointer-events-auto w-full max-w-5xl transition-all duration-300 relative overflow-hidden",
+            "pointer-events-auto w-full max-w-5xl transition-all duration-300 relative",
             "rounded-2xl border backdrop-blur-xl",
             "bg-gradient-to-br from-white/20 via-white/10 to-white/5",
             "shadow-[0_8px_32px_rgba(45,189,110,0.15),0_4px_24px_rgba(0,0,0,0.08)]",
