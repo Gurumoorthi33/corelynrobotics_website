@@ -23,7 +23,7 @@ const platforms = [
     },
     tags: ["ROS-ready", "Compact footprint", "Sensor integration", "Education"],
     bestFor: ["Sorting lines", "Robotics education", "R&D prototyping"],
-    accentColor: "#22A05C",
+    accentColor: "#3FA89A",
   },
   {
     id: "C100 4WD",
@@ -42,7 +42,7 @@ const platforms = [
     },
     tags: ["All-terrain", "Camera integration", "Outdoor rated", "4WD"],
     bestFor: ["Perimeter inspection", "Surveillance", "Agriculture", "Defence"],
-    accentColor: "#22A05C",
+    accentColor: "#3FA89A",
   },
   {
     id: "C500",
@@ -61,7 +61,7 @@ const platforms = [
     },
     tags: ["500 kg payload", "Multi-shift", "High-torque", "Auto components"],
     bestFor: ["In-plant logistics", "Material handling", "Auto components"],
-    accentColor: "#22A05C",
+    accentColor: "#3FA89A",
   },
   {
     id: "C1000",
@@ -80,7 +80,7 @@ const platforms = [
     },
     tags: ["1,000 kg payload", "Continuous duty", "Reinforced frame", "Cold chain"],
     bestFor: ["Heavy manufacturing", "Warehousing", "Mining", "Cold chain"],
-    accentColor: "#22A05C",
+    accentColor: "#3FA89A",
   },
 ];
 
@@ -89,8 +89,19 @@ export default function Platforms() {
   const platform = platforms[active];
 
   return (
-    <section id="platforms" className="bg-[#F5F5F5] py-24 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="platforms" className="bg-[#0A0A0A] py-24 md:py-32 overflow-hidden relative">
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         {/* Header */}
         <motion.div
@@ -98,19 +109,65 @@ export default function Platforms() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+          className="mb-16 text-center relative"
         >
-          <div>
-            <span className="text-xs font-bold tracking-widest uppercase text-[#4A4A4A] mb-3 block">
+          {/* Section badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-[#51B8AB]/10 border border-[#51B8AB]/30 rounded-full px-5 py-2 mb-6"
+          >
+            <div className="w-2 h-2 rounded-full bg-[#51B8AB] animate-pulse" />
+            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#51B8AB]">
               Robot Platforms
             </span>
-            <h2 className="font-heading font-bold text-[36px] md:text-[52px] leading-[1.05] text-[#1A1A1A]">
-              Four Platforms.<br className="hidden sm:block" /> Every Industrial Need.
-            </h2>
+          </motion.div>
+
+          {/* Main heading */}
+          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-white mb-6">
+            <span className="text-[#51B8AB]">Four</span> Platforms.
+            <br />
+            <span className="text-white/70">Every</span> Industrial <span className="text-[#51B8AB]">Need</span>.
+          </h2>
+          
+          {/* Decorative divider */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-20 h-[1px] bg-gradient-to-r from-transparent to-[#51B8AB]/50" />
+            <div className="flex gap-1">
+              <div className="w-1 h-1 rounded-full bg-[#51B8AB]" />
+              <div className="w-1 h-1 rounded-full bg-[#51B8AB]/60" />
+              <div className="w-1 h-1 rounded-full bg-[#51B8AB]/30" />
+            </div>
+            <div className="w-20 h-[1px] bg-gradient-to-l from-transparent to-[#51B8AB]/50" />
           </div>
-          <p className="text-[17px] text-[#4A4A4A] leading-[1.7] max-w-sm md:text-right">
-            From compact lab sorters to 1,000 kg heavy tuggers — one subscription model across all platforms.
+
+          <p className="text-[18px] md:text-[22px] text-white/70 leading-[1.75] max-w-3xl mx-auto">
+            From <span className="text-[#51B8AB] font-semibold">compact lab sorters</span> to <span className="text-[#51B8AB] font-semibold">1,000 kg heavy tuggers</span> — one subscription model across all platforms.
           </p>
+
+          {/* Stats pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
+            {[
+              { icon: "🤖", text: "4 Platforms" },
+              { icon: "⚖️", text: "Up to 1,000 kg" },
+              { icon: "💰", text: "One subscription" },
+              { icon: "⚡", text: "RaaS model" }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 + i * 0.1 }}
+                className="flex items-center gap-2 bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2 hover:border-[#51B8AB]/40 hover:bg-[#51B8AB]/5 transition-all duration-300"
+              >
+                <span className="text-[16px]">{item.icon}</span>
+                <span className="text-[13px] font-medium text-white/80">{item.text}</span>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Tab Selector */}
@@ -121,12 +178,12 @@ export default function Platforms() {
               onClick={() => setActive(i)}
               className={`shrink-0 flex items-center gap-2 px-5 py-3 rounded-full text-[14px] font-bold transition-all duration-200 border ${
                 active === i
-                  ? "bg-[#2DBD6E] text-white border-[#2DBD6E]"
-                  : "bg-white text-[#4A4A4A] border-[#EEEEEE] hover:border-[#D0D0D0] hover:text-[#1A1A1A]"
+                  ? "bg-white/10 text-white border-white/20"
+                  : "bg-transparent text-white/70 border-white/10 hover:bg-[#51B8AB] hover:text-white hover:border-[#51B8AB]"
               }`}
             >
               <span className="font-heading tracking-wider">{p.id}</span>
-              <span className={`text-[11px] font-medium ${active === i ? "text-white/60" : "text-[#4A4A4A]"}`}>
+              <span className={`text-[11px] font-medium ${active === i ? "text-white/60" : "text-white/50"}`}>
                 {p.tag}
               </span>
             </button>
@@ -141,7 +198,7 @@ export default function Platforms() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-white rounded-2xl overflow-hidden border border-[#EEEEEE] shadow-sm"
+            className="bg-[#1A1A1A] rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(81,184,171,0.1)]"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
 
@@ -180,15 +237,15 @@ export default function Platforms() {
               </a>
 
               {/* Content Panel */}
-              <div className="p-8 md:p-10 lg:p-12 flex flex-col">
+              <div className="p-8 md:p-10 lg:p-12 flex flex-col bg-[#1A1A1A]">
 
-                <h3 className="font-heading font-bold text-[26px] md:text-[32px] text-[#1A1A1A] leading-[1.15] mb-2">
+                <h3 className="font-heading font-bold text-[26px] md:text-[32px] text-white leading-[1.15] mb-2">
                   {platform.name}
                 </h3>
-                <p className="text-[16px] font-semibold text-[#4A4A4A] mb-5 italic">
+                <p className="text-[16px] font-semibold text-[#51B8AB] mb-5 italic">
                   "{platform.headline}"
                 </p>
-                <p className="text-[16px] text-[#4A4A4A] leading-[1.7] mb-8">
+                <p className="text-[16px] text-white/70 leading-[1.7] mb-8">
                   {platform.description}
                 </p>
 
@@ -202,19 +259,19 @@ export default function Platforms() {
 
                 {/* Payload bar */}
                 <div className="mb-8">
-                  <div className="flex justify-between text-[13px] font-medium text-[#4A4A4A] mb-2">
+                  <div className="flex justify-between text-[13px] font-medium text-white/60 mb-2">
                     <span>Payload capacity</span>
-                    <span className="text-[#1A1A1A] font-bold">{platform.specs.payload}</span>
+                    <span className="text-white font-bold">{platform.specs.payload}</span>
                   </div>
-                  <div className="h-2 bg-[#EEEEEE] rounded-full overflow-hidden">
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-[#2DBD6E] rounded-full"
+                      className="h-full bg-[#51B8AB] rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: `${platform.specs.payloadBar}%` }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     />
                   </div>
-                  <div className="flex justify-between text-[11px] text-[#4A4A4A] mt-1">
+                  <div className="flex justify-between text-[11px] text-white/50 mt-1">
                     <span>Light</span><span>Heavy</span>
                   </div>
                 </div>
@@ -224,7 +281,7 @@ export default function Platforms() {
                   {platform.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[12px] font-bold tracking-wide bg-[#F5F5F5] text-[#1A1A1A] border border-[#EEEEEE] px-3 py-1.5 rounded-full"
+                      className="text-[12px] font-bold tracking-wide bg-[#0A0A0A] text-white/80 border border-white/10 px-3 py-1.5 rounded-full hover:border-[#51B8AB]/40 transition-colors"
                     >
                       {tag}
                     </span>
@@ -232,16 +289,16 @@ export default function Platforms() {
                 </div>
 
                 {/* Best For */}
-                <div className="mb-8 p-5 bg-[#F5F5F5] rounded-xl border border-[#EEEEEE]">
-                  <p className="text-[12px] font-bold tracking-widest uppercase text-[#4A4A4A] mb-3">Best deployed in</p>
+                <div className="mb-8 p-5 bg-[#0A0A0A] rounded-xl border border-white/10">
+                  <p className="text-[12px] font-bold tracking-widest uppercase text-[#51B8AB] mb-3">Best deployed in</p>
                   <div className="flex flex-wrap gap-2">
                     {platform.bestFor.map((use) => (
-                      <span key={use} className="text-[14px] font-medium text-[#1A1A1A]">
+                      <span key={use} className="text-[14px] font-medium text-white/80">
                         {use}
                       </span>
                     )).reduce((acc: React.ReactNode[], el, i, arr) => {
                       acc.push(el);
-                      if (i < arr.length - 1) acc.push(<span key={`dot-${i}`} className="text-[#D0D0D0]">·</span>);
+                      if (i < arr.length - 1) acc.push(<span key={`dot-${i}`} className="text-white/30">·</span>);
                       return acc;
                     }, [])}
                   </div>
@@ -251,19 +308,19 @@ export default function Platforms() {
                 <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                   <a
                     href="/platforms"
-                    className="flex-1 bg-[#2DBD6E] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#22A05C] transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 bg-[#1A1A1A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#51B8AB] transition-colors flex items-center justify-center gap-2 border border-white/10"
                   >
                     View Platform <ArrowRight className="w-4 h-4" />
                   </a>
                   <a
                     href="#contact"
-                    className="flex-1 bg-[#F5F5F5] text-[#1A1A1A] text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#EEEEEE] transition-colors border border-[#EEEEEE]"
+                    className="flex-1 bg-[#0A0A0A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-black transition-colors border border-white/10 hover:border-white/20"
                   >
                     Get a Quote
                   </a>
                   <a
                     href="#roi-calculator"
-                    className="flex-1 bg-[#F5F5F5] text-[#1A1A1A] text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#EEEEEE] transition-colors border border-[#EEEEEE]"
+                    className="flex-1 bg-[#0A0A0A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-black transition-colors border border-white/10 hover:border-white/20"
                   >
                     Calculate ROI
                   </a>
@@ -287,23 +344,23 @@ export default function Platforms() {
               onClick={() => setActive(i)}
               className={`group p-5 rounded-xl border text-left transition-all duration-200 ${
                 active === i
-                  ? "bg-[#2DBD6E] border-[#2DBD6E]"
-                  : "bg-white border-[#EEEEEE] hover:border-[#D0D0D0]"
+                  ? "bg-white/10 border-white/20"
+                  : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB]"
               }`}
             >
-              <div className={`text-[11px] font-bold tracking-widest uppercase mb-2 ${active === i ? "text-white/50" : "text-[#4A4A4A]"}`}>
+              <div className={`text-[11px] font-bold tracking-widest uppercase mb-2 ${active === i ? "text-white/50" : "text-white/50"}`}>
                 {p.tag}
               </div>
-              <div className={`font-heading font-bold text-[20px] mb-1 ${active === i ? "text-white" : "text-[#1A1A1A]"}`}>
+              <div className={`font-heading font-bold text-[20px] mb-1 ${active === i ? "text-white" : "text-white"}`}>
                 {p.id}
               </div>
-              <div className={`text-[13px] ${active === i ? "text-white/60" : "text-[#4A4A4A]"}`}>
+              <div className={`text-[13px] ${active === i ? "text-white/60" : "text-white/60"}`}>
                 {p.specs.payload}
               </div>
               {/* Mini payload bar */}
-              <div className={`mt-3 h-1 rounded-full overflow-hidden ${active === i ? "bg-white/20" : "bg-[#EEEEEE]"}`}>
+              <div className={`mt-3 h-1 rounded-full overflow-hidden ${active === i ? "bg-white/20" : "bg-white/10"}`}>
                 <div
-                  className={`h-full rounded-full transition-all duration-500 ${active === i ? "bg-white" : "bg-[#2DBD6E]"}`}
+                  className={`h-full rounded-full transition-all duration-500 ${active === i ? "bg-white" : "bg-[#51B8AB]"}`}
                   style={{ width: `${p.specs.payloadBar}%` }}
                 />
               </div>
@@ -317,12 +374,12 @@ export default function Platforms() {
 
 function SpecTile({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="bg-[#F5F5F5] rounded-xl p-4 border border-[#EEEEEE]">
-      <div className="flex items-center gap-2 text-[#4A4A4A] mb-2">
+    <div className="bg-[#0A0A0A] rounded-xl p-4 border border-white/10">
+      <div className="flex items-center gap-2 text-white/60 mb-2">
         {icon}
         <span className="text-[11px] font-bold tracking-widest uppercase">{label}</span>
       </div>
-      <p className="text-[14px] font-bold text-[#1A1A1A] leading-tight">{value}</p>
+      <p className="text-[14px] font-bold text-white leading-tight">{value}</p>
     </div>
   );
 }

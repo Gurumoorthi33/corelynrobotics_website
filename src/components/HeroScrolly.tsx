@@ -1,163 +1,103 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import Image from "next/image";
-
-const TEXT_BLOCKS = [
-  { line1: "Autonomous Robots.", line2: "Deployed as a Service." },
-];
-
-const TOTAL_FRAMES = 26;
-
-const FRAME_COLORS = [
-  "#F9FCF5", // Frame 1
-  "#F9FBF5", // Frame 2
-  "#F8FAF4", // Frame 3
-  "#F9FAF4", // Frame 4
-  "#F9FBF5", // Frame 5
-  "#FAFBF5", // Frame 6
-  "#FAFBF5", // Frame 7
-  "#FAFBF5", // Frame 8
-  "#FAFBF4", // Frame 9
-  "#F9FAF4", // Frame 10
-  "#FAFBF5", // Frame 11
-  "#FAFBF5", // Frame 12
-  "#FAFBF5", // Frame 13
-  "#FAFBF5", // Frame 14
-  "#FAFBF5", // Frame 15
-  "#FBFCF6", // Frame 16
-  "#FBFDF7", // Frame 17
-  "#FAFCF6", // Frame 18
-  "#FAFBF5", // Frame 19
-  "#FAFBF5", // Frame 20
-  "#FAFBF5", // Frame 21
-  "#FAFBF5", // Frame 22
-  "#F9FAF4", // Frame 23
-  "#FAFBF5", // Frame 24
-  "#FBFCF6", // Frame 25
-  "#FAFBF5"  // Frame 26
-];
-
-interface FrameImageProps {
-  frameNum: number;
-  currentFrame: MotionValue<number>;
-}
-
-function FrameImage({ frameNum, currentFrame }: FrameImageProps) {
-  const fileName = `ezgif-frame-${frameNum.toString().padStart(3, "0")}.jpg`;
-  const opacity = useTransform(
-    currentFrame,
-    [frameNum - 0.501, frameNum - 0.5, frameNum + 0.5, frameNum + 0.501],
-    [0, 1, 1, 0]
-  );
-
-  return (
-    <motion.div
-      className="absolute inset-0 w-full h-full"
-      style={{ opacity }}
-    >
-      <Image
-        src={`/assets/hero/newframe/${fileName}`}
-        alt={`Hero frame ${frameNum}`}
-        fill
-        className="object-contain scale-[1.15] md:scale-100"
-        priority={frameNum <= 5}
-      />
-    </motion.div>
-  );
-}
-
-interface TextBlockProps {
-  block: typeof TEXT_BLOCKS[0];
-  scrollYProgress: MotionValue<number>;
-}
-
-function TextBlock({ block, scrollYProgress }: TextBlockProps) {
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.9, 1],
-    [1, 1, 1, 0]
-  );
-
-  return (
-    <motion.div
-      className="text-[#1A1A1A] text-center md:text-left"
-      style={{ opacity }}
-    >
-      <h1 className="font-heading font-bold text-[40px] md:text-[64px] lg:text-[80px] leading-[1.05] tracking-tight">
-        <span className="text-[rgb(45,189,110)]">{block.line1}</span>
-        <br />
-        <span className="text-[#4A4A4A]">{block.line2}</span>
-      </h1>
-      <p className="mt-6 text-[18px] md:text-[20px] text-[#4A4A4A] max-w-md">
-        Industrial-grade autonomous mobile robots for factories, warehouses, and logistics — on a subscription. No capital investment. No maintenance overhead. Just output.
-      </p>
-      <motion.div 
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start"
-      >
-        <a href="#platforms" className="bg-[#2DBD6E] text-white px-8 py-4 rounded-full font-bold hover:bg-[#22A05C] transition-colors shadow-lg">
-          Explore Platforms
-        </a>
-        <a href="#contact" className="border-2 border-[#2DBD6E] text-[#1A1A1A] px-8 py-4 rounded-full font-bold hover:bg-[#E8F9F0] transition-colors">
-          Get a Deployment Quote
-        </a>
-      </motion.div>
-    </motion.div>
-  );
-}
+import { motion } from "framer-motion";
 
 export default function HeroScrolly() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Dynamic background colors that shift with the scroll/frames
-  const bgColor = useTransform(
-    scrollYProgress,
-    FRAME_COLORS.map((_, i) => i / (FRAME_COLORS.length - 1)),
-    FRAME_COLORS
-  );
-  
-  // Calculate current frame (1 to 26)
-  const currentFrame = useTransform(scrollYProgress, [0, 1], [1, TOTAL_FRAMES]);
-
   return (
-    <motion.section 
-      ref={containerRef} 
-      className="relative h-[200vh] md:h-[240vh] pt-32 md:pt-40"
-      style={{ backgroundColor: bgColor }}
-    >
-      {/* Subtle white overlay to lighten the frame colors */}
-      <div className="absolute inset-0 bg-white/40 pointer-events-none z-0" />
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
 
-      {/* Sticky Container */}
-      <div className="sticky top-28 md:top-32 h-[90vh] md:h-[85vh] w-full flex flex-col md:flex-row items-center px-6 md:px-12 z-10">
-        
-        {/* Left Side: Animation Frames */}
-        <div className="relative w-full md:w-1/2 h-[65vh] md:h-full overflow-visible flex items-center justify-center">
-          {Array.from({ length: TOTAL_FRAMES }).map((_, i) => (
-            <FrameImage key={i + 1} frameNum={i + 1} currentFrame={currentFrame} />
-          ))}
-        </div>
+      {/* Background video */}
+      <video
+        src="/assets/hero/hero bg.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        {/* Right Side: Text Blocks */}
-        <div className="relative w-full flex-1 md:w-1/2 flex items-center justify-center md:justify-start md:pl-12 md:pb-24">
-          {TEXT_BLOCKS.map((block, index) => (
-            <TextBlock key={index} block={block} scrollYProgress={scrollYProgress} />
-          ))}
+      {/* Dark grey overlay with gradient - darker on right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/70 via-[#0A0A0A]/85 to-[#000000]/95" />
+
+      {/* Green glow bottom */}
+      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#51B8AB]/10 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent" />
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex items-center justify-center px-6 md:px-12 max-w-7xl mx-auto pt-32">
+        <div className="max-w-3xl text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center gap-3 mb-6 justify-center">
+            <div className="h-px w-8 bg-[#51B8AB]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#51B8AB]">
+              Robotics as a Service
+            </span>
+            <div className="h-px w-8 bg-[#51B8AB]" />
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] tracking-tight text-white mb-6"
+          >
+            Autonomous Robots.
+            <br />
+            <span className="text-[#51B8AB]">Deployed as a Service.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="text-[17px] md:text-[19px] text-white/95 max-w-xl leading-[1.75] mb-10 mx-auto"
+          >
+            Industrial-grade autonomous mobile robots for factories, warehouses, and logistics — on a subscription. No capital investment. No maintenance overhead. Just output.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="#platforms"
+              className="bg-[#51B8AB] text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-colors shadow-[0_0_24px_rgba(81,184,171,0.4)] hover:shadow-[0_0_32px_rgba(81,184,171,0.55)]"
+            >
+              Explore Platforms
+            </a>
+            <a
+              href="#contact"
+              className="border border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
+            >
+              Get a Deployment Quote
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.65 }}
+            className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/20 justify-center">
+            {[
+              { value: "₹500/hr", label: "Starting rate" },
+              { value: "4", label: "Robot platforms" },
+              { value: "1,000 kg", label: "Max payload" },
+              { value: "₹0", label: "Upfront capital" },
+            ].map((s, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <span className="font-heading font-bold text-[22px] text-white leading-none">{s.value}</span>
+                <span className="text-[12px] text-white/50 mt-1 uppercase tracking-wider">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </motion.section>
+
+    </section>
   );
 }
-
-
-
-

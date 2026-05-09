@@ -2,21 +2,21 @@
 
 :root {
   --background: #ffffff;
-  --foreground: rgb(45,189,110);
-  --accent: rgb(45,189,110);
-  --accent-dark: #22A05C;
-  --accent-light: #E8F9F0;
+  --foreground: rgb(81,184,171);
+  --accent: rgb(81,184,171);
+  --accent-dark: #3FA89A;
+  --accent-light: #E8F7F5;
 }
 
 @theme inline {
   --color-corelyn-white: #ffffff;
   --color-corelyn-light: #F5F5F5;
   --color-corelyn-surface: #EEEEEE;
-  --color-corelyn-dark: rgb(45,189,110);
+  --color-corelyn-dark: rgb(81,184,171);
   --color-corelyn-body: #4A4A4A;
-  --color-corelyn-accent: rgb(45,189,110);
-  --color-corelyn-accent-dark: #22A05C;
-  --color-corelyn-accent-light: #E8F9F0;
+  --color-corelyn-accent: rgb(81,184,171);
+  --color-corelyn-accent-dark: #3FA89A;
+  --color-corelyn-accent-light: #E8F7F5;
   --color-corelyn-line: #D0D0D0;
 
   --font-sans: var(--font-inter);
@@ -24,6 +24,10 @@
 }
 
 body {
-  background: var(--background);
+  background: #0F0F0F;
   color: var(--foreground);
+}
+
+html {
+  scroll-padding-top: 100px;
 }

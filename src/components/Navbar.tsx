@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Settings } from "lucide-react";
+import { X, ChevronDown, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -24,7 +24,6 @@ const navLinks = [
   {
     name: "Company",
     items: [
-      { name: "Partners", href: "#partners", description: "Our global network of collaborators." },
       { name: "Contact", href: "#contact", description: "Get in touch with our team." },
     ],
   },
@@ -34,7 +33,7 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <li 
+    <li
       className="relative group"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
@@ -42,14 +41,11 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
       <button
         className={cn(
           "flex items-center space-x-1 text-[16px] transition-colors duration-300 font-medium py-2",
-          "text-[#4A4A4A] group-hover:text-[#1A1A1A]"
+          "text-[#4A4A4A] group-hover:text-[#51B8AB]"
         )}
       >
         <span>{category.name}</span>
-        <ChevronDown 
-          size={16} 
-          className={cn("transition-transform duration-300", isOpen && "rotate-180")} 
-        />
+        <ChevronDown size={16} className={cn("transition-transform duration-300", isOpen && "rotate-180")} />
       </button>
 
       <AnimatePresence>
@@ -61,15 +57,16 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-[999]"
           >
-            <div className="bg-white backdrop-blur-xl border border-[#E0E0E0] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.3),0_10px_25px_rgba(0,0,0,0.15)] overflow-hidden p-2 ring-1 ring-black/10 relative">
+            <div className="bg-white backdrop-blur-xl border border-[#51B8AB]/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.15),0_0_0_1px_rgba(81,184,171,0.08)] overflow-hidden p-2 relative">
+              <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/50 to-transparent" />
               <div className="flex flex-col space-y-1">
                 {category.items.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex flex-col p-3 rounded-xl hover:bg-[#F5F5F5] transition-all duration-200 group/item"
+                    className="flex flex-col p-3 rounded-2xl hover:bg-[#E8F7F5] transition-all duration-200 group/item border border-transparent hover:border-[#51B8AB]/20"
                   >
-                    <span className="text-[15px] font-semibold text-[#1A1A1A] group-hover/item:text-black">
+                    <span className="text-[15px] font-semibold text-[#1A1A1A] group-hover/item:text-[#3FA89A]">
                       {item.name}
                     </span>
                     <span className="text-[12px] text-[#4A4A4A] leading-snug mt-0.5">
@@ -89,44 +86,33 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   const { scrollY } = useScroll();
-  
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 50) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+    setIsScrolled(latest > 50);
   });
 
   return (
     <>
-      {/* Floating navbar wrapper — positions the pill in the center top */}
       <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.nav
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={cn(
-            "pointer-events-auto w-full max-w-5xl transition-all duration-300 relative",
-            "rounded-2xl border backdrop-blur-xl",
-            "bg-gradient-to-br from-white/20 via-white/10 to-white/5",
-            "shadow-[0_8px_32px_rgba(45,189,110,0.15),0_4px_24px_rgba(0,0,0,0.08)]",
-            "border-white/20 border-l-white/30 border-t-white/40",
-            "before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/10 before:to-transparent before:z-[-1]",
+            "pointer-events-auto w-full max-w-5xl transition-all duration-500 relative",
+            "rounded-2xl border backdrop-blur-xl bg-white/80",
             isScrolled
-              ? "bg-white/30 border-[#2DBD6E]/30 shadow-[0_8px_40px_rgba(45,189,110,0.25),0_4px_24px_rgba(0,0,0,0.12)]"
-              : "bg-white/20 border-white/30 shadow-[0_8px_32px_rgba(45,189,110,0.15),0_4px_24px_rgba(0,0,0,0.08)]"
+              ? "bg-white/90 border-[#51B8AB]/30 shadow-[0_8px_40px_rgba(81,184,171,0.12),0_2px_12px_rgba(0,0,0,0.08)]"
+              : "bg-white/70 border-[#51B8AB]/15 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
           )}
         >
           <div className="px-5 md:px-8 py-3 flex items-center justify-between relative">
+
             {/* Logo */}
-            <a href="/" className="flex flex-col shrink-0">
-              <span className="font-heading font-bold text-lg md:text-xl tracking-tight leading-none text-[#1A1A1A]">
-                CORELYN
-              </span>
-              <span className="text-[10px] mt-0.5 text-[#4A4A4A]">by Transista</span>
+            <a href="/" className="flex shrink-0 items-center">
+              <img src="/assets/logo/corelyn robotics.png" alt="Corelyn Robotics" className="h-16 w-auto object-contain" />
             </a>
 
             {/* Desktop Nav */}
@@ -138,7 +124,7 @@ export default function Navbar() {
               </ul>
               <a
                 href="#contact"
-                className="bg-[#2DBD6E] text-white px-5 py-2.5 rounded-xl hover:bg-[#22A05C] transition-colors font-bold text-[14px] shrink-0"
+                className="bg-[#51B8AB] text-white px-5 py-2.5 rounded-2xl hover:bg-[#3FA89A] transition-colors font-bold text-[14px] shrink-0 shadow-[0_0_16px_rgba(81,184,171,0.35)]"
               >
                 Get a Quote
               </a>
@@ -155,27 +141,19 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Green glowing border animation at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden rounded-b-2xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgb(45,189,110)] to-transparent opacity-0"></div>
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgb(45,189,110)] to-transparent"
-                animate={{
-                  x: ['-100%', '100%']
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
+            {/* Green bottom lighting — flush at nav bottom */}
+            <div className="absolute bottom-0 left-6 right-6 h-px overflow-hidden">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent"
+                animate={{ x: ["-100%", "100%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgb(45,189,110)] to-transparent opacity-30 blur-sm"></div>
             </div>
           </div>
         </motion.nav>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <div
         className={cn(
           "fixed top-0 left-0 w-full h-[100dvh] z-[60] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden",
@@ -183,9 +161,8 @@ export default function Navbar() {
         )}
       >
         <div className="p-6 flex justify-between items-center border-b border-[#D0D0D0] h-[72px] shrink-0">
-          <div className="flex flex-col">
-            <span className="font-heading font-bold text-xl tracking-tight text-[#1A1A1A] leading-none">CORELYN</span>
-            <span className="text-[10px] text-[#4A4A4A] mt-0.5">by Transista</span>
+          <div className="flex shrink-0 items-center">
+            <img src="/assets/logo/corelyn robotics.png" alt="Corelyn Robotics" className="h-12 w-auto object-contain" />
           </div>
           <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-[#1A1A1A]" aria-label="Close menu">
             <X size={24} />
@@ -213,7 +190,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block bg-[#2DBD6E] text-white px-6 py-4 rounded-xl font-bold text-base w-full text-center hover:bg-[#22A05C] transition-colors"
+              className="block bg-[#51B8AB] text-white px-6 py-4 rounded-2xl font-bold text-base w-full text-center hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)]"
             >
               Get a Quote
             </a>
@@ -223,7 +200,3 @@ export default function Navbar() {
     </>
   );
 }
-
-
-
-
