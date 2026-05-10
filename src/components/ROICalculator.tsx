@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { Calculator, TrendingDown, Clock, IndianRupee } from "lucide-react";
 
 const ROBOT_PRICING = {
-  "C100": { hourlyRate: 300, name: "C100 - Compact Sorter", description: "Research & Sorting" },
-  "C100_4WD": { hourlyRate: 400, name: "C100 4WD - Outdoor Inspection", description: "All-terrain" },
-  "C500": { hourlyRate: 500, name: "C500 - Industrial AMR", description: "500 kg payload" },
-  "C1000": { hourlyRate: 700, name: "C1000 - Heavy Lifter", description: "1,000 kg payload" },
+  "C100": { hourlyRate: 30, name: "C100 - Compact Sorter", description: "Research & Sorting" },
+  "C100_4WD": { hourlyRate: 40, name: "C100 4WD - Outdoor Inspection", description: "All-terrain" },
+  "C500": { hourlyRate: 50, name: "C500 - Industrial AMR", description: "500 kg payload" },
+  "C1000": { hourlyRate: 70, name: "C1000 - Heavy Lifter", description: "1,000 kg payload" },
 };
 
 type RobotType = keyof typeof ROBOT_PRICING;

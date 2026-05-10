@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, Settings } from "lucide-react";
+import { X, ChevronDown, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -137,7 +137,7 @@ export default function Navbar() {
                 className="p-2 text-[#1A1A1A] active:scale-90 transition-transform"
                 aria-label="Open menu"
               >
-                <Settings size={24} />
+                <Menu size={24} />
               </button>
             </div>
 

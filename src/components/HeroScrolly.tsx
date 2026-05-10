@@ -43,7 +43,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] tracking-tight text-white mb-6"
+            className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] tracking-tight text-white mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
           >
             Autonomous Robots.
             <br />
@@ -84,7 +84,7 @@ export default function HeroScrolly() {
             transition={{ duration: 0.5, delay: 0.65 }}
             className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/20 justify-center">
             {[
-              { value: "₹500/hr", label: "Starting rate" },
+              { value: "₹50/hr", label: "Starting rate" },
               { value: "4", label: "Robot platforms" },
               { value: "1,000 kg", label: "Max payload" },
               { value: "₹0", label: "Upfront capital" },

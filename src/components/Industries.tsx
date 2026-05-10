@@ -409,7 +409,7 @@ export default function Industries() {
           {[
             { value: "7", label: "Verticals" },
             { value: "4", label: "Platforms" },
-            { value: "₹500/hr", label: "Starting rate" },
+            { value: "₹50/hr", label: "Starting rate" },
             { value: "₹0", label: "Upfront capital" },
           ].map((s, i) => (
             <motion.div 

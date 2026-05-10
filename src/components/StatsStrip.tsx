@@ -8,7 +8,7 @@ const stats = [
   {
     icon: IndianRupee,
     prefix: "₹",
-    value: 500,
+    value: 50,
     suffix: "/hr",
     label: "Starting Runtime Rate",
     sub: "Per robot · productive hours only · no idle billing",
