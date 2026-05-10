@@ -19,7 +19,18 @@ export function useScrollLock(
     if (!el) return false;
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight;
-    return rect.top <= 80 && rect.bottom >= vh - 80;
+
+    // 1. Centering: Is the middle of the section close to the middle of the screen?
+    const sectionMid = rect.top + rect.height / 2;
+    const viewportMid = vh / 2;
+    const isCentered = Math.abs(sectionMid - viewportMid) < vh * 0.2; // Within 20% of viewport height
+
+    // 2. Visibility: How much of the section is visible?
+    const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+    const visibleRatio = visibleHeight / Math.min(rect.height, vh);
+    const isMostlyVisible = visibleRatio > 0.85; // At least 85% of the visible area is filled
+
+    return isCentered && isMostlyVisible;
   }, [sectionRef]);
 
   useEffect(() => {

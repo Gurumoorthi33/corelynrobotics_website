@@ -179,7 +179,7 @@ export default function Platforms() {
               className={`shrink-0 flex items-center gap-2 px-5 py-3 rounded-full text-[14px] font-bold transition-all duration-200 border ${
                 active === i
                   ? "bg-white/10 text-white border-white/20"
-                  : "bg-transparent text-white/70 border-white/10 hover:bg-[#51B8AB] hover:text-white hover:border-[#51B8AB]"
+                  : "bg-transparent text-white/70 border-white/10 hover:bg-[#51B8AB] hover:text-[#0A0A0A] hover:border-[#51B8AB]"
               }`}
             >
               <span className="font-heading tracking-wider">{p.id}</span>
@@ -308,7 +308,7 @@ export default function Platforms() {
                 <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                   <a
                     href="/platforms"
-                    className="flex-1 bg-[#1A1A1A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#51B8AB] transition-colors flex items-center justify-center gap-2 border border-white/10"
+                    className="flex-1 bg-[#1A1A1A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#51B8AB] hover:text-[#0A0A0A] transition-colors flex items-center justify-center gap-2 border border-white/10"
                   >
                     View Platform <ArrowRight className="w-4 h-4" />
                   </a>
@@ -345,7 +345,7 @@ export default function Platforms() {
               className={`group p-5 rounded-xl border text-left transition-all duration-200 ${
                 active === i
                   ? "bg-white/10 border-white/20"
-                  : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB]"
+                  : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:text-[#0A0A0A]"
               }`}
             >
               <div className={`text-[11px] font-bold tracking-widest uppercase mb-2 ${active === i ? "text-white/50" : "text-white/50"}`}>

@@ -111,7 +111,7 @@ export default function Positioning() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-[#51B8AB] text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-all duration-300 shadow-[0_0_30px_rgba(81,184,171,0.4)] hover:shadow-[0_0_40px_rgba(81,184,171,0.6)] group"
+              className="inline-flex items-center gap-2 bg-[#51B8AB] text-[#0A0A0A] px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-all duration-300 shadow-[0_0_30px_rgba(81,184,171,0.4)] hover:shadow-[0_0_40px_rgba(81,184,171,0.6)] group"
             >
               Learn How It Works
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

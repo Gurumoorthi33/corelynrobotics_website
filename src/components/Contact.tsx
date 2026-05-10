@@ -129,7 +129,7 @@ export default function Contact() {
             {submitted ? (
               <div className="bg-[#0A0A0A] p-10 rounded-xl border border-white/10 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
                 <div className="w-16 h-16 bg-[#51B8AB] rounded-full flex items-center justify-center mb-6">
-                  <span className="text-white text-2xl">✓</span>
+                  <span className="text-[#0A0A0A] text-2xl font-bold">✓</span>
                 </div>
                 <h3 className="font-heading font-bold text-[28px] text-white mb-4">Enquiry Received</h3>
                 <p className="text-[18px] text-white/70 leading-[1.7] max-w-sm">
@@ -207,7 +207,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#51B8AB] text-white py-4 rounded-lg hover:bg-[#3FA89A] transition-colors font-bold text-[17px] mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#51B8AB] text-[#0A0A0A] py-4 rounded-lg hover:bg-[#3FA89A] transition-colors font-bold text-[17px] mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending Enquiry..." : "Send Deployment Enquiry →"}
                   </button>

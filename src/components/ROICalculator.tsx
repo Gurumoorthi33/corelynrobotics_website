@@ -107,7 +107,7 @@ export default function ROICalculator() {
                         onClick={() => setRobotType(type)}
                         className={`text-left p-4 rounded-xl border-2 transition-all duration-300 ${
                           isSelected
-                            ? "bg-[#51B8AB] border-[#51B8AB] text-white shadow-lg"
+                            ? "bg-[#51B8AB] border-[#51B8AB] text-[#0A0A0A] shadow-lg"
                             : "bg-[#0A0A0A] border-white/10 text-white hover:border-[#51B8AB]/40"
                         }`}
                       >
@@ -199,7 +199,7 @@ export default function ROICalculator() {
               />
             </div>
 
-            <div className={`rounded-xl p-8 border-2 ${results.savings >= 0 ? "bg-[#51B8AB] border-[#51B8AB] text-white" : "bg-[#1A1A1A] border-white/20 text-white"}`}>
+            <div className={`rounded-xl p-8 border-2 ${results.savings >= 0 ? "bg-[#51B8AB] border-[#51B8AB] text-[#0A0A0A]" : "bg-[#1A1A1A] border-white/20 text-white"}`}>
               <div className="flex items-center gap-3 mb-2">
                 <TrendingDown className="w-6 h-6" />
                 <span className="text-sm font-bold tracking-wider uppercase opacity-70">
@@ -241,7 +241,7 @@ export default function ROICalculator() {
 
             <a
               href="#contact"
-              className="block w-full bg-[#51B8AB] text-white text-center py-4 rounded-lg font-bold text-[18px] hover:bg-[#3FA89A] transition-colors"
+              className="block w-full bg-[#51B8AB] text-[#0A0A0A] text-center py-4 rounded-lg font-bold text-[18px] hover:bg-[#3FA89A] transition-colors"
             >
               Get a Deployment Quote →
             </a>
@@ -284,7 +284,7 @@ function ResultCard({ icon, label, value, sub, highlight }: {
   icon: React.ReactNode; label: string; value: string; sub: string; highlight: boolean;
 }) {
   return (
-    <div className={`p-6 rounded-xl border ${highlight ? "bg-[#51B8AB] text-white border-[#51B8AB]" : "bg-[#1A1A1A] border-white/10 text-white"}`}>
+    <div className={`p-6 rounded-xl border ${highlight ? "bg-[#51B8AB] text-[#0A0A0A] border-[#51B8AB]" : "bg-[#1A1A1A] border-white/10 text-white"}`}>
       <div className={`mb-3 ${highlight ? "text-white" : "text-white/70"}`}>{icon}</div>
       <p className={`text-[13px] font-bold tracking-wider uppercase mb-1 ${highlight ? "opacity-70" : "text-white/70"}`}>{label}</p>
       <p className="font-heading font-bold text-[28px] leading-tight">{value}</p>

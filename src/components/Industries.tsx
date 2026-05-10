@@ -234,7 +234,7 @@ export default function Industries() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3, duration: 0.3 }}
-                      className="bg-[#51B8AB] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded-lg border border-[#51B8AB]/30 shadow-lg"
+                      className="bg-[#51B8AB] text-[#0A0A0A] text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded-lg border border-[#51B8AB]/30 shadow-lg"
                     >
                       {current.badge}
                     </motion.span>
@@ -267,7 +267,7 @@ export default function Industries() {
                       transition={{ delay: 0.6, duration: 0.3 }}
                       className="flex flex-wrap gap-3"
                     >
-                      <a href="#contact" className="group inline-flex items-center gap-2 bg-[#1A1A1A] text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-[#51B8AB] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border border-white/10">
+                      <a href="#contact" className="group inline-flex items-center gap-2 bg-[#1A1A1A] text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-[#51B8AB] hover:text-[#0A0A0A] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border border-white/10">
                         Deploy in {current.shortName} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </a>
                       <a href="#platforms" className="inline-flex items-center gap-2 bg-[#1A1A1A] backdrop-blur-md border border-white/20 text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-black hover:border-white/30 transition-all duration-300">
@@ -345,7 +345,7 @@ export default function Industries() {
                   className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group
                     ${isActive 
                       ? "bg-white/10 border-white/20 shadow-lg" 
-                      : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:shadow-lg"}`}
+                      : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:text-[#0A0A0A] hover:shadow-lg"}`}
                 >
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -358,7 +358,7 @@ export default function Industries() {
                     transition={{ duration: 0.3 }}
                     className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
                       isActive 
-                        ? "bg-white text-[#51B8AB] shadow-lg" 
+                        ? "bg-white text-[#0A0A0A] shadow-lg" 
                         : "bg-[#0A0A0A] text-[#51B8AB] group-hover:bg-black"
                     }`}
                   >

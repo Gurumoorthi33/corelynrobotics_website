@@ -55,7 +55,7 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-[999]"
+            className="absolute left-1/2 -translate-x-1/2 top-full pt-7 w-64 z-[999]"
           >
             <div className="bg-white backdrop-blur-xl border border-[#51B8AB]/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.15),0_0_0_1px_rgba(81,184,171,0.08)] overflow-hidden p-2 relative">
               <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/50 to-transparent" />
@@ -124,7 +124,7 @@ export default function Navbar() {
               </ul>
               <a
                 href="#contact"
-                className="bg-[#51B8AB] text-white px-5 py-2.5 rounded-2xl hover:bg-[#3FA89A] transition-colors font-bold text-[14px] shrink-0 shadow-[0_0_16px_rgba(81,184,171,0.35)]"
+                className="bg-[#51B8AB] text-[#0A0A0A] px-5 py-2.5 rounded-2xl hover:bg-[#3FA89A] transition-colors font-bold text-[14px] shrink-0 shadow-[0_0_16px_rgba(81,184,171,0.35)]"
               >
                 Get a Quote
               </a>
@@ -190,7 +190,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block bg-[#51B8AB] text-white px-6 py-4 rounded-2xl font-bold text-base w-full text-center hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)]"
+              className="block bg-[#51B8AB] text-[#0A0A0A] px-6 py-4 rounded-2xl font-bold text-base w-full text-center hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)]"
             >
               Get a Quote
             </a>

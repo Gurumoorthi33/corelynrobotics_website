@@ -246,7 +246,7 @@ export default function TechStack() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group
                     ${isActive 
                       ? "bg-white/10 border-white/20 shadow-lg" 
-                      : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB]"}`}
+                      : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:text-[#0A0A0A]"}`}
                 >
                   <span className={`font-bold text-[11px] tracking-widest w-5 shrink-0 ${isActive ? "text-white/30" : "text-[#D0D0D0]"}`}>{t.num}</span>
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isActive ? "bg-[#0A0A0A]/20 text-white" : "bg-[#0A0A0A] text-white border border-white/10"}`}>

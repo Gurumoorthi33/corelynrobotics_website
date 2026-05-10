@@ -66,7 +66,7 @@ export default function HeroScrolly() {
             className="flex flex-wrap gap-4 justify-center">
             <a
               href="#platforms"
-              className="bg-[#51B8AB] text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-colors shadow-[0_0_24px_rgba(81,184,171,0.4)] hover:shadow-[0_0_32px_rgba(81,184,171,0.55)]"
+              className="bg-[#51B8AB] text-[#0A0A0A] px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-colors shadow-[0_0_24px_rgba(81,184,171,0.4)] hover:shadow-[0_0_32px_rgba(81,184,171,0.55)]"
             >
               Explore Platforms
             </a>

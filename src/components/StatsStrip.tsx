@@ -180,7 +180,7 @@ export default function StatsStrip() {
             </a>
             <a
               href="#platforms"
-              className="inline-flex items-center gap-2 text-[14px] font-bold bg-[#51B8AB] text-white px-5 py-3 rounded-2xl hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)] hover:shadow-[0_0_28px_rgba(81,184,171,0.45)]"
+              className="inline-flex items-center gap-2 text-[14px] font-bold bg-[#51B8AB] text-[#0A0A0A] px-5 py-3 rounded-2xl hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)] hover:shadow-[0_0_28px_rgba(81,184,171,0.45)]"
             >
               Explore Platforms <ArrowRight className="w-4 h-4" />
             </a>
