@@ -8,7 +8,7 @@ export default function HeroScrolly() {
 
       <div className="absolute inset-0">
         <video
-          src="/assets/hero/hero bg.mp4"
+          src="/assets/hero/hero bg new.mp4"
           autoPlay
           muted
           loop
