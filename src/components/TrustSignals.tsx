@@ -48,7 +48,7 @@ export default function TrustSignals() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {trustMetrics.map((metric, index) => {
             const Icon = metric.icon;
             return (

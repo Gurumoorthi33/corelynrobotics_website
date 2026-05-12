@@ -201,9 +201,9 @@ export default function HowItWorks() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl mb-20 mx-auto text-center relative"
         >
-          <div className="absolute inset-0 -mx-8 -my-8 bg-white/5 rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] pointer-events-none" />
+          <div className="absolute inset-0 -mx-4 -my-6 md:-mx-8 md:-my-8 bg-white/5 rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] pointer-events-none" />
           
-          <div className="absolute inset-0 -mx-8 -my-8 rounded-3xl overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 -mx-4 -my-6 md:-mx-8 md:-my-8 rounded-3xl overflow-hidden pointer-events-none">
             <motion.div
               className="absolute inset-0 opacity-30"
               style={{
@@ -215,7 +215,7 @@ export default function HowItWorks() {
             <div className="absolute inset-[2px] bg-[#1e1e1e] rounded-3xl" />
           </div>
 
-          <div className="relative px-8 py-10">
+          <div className="relative px-4 py-8 md:px-8 md:py-10">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center gap-2">
               <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-[#51B8AB]" />
               <div className="w-3 h-3 rounded-full bg-[#51B8AB] shadow-[0_0_16px_rgba(81,184,171,0.45)]" />
@@ -235,7 +235,7 @@ export default function HowItWorks() {
               </span>
             </motion.div>
 
-            <h2 className="font-heading font-bold text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] text-white mb-6 mt-4">
+            <h2 className="font-heading font-bold text-[32px] md:text-[52px] lg:text-[72px] leading-[1.05] text-white mb-6 mt-4">
               You <span className="text-white/35">Don&apos;t</span> Buy a Robot.
               <br />
               You <span className="text-[#51B8AB]">Subscribe</span> to an <span className="text-[#51B8AB]">Operation</span>.

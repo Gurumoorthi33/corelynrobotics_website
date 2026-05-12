@@ -83,7 +83,7 @@ export default function Positioning() {
             className="space-y-8"
           >
             <div>
-              <h2 className="font-heading font-bold text-[36px] md:text-[56px] lg:text-[64px] leading-[1.05] text-slate-900 mb-6">
+              <h2 className="font-heading font-bold text-[28px] md:text-[48px] lg:text-[64px] leading-[1.1] text-slate-900 mb-6">
                 A <span className="text-[#2d9d8f]">Robotics Infrastructure</span> Company.
                 <br />
                 <span className="text-slate-500">Not a Robot Seller.</span>
@@ -92,7 +92,7 @@ export default function Positioning() {
               <div className="w-20 h-1 bg-gradient-to-r from-[#51B8AB] to-[#51B8AB]/20 rounded-full mb-8" />
             </div>
           
-            <div className="space-y-5 text-slate-600 text-[17px] md:text-[19px] leading-[1.75]">
+            <div className="space-y-4 text-slate-600 text-[16px] md:text-[19px] leading-[1.75]">
               <p>
                 Corelyn Robotics is a <span className="text-[#2d9d8f] font-semibold">robotics infrastructure company</span>. We don&apos;t sell machines — we operate them, maintain them, and scale them alongside your business. Think of it as <span className="text-slate-900 font-semibold">cloud computing, applied to your factory floor</span>.
               </p>

@@ -145,21 +145,21 @@ export default function StatsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px", amount: 0.12 }}
           transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 bg-white rounded-3xl border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.05)] px-8 py-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden"
+          className="mt-6 bg-white rounded-3xl border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.05)] px-6 py-6 flex flex-col items-start justify-between gap-5 relative overflow-hidden"
         >
           <div className="absolute left-0 top-4 bottom-4 w-[3px] bg-gradient-to-b from-transparent via-[#51B8AB] to-transparent rounded-full" />
           <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/25 to-transparent" />
 
           <div className="pl-4">
-            <p className="text-[16px] font-semibold text-slate-900 leading-[1.6] mb-1">
+            <p className="text-[15px] font-semibold text-slate-900 leading-[1.6] mb-1">
               All platforms on a single subscription.
             </p>
-            <p className="text-[14px] text-slate-600 leading-[1.6]">
+            <p className="text-[13px] text-slate-600 leading-[1.6]">
               Scale up or down as your operation evolves — no lock-in, no capital expenditure.
             </p>
           </div>
 
-          <div className="flex gap-3 shrink-0">
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
             <a
               href="#roi-calculator"
               className="text-[14px] font-bold text-slate-700 border border-slate-300 px-5 py-3 rounded-2xl hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"

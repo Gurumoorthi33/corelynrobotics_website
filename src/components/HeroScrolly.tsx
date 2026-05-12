@@ -23,7 +23,7 @@ export default function HeroScrolly() {
       <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#51B8AB]/12 to-transparent pointer-events-none" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent" />
 
-      <motion.div className="relative z-10 min-h-screen flex items-center justify-center px-6 md:px-12 max-w-7xl mx-auto pt-32 pb-24">
+      <motion.div className="relative z-10 min-h-screen flex items-center justify-center px-5 md:px-12 max-w-7xl mx-auto pt-28 pb-20">
         <div className="max-w-3xl text-center">
 
           <motion.div
@@ -85,7 +85,7 @@ export default function HeroScrolly() {
             {[
               { value: "₹50/hr", label: "Starting rate" },
               { value: "4", label: "Robot platforms" },
-              { value: "1,000 kg", label: "Max payload" },
+              { value: "2,000 kg", label: "Max payload" },
               { value: "₹0", label: "Upfront capital" },
             ].map((s, i) => (
               <motion.div

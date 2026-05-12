@@ -183,7 +183,7 @@ export default function Navbar() {
           role="navigation"
           aria-label="Main navigation"
         >
-          <div className="flex h-[72px] items-center justify-between gap-4 px-2 md:h-[80px] md:px-3 lg:px-4">
+          <div className="flex h-[64px] items-center justify-between gap-4 px-3 md:h-[80px] md:px-3 lg:px-4">
             <Link href="/" className="flex min-w-0 shrink-0 items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2">
               <Image
                 src="/assets/logo/corelyn robotics new.png"
@@ -191,7 +191,7 @@ export default function Navbar() {
                 width={296}
                 height={112}
                 priority
-                className="h-[8rem] w-auto object-contain md:h-[10rem]"
+                className="h-[3.5rem] w-auto object-contain md:h-[10rem]"
               />
             </Link>
 
@@ -258,7 +258,7 @@ export default function Navbar() {
                     alt="Corelyn Robotics"
                     width={238}
                     height={90}
-                    className="h-[8rem] w-auto object-contain"
+                    className="h-[3.5rem] w-auto object-contain"
                   />
                 </Link>
                 <button
