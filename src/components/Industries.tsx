@@ -152,7 +152,7 @@ export default function Industries() {
           </motion.div>
 
           {/* Main heading */}
-          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
+          <h2 className="font-heading font-bold text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
             <span className="text-[#2d9d8f]">Robots</span> for
             <br />
             <span className="text-slate-500">Every</span> <span className="text-[#2d9d8f]">Sector</span>.
@@ -169,7 +169,7 @@ export default function Industries() {
             <div className="w-20 h-[1px] bg-gradient-to-l from-transparent to-[#51B8AB]/50" />
           </div>
 
-          <p className="text-[18px] md:text-[22px] text-slate-600 leading-[1.75] max-w-3xl mx-auto">
+          <p className="text-[15px] md:text-[22px] text-slate-600 leading-[1.75] max-w-3xl mx-auto">
             <span className="text-[#2d9d8f] font-semibold">Seven verticals</span>. One subscription model. From <span className="text-slate-900 font-semibold">manufacturing</span> to <span className="text-slate-900 font-semibold">defence</span>.
           </p>
 
@@ -201,7 +201,7 @@ export default function Industries() {
         </motion.div>
 
         {/* Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-4">
 
           {/* Featured panel — swipeable on mobile */}
           <div>

@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, TrendingDown, IndianRupee, ArrowRight, Users, Bot, CheckCircle2 } from "lucide-react";
 
 const ROBOT_PRICING = {
-  "C100":     { hourlyRate: 30, tag: "Research & Sorting",   payload: "Light",     icon: "🔬" },
-  "C100_4WD": { hourlyRate: 40, tag: "Outdoor Inspection",   payload: "Light",     icon: "🌿" },
-  "C500":     { hourlyRate: 50, tag: "Industrial AMR",        payload: "500 kg",    icon: "🏭" },
-  "C1000":    { hourlyRate: 70, tag: "Heavy Lifter",          payload: "1,000 kg",  icon: "⚙️" },
+  "C100":     { hourlyRate: 30, tag: "Research & Sorting",   payload: "Light",     },
+  "C100_4WD": { hourlyRate: 40, tag: "Outdoor Inspection",   payload: "Light", },
+  "C500":     { hourlyRate: 50, tag: "Industrial AMR",        payload: "500 kg",   },
+  "C1000":    { hourlyRate: 70, tag: "Heavy Lifter",          payload: "1,000 kg",  },
 };
 
 type RobotType = keyof typeof ROBOT_PRICING;

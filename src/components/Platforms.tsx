@@ -144,13 +144,13 @@ export default function Platforms() {
             </span>
           </motion.div>
 
-          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-5">
+          <h2 className="font-heading font-bold text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-5">
             <span className="text-[#2d9d8f]">Four</span> Platforms.
             <br />
             <span className="text-slate-400">Every</span> Industrial <span className="text-[#2d9d8f]">Need</span>.
           </h2>
 
-          <p className="text-[17px] md:text-[20px] text-slate-500 leading-[1.75] max-w-2xl mx-auto">
+          <p className="text-[15px] md:text-[20px] text-slate-500 leading-[1.75] max-w-2xl mx-auto">
             From <span className="text-slate-800 font-semibold">compact lab sorters</span> to{" "}
             <span className="text-slate-800 font-semibold">1,000 kg heavy tuggers</span> — one subscription model across all platforms.
           </p>
@@ -162,13 +162,13 @@ export default function Platforms() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.15 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-8"
         >
           {platforms.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(i)}
-              className={`group relative text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
+              className={`group relative text-left p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
                 active === i
                   ? "border-[#51B8AB] bg-[#e8f7f5] shadow-[0_4px_20px_rgba(81,184,171,0.18)]"
                   : "border-slate-200 bg-white hover:border-[#51B8AB]/40 hover:bg-slate-50"
@@ -181,12 +181,12 @@ export default function Platforms() {
                 }`}
               />
 
-              <div className={`text-[10px] font-bold tracking-[0.15em] uppercase mb-2 transition-colors ${
+              <div className={`text-[9px] md:text-[10px] font-bold tracking-[0.12em] uppercase mb-1.5 transition-colors ${
                 active === i ? "text-[#2d9d8f]" : "text-slate-400"
               }`}>
                 {p.tag}
               </div>
-              <div className={`font-heading font-bold text-[18px] md:text-[22px] leading-none mb-1 transition-colors ${
+              <div className={`font-heading font-bold text-[15px] md:text-[22px] leading-none mb-1 transition-colors ${
                 active === i ? "text-slate-900" : "text-slate-700"
               }`}>
                 {p.id}
@@ -269,14 +269,14 @@ export default function Platforms() {
               </a>
 
               {/* ── Right: Content Panel ── */}
-              <div className="flex flex-col p-8 md:p-10 lg:p-12 bg-white">
+              <div className="flex flex-col p-5 md:p-8 lg:p-12 bg-white">
 
                 {/* Platform name + headline */}
-                <div className="mb-7 pb-7 border-b border-slate-100">
+                <div className="mb-5 pb-5 border-b border-slate-100">
                   <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#51B8AB] mb-2">
                     {platform.tag}
                   </p>
-                  <h3 className="font-heading font-bold text-[24px] md:text-[30px] text-slate-900 leading-[1.15] mb-3">
+                  <h3 className="font-heading font-bold text-[20px] md:text-[28px] text-slate-900 leading-[1.15] mb-3">
                     {platform.name}
                   </h3>
                   <p className="text-[15px] text-slate-500 leading-[1.7]">
@@ -285,7 +285,7 @@ export default function Platforms() {
                 </div>
 
                 {/* Spec Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-7">
+                <div className="grid grid-cols-2 gap-2 md:gap-3 mb-5">
                   <SpecTile icon={<Weight className="w-4 h-4" />} label="Payload" value={platform.specs.payload} />
                   <SpecTile icon={<Zap className="w-4 h-4" />} label="Drive" value={platform.specs.drive} />
                   <SpecTile icon={<Gauge className="w-4 h-4" />} label="Max Speed" value={platform.specs.speed} />
@@ -293,7 +293,7 @@ export default function Platforms() {
                 </div>
 
                 {/* Payload capacity bar */}
-                <div className="mb-7 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div className="mb-5 p-3 md:p-4 bg-slate-50 rounded-2xl border border-slate-100">
                   <div className="flex justify-between items-center mb-2.5">
                     <span className="text-[12px] font-bold uppercase tracking-widest text-slate-400">Payload Capacity</span>
                     <span className="text-[13px] font-bold text-slate-900">{platform.specs.payload}</span>
@@ -314,7 +314,7 @@ export default function Platforms() {
                 </div>
 
                 {/* Best For */}
-                <div className="mb-7">
+                <div className="mb-4">
                   <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-3">Best Deployed In</p>
                   <div className="flex flex-wrap gap-2">
                     {platform.bestFor.map((use) => (
@@ -330,7 +330,7 @@ export default function Platforms() {
                 </div>
 
                 {/* Feature tags */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {platform.tags.map((tag) => (
                     <span
                       key={tag}
@@ -375,49 +375,49 @@ export default function Platforms() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-6 bg-slate-50 rounded-2xl border border-slate-200/80 p-5 md:p-6"
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-5">
-            <div className="shrink-0">
-              <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-1">Quick Compare</p>
-              <p className="text-[14px] font-semibold text-slate-700">All platforms on one subscription</p>
+          <div className="flex flex-col gap-4">
+              <div className="shrink-0">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-1">Quick Compare</p>
+                <p className="text-[13px] font-semibold text-slate-700">All platforms on one subscription</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {platforms.map((p, i) => (
+                  <button
+                    key={p.id}
+                    onClick={() => setActive(i)}
+                    className={`text-left p-2.5 rounded-xl border transition-all duration-200 ${
+                      active === i
+                        ? "bg-white border-[#51B8AB]/50 shadow-sm"
+                        : "bg-white/60 border-slate-200 hover:border-[#51B8AB]/30 hover:bg-white"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`font-heading font-bold text-[13px] ${active === i ? "text-slate-900" : "text-slate-600"}`}>
+                        {p.id}
+                      </span>
+                      {active === i && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB]" />
+                      )}
+                    </div>
+                    <p className={`text-[10px] font-medium ${active === i ? "text-[#2d9d8f]" : "text-slate-400"}`}>
+                      {p.specs.payload}
+                    </p>
+                    <div className="mt-1.5 h-1 bg-slate-200 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-[#51B8AB] rounded-full transition-all duration-500"
+                        style={{ width: `${p.specs.payloadBar}%` }}
+                      />
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <a
+                href="/platforms"
+                className="self-start inline-flex items-center gap-2 text-[13px] font-bold text-[#2d9d8f] hover:text-[#51B8AB] transition-colors"
+              >
+                Compare all <ChevronRight className="w-4 h-4" />
+              </a>
             </div>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-3">
-              {platforms.map((p, i) => (
-                <button
-                  key={p.id}
-                  onClick={() => setActive(i)}
-                  className={`text-left p-3 rounded-xl border transition-all duration-200 ${
-                    active === i
-                      ? "bg-white border-[#51B8AB]/50 shadow-sm"
-                      : "bg-white/60 border-slate-200 hover:border-[#51B8AB]/30 hover:bg-white"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className={`font-heading font-bold text-[14px] ${active === i ? "text-slate-900" : "text-slate-600"}`}>
-                      {p.id}
-                    </span>
-                    {active === i && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB]" />
-                    )}
-                  </div>
-                  <p className={`text-[11px] font-medium ${active === i ? "text-[#2d9d8f]" : "text-slate-400"}`}>
-                    {p.specs.payload}
-                  </p>
-                  <div className="mt-2 h-1 bg-slate-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[#51B8AB] rounded-full transition-all duration-500"
-                      style={{ width: `${p.specs.payloadBar}%` }}
-                    />
-                  </div>
-                </button>
-              ))}
-            </div>
-            <a
-              href="/platforms"
-              className="shrink-0 inline-flex items-center gap-2 text-[13px] font-bold text-[#2d9d8f] hover:text-[#51B8AB] transition-colors"
-            >
-              Compare all <ChevronRight className="w-4 h-4" />
-            </a>
-          </div>
         </motion.div>
 
       </div>
