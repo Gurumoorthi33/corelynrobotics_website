@@ -1,78 +1,135 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, Menu } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   {
     name: "Platform",
     items: [
-      { name: "Platforms", href: "/platforms", description: "Our robotic fleet and software stack." },
-      { name: "Technology", href: "#technology", description: "The core innovation behind Corelyn." },
-      { name: "How It Works", href: "#how-it-works", description: "Step-by-step process of our RaaS model." },
+      { name: "Platforms", href: "/platforms", description: "Explore the robotic fleet and software stack." },
+      { name: "Technology", href: "#technology", description: "Autonomy, fleet intelligence, and uptime systems." },
+      { name: "How It Works", href: "#how-it-works", description: "A clear path from survey to productive runtime." },
     ],
   },
   {
     name: "Impact",
     items: [
-      { name: "Industries", href: "#industries", description: "Sectors we currently serve." },
-      { name: "ROI Calculator", href: "#roi-calculator", description: "Calculate your savings with Corelyn." },
+      { name: "Industries", href: "#industries", description: "Where Corelyn robots are already useful." },
+      { name: "ROI Calculator", href: "#roi-calculator", description: "Estimate savings before deployment." },
     ],
   },
   {
     name: "Company",
     items: [
-      { name: "Contact", href: "#contact", description: "Get in touch with our team." },
+      { name: "Contact", href: "#contact", description: "Talk to the deployment team." },
     ],
   },
-];
+] as const;
 
-function NavDropdown({ category }: { category: typeof navLinks[0] }) {
+type NavCategory = (typeof navLinks)[number];
+
+function NavItemLink({
+  href,
+  children,
+  className,
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} onClick={onClick} className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} onClick={onClick} className={className}>
+      {children}
+    </Link>
+  );
+}
+
+function NavDropdown({ category }: { category: NavCategory }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <li
-      className="relative group"
+      className="relative"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
+      onFocus={() => setIsOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setIsOpen(false);
+      }}
     >
       <button
+        type="button"
+        onClick={() => setIsOpen((open) => !open)}
         className={cn(
-          "flex items-center space-x-1 text-[16px] transition-colors duration-300 font-medium py-2",
-          "text-[#4A4A4A] group-hover:text-[#51B8AB]"
+          "group inline-flex h-11 items-center gap-1.5 rounded-full px-4 text-[14px] font-semibold text-slate-700",
+          "transition-all duration-200 hover:bg-slate-100 hover:text-slate-950",
+          "focus-visible:bg-slate-100 focus-visible:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2"
         )}
+        aria-expanded={isOpen}
+        aria-haspopup="menu"
       >
         <span>{category.name}</span>
-        <ChevronDown size={16} className={cn("transition-transform duration-300", isOpen && "rotate-180")} />
+        <ChevronDown
+          size={15}
+          strokeWidth={2.3}
+          className={cn("text-slate-500 transition-transform duration-200 group-hover:text-[#2d9d8f]", isOpen && "rotate-180 text-[#2d9d8f]")}
+          aria-hidden="true"
+        />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 12, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-full pt-7 w-64 z-[999]"
+            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute left-1/2 top-full z-[999] w-[21rem] -translate-x-1/2 pt-3"
           >
-            <div className="bg-white backdrop-blur-xl border border-[#51B8AB]/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.15),0_0_0_1px_rgba(81,184,171,0.08)] overflow-hidden p-2 relative">
-              <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/50 to-transparent" />
-              <div className="flex flex-col space-y-1">
+            <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.14)] ring-1 ring-[#51B8AB]/10">
+              <div className="border-b border-slate-100 bg-slate-50/80 px-4 py-3">
+                <p className="text-[11px] font-bold uppercase text-[#2d9d8f]">{category.name}</p>
+              </div>
+              <div className="p-2" role="menu">
                 {category.items.map((item) => (
-                  <a
+                  <NavItemLink
                     key={item.name}
                     href={item.href}
-                    className="flex flex-col p-3 rounded-2xl hover:bg-[#E8F7F5] transition-all duration-200 group/item border border-transparent hover:border-[#51B8AB]/20"
+                    onClick={() => setIsOpen(false)}
+                    className="group/item flex items-start justify-between gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-[#E8F7F5] focus-visible:bg-[#E8F7F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB]"
                   >
-                    <span className="text-[15px] font-semibold text-[#1A1A1A] group-hover/item:text-[#3FA89A]">
-                      {item.name}
+                    <span>
+                      <span className="block text-[15px] font-bold leading-tight text-slate-950 group-hover/item:text-[#2d9d8f]">
+                        {item.name}
+                      </span>
+                      <span className="mt-1 block text-[12px] leading-snug text-slate-600">
+                        {item.description}
+                      </span>
                     </span>
-                    <span className="text-[12px] text-[#4A4A4A] leading-snug mt-0.5">
-                      {item.description}
-                    </span>
-                  </a>
+                    <ArrowRight
+                      size={16}
+                      className="mt-0.5 shrink-0 text-slate-300 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:text-[#2d9d8f]"
+                      aria-hidden="true"
+                    />
+                  </NavItemLink>
                 ))}
               </div>
             </div>
@@ -86,117 +143,205 @@ function NavDropdown({ category }: { category: typeof navLinks[0] }) {
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string>(navLinks[0].name);
 
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50);
+    setIsScrolled(latest > 36);
   });
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
-      <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div className="fixed inset-x-0 top-3 z-50 flex justify-center px-3 pointer-events-none md:top-5 md:px-6">
         <motion.nav
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className={cn(
-            "pointer-events-auto w-full max-w-5xl transition-all duration-500 relative",
-            "rounded-2xl border backdrop-blur-xl bg-white/80",
+            "pointer-events-auto relative w-full max-w-6xl rounded-[1.25rem] border backdrop-blur-2xl transition-all duration-300",
             isScrolled
-              ? "bg-white/90 border-[#51B8AB]/30 shadow-[0_8px_40px_rgba(81,184,171,0.12),0_2px_12px_rgba(0,0,0,0.08)]"
-              : "bg-white/70 border-[#51B8AB]/15 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+              ? "border-slate-200/90 bg-white/97 shadow-[0_8px_16px_rgba(15,23,42,0.06),0_20px_60px_rgba(15,23,42,0.14),0_0_0_1px_rgba(81,184,171,0.10)]"
+              : "border-white/80 bg-white/90 shadow-[0_4px_12px_rgba(15,23,42,0.06),0_12px_40px_rgba(15,23,42,0.10),0_0_0_1px_rgba(255,255,255,0.60)]"
           )}
+          role="navigation"
+          aria-label="Main navigation"
         >
-          <div className="px-5 md:px-8 py-3 flex items-center justify-between relative">
+          <div className="flex h-[72px] items-center justify-between gap-4 px-2 md:h-[80px] md:px-3 lg:px-4">
+            <Link href="/" className="flex min-w-0 shrink-0 items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2">
+              <Image
+                src="/assets/logo/corelyn robotics new.png"
+                alt="Corelyn Robotics"
+                width={296}
+                height={112}
+                priority
+                className="h-[8rem] w-auto object-contain md:h-[10rem]"
+              />
+            </Link>
 
-            {/* Logo */}
-            <a href="/" className="flex shrink-0 items-center">
-              <img src="/assets/logo/corelyn robotics.png" alt="Corelyn Robotics" className="h-16 w-auto object-contain" />
-            </a>
-
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-6">
-              <ul className="flex items-center gap-6">
+            <div className="hidden items-center gap-3 lg:flex">
+              <ul className="flex items-center rounded-full border border-slate-200/80 bg-white/70 p-1 shadow-inner shadow-slate-100/80">
                 {navLinks.map((category) => (
                   <NavDropdown key={category.name} category={category} />
                 ))}
               </ul>
               <a
                 href="#contact"
-                className="bg-[#51B8AB] text-[#0A0A0A] px-5 py-2.5 rounded-2xl hover:bg-[#3FA89A] transition-colors font-bold text-[14px] shrink-0 shadow-[0_0_16px_rgba(81,184,171,0.35)]"
+                className="group inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-[#51B8AB] px-5 text-[14px] font-bold text-slate-950 shadow-[0_12px_26px_rgba(81,184,171,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#3FA89A] hover:shadow-[0_16px_34px_rgba(81,184,171,0.34)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2"
               >
                 Get a Quote
+                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
               </a>
             </div>
 
-            {/* Mobile Toggle */}
-            <div className="lg:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className="p-2 text-[#1A1A1A] active:scale-90 transition-transform"
-                aria-label="Open menu"
-              >
-                <Menu size={24} />
-              </button>
-            </div>
-
-            {/* Green bottom lighting — flush at nav bottom */}
-            <div className="absolute bottom-0 left-6 right-6 h-px overflow-hidden">
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent"
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-950 shadow-sm transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2 lg:hidden"
+              aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              <Menu size={23} aria-hidden="true" />
+            </button>
           </div>
+
+          <motion.div
+            className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/75 to-transparent"
+            animate={{ opacity: isScrolled ? 0.45 : 0.9 }}
+            transition={{ duration: 0.2 }}
+          />
         </motion.nav>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "fixed top-0 left-0 w-full h-[100dvh] z-[60] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <div className="p-6 flex justify-between items-center border-b border-[#D0D0D0] h-[72px] shrink-0">
-          <div className="flex shrink-0 items-center">
-            <img src="/assets/logo/corelyn robotics.png" alt="Corelyn Robotics" className="h-12 w-auto object-contain" />
-          </div>
-          <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-[#1A1A1A]" aria-label="Close menu">
-            <X size={24} />
-          </button>
-        </div>
-        <div className="flex flex-col p-6 space-y-6 overflow-y-auto flex-1 pb-12">
-          {navLinks.map((category) => (
-            <div key={category.name} className="flex flex-col space-y-3">
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#999]">{category.name}</h3>
-              <div className="flex flex-col space-y-3 pl-2">
-                {category.items.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-xl font-heading font-bold text-[#1A1A1A]"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="pt-4">
-            <a
-              href="#contact"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.button
+              type="button"
+              className="fixed inset-0 z-[59] bg-slate-950/35 backdrop-blur-sm lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="block bg-[#51B8AB] text-[#0A0A0A] px-6 py-4 rounded-2xl font-bold text-base w-full text-center hover:bg-[#3FA89A] transition-colors shadow-[0_0_20px_rgba(81,184,171,0.3)]"
+              aria-label="Close menu"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed right-0 top-0 z-[60] flex h-[100dvh] w-full max-w-[420px] flex-col bg-white shadow-[0_24px_80px_rgba(15,23,42,0.28)] lg:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
-              Get a Quote
-            </a>
-          </div>
-        </div>
-      </div>
+              <div className="flex h-[76px] shrink-0 items-center justify-between border-b border-slate-200 px-5">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB]">
+                  <Image
+                    src="/assets/logo/corelyn robotics new.png"
+                    alt="Corelyn Robotics"
+                    width={238}
+                    height={90}
+                    className="h-[8rem] w-auto object-contain"
+                  />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-950 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB]"
+                  aria-label="Close menu"
+                >
+                  <X size={22} aria-hidden="true" />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto px-5 py-5">
+                <div className="mb-5 rounded-2xl border border-[#51B8AB]/25 bg-[#E8F7F5] p-4">
+                  <p className="text-[11px] font-bold uppercase text-[#2d9d8f]">Robotics-as-a-Service</p>
+                  <p className="mt-1 text-[15px] font-semibold leading-snug text-slate-950">
+                    Navigate to platforms, deployment flow, ROI, or contact.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  {navLinks.map((category) => {
+                    const isOpen = mobileSection === category.name;
+
+                    return (
+                      <section key={category.name} className="rounded-2xl border border-slate-200 bg-white">
+                        <button
+                          type="button"
+                          onClick={() => setMobileSection(isOpen ? "" : category.name)}
+                          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB]"
+                          aria-expanded={isOpen}
+                        >
+                          <span className="text-[16px] font-bold text-slate-950">{category.name}</span>
+                          <ChevronDown className={cn("h-5 w-5 text-slate-500 transition-transform", isOpen && "rotate-180 text-[#2d9d8f]")} aria-hidden="true" />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2, ease: "easeOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="border-t border-slate-100 p-2">
+                                {category.items.map((item) => (
+                                  <NavItemLink
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex items-start justify-between gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-slate-50 focus-visible:bg-[#E8F7F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB]"
+                                  >
+                                    <span>
+                                      <span className="block text-[16px] font-bold text-slate-950">{item.name}</span>
+                                      <span className="mt-0.5 block text-[13px] leading-snug text-slate-600">{item.description}</span>
+                                    </span>
+                                    <ArrowRight size={16} className="mt-1 shrink-0 text-[#2d9d8f]" aria-hidden="true" />
+                                  </NavItemLink>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </section>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="border-t border-slate-200 p-5">
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[#51B8AB] px-6 text-center text-[15px] font-bold text-slate-950 shadow-[0_14px_30px_rgba(81,184,171,0.30)] transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2"
+                >
+                  Get a Quote
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

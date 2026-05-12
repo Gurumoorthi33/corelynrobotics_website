@@ -4,27 +4,26 @@ import { motion } from "framer-motion";
 
 export default function HeroScrolly() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+    <section className="relative w-full min-h-screen overflow-hidden">
 
-      {/* Background video */}
-      <video
-        src="/assets/hero/hero bg.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <div className="absolute inset-0">
+        <video
+          src="/assets/hero/hero bg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-label="Background video showing autonomous robots in action"
+        />
+      </div>
 
-      {/* Dark grey overlay with gradient - darker on right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/70 via-[#0A0A0A]/85 to-[#000000]/95" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/88 to-slate-950/95" />
 
-      {/* Green glow bottom */}
-      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#51B8AB]/10 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#51B8AB]/12 to-transparent pointer-events-none" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center px-6 md:px-12 max-w-7xl mx-auto pt-32">
+      <motion.div className="relative z-10 min-h-screen flex items-center justify-center px-6 md:px-12 max-w-7xl mx-auto pt-32 pb-24">
         <div className="max-w-3xl text-center">
 
           <motion.div
@@ -33,7 +32,7 @@ export default function HeroScrolly() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center gap-3 mb-6 justify-center">
             <div className="h-px w-8 bg-[#51B8AB]" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#51B8AB]">
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#7dd3cf]">
               Robotics as a Service
             </span>
             <div className="h-px w-8 bg-[#51B8AB]" />
@@ -66,13 +65,13 @@ export default function HeroScrolly() {
             className="flex flex-wrap gap-4 justify-center">
             <a
               href="#platforms"
-              className="bg-[#51B8AB] text-[#0A0A0A] px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] transition-colors shadow-[0_0_24px_rgba(81,184,171,0.4)] hover:shadow-[0_0_32px_rgba(81,184,171,0.55)]"
+              className="group bg-[#51B8AB] text-slate-950 px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-[#3FA89A] active:scale-95 transition-all shadow-[0_0_24px_rgba(81,184,171,0.4)] hover:shadow-[0_0_32px_rgba(81,184,171,0.55)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               Explore Platforms
             </a>
             <a
               href="#contact"
-              className="border border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
+              className="border-2 border-white/35 text-white px-8 py-4 rounded-2xl font-bold text-[15px] hover:bg-white/10 hover:border-white/55 active:scale-95 transition-all backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               Get a Deployment Quote
             </a>
@@ -89,15 +88,20 @@ export default function HeroScrolly() {
               { value: "1,000 kg", label: "Max payload" },
               { value: "₹0", label: "Upfront capital" },
             ].map((s, i) => (
-              <div key={i} className="flex flex-col items-center">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.75 + i * 0.06 }}
+                className="flex flex-col items-center"
+              >
                 <span className="font-heading font-bold text-[22px] text-white leading-none">{s.value}</span>
                 <span className="text-[12px] text-white/50 mt-1 uppercase tracking-wider">{s.label}</span>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
-      </div>
-
+      </motion.div>
     </section>
   );
 }

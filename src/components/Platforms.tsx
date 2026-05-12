@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Zap, Weight, Gauge, MapPin } from "lucide-react";
+import { ArrowRight, Zap, Weight, Gauge, MapPin, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const platforms = [
   {
     id: "C100",
     tag: "Research & Sorting",
+    color: "#51B8AB",
     image: "/assets/products/c100.png",
     name: "Compact Sorter & Research Platform",
     headline: "Built for labs, sorting lines, and R&D floors.",
@@ -23,11 +24,16 @@ const platforms = [
     },
     tags: ["ROS-ready", "Compact footprint", "Sensor integration", "Education"],
     bestFor: ["Sorting lines", "Robotics education", "R&D prototyping"],
-    accentColor: "#3FA89A",
+    keyStats: [
+      { value: "1.2 m/s", label: "Max Speed" },
+      { value: "ROS 2", label: "Stack" },
+      { value: "SLAM", label: "Navigation" },
+    ],
   },
   {
     id: "C100 4WD",
     tag: "Outdoor Inspection",
+    color: "#3d9e91",
     image: "/assets/products/c100-4wd.png",
     name: "Outdoor Inspection Robot",
     headline: "Goes where conventional AMRs cannot.",
@@ -42,11 +48,16 @@ const platforms = [
     },
     tags: ["All-terrain", "Camera integration", "Outdoor rated", "4WD"],
     bestFor: ["Perimeter inspection", "Surveillance", "Agriculture", "Defence"],
-    accentColor: "#3FA89A",
+    keyStats: [
+      { value: "1.5 m/s", label: "Max Speed" },
+      { value: "4WD", label: "Drive" },
+      { value: "GPS+SLAM", label: "Navigation" },
+    ],
   },
   {
     id: "C500",
     tag: "Industrial AMR",
+    color: "#2d9d8f",
     image: "/assets/products/c500.png",
     name: "Industrial Lifter-Tugger AMR",
     headline: "Moves 500 kg between stations. Every shift.",
@@ -61,11 +72,16 @@ const platforms = [
     },
     tags: ["500 kg payload", "Multi-shift", "High-torque", "Auto components"],
     bestFor: ["In-plant logistics", "Material handling", "Auto components"],
-    accentColor: "#3FA89A",
+    keyStats: [
+      { value: "500 kg", label: "Payload" },
+      { value: "20 hrs", label: "Duty Cycle" },
+      { value: "LiDAR", label: "Navigation" },
+    ],
   },
   {
     id: "C1000",
     tag: "Heavy Industry",
+    color: "#1e7a6e",
     image: "/assets/products/c1000.png",
     name: "Heavy Lifter-Tugger AMR",
     headline: "1,000 kg. Continuous duty. No compromise.",
@@ -80,7 +96,11 @@ const platforms = [
     },
     tags: ["1,000 kg payload", "Continuous duty", "Reinforced frame", "Cold chain"],
     bestFor: ["Heavy manufacturing", "Warehousing", "Mining", "Cold chain"],
-    accentColor: "#3FA89A",
+    keyStats: [
+      { value: "1,000 kg", label: "Payload" },
+      { value: "Reinforced", label: "Frame" },
+      { value: "Safety Zones", label: "Navigation" },
+    ],
   },
 ];
 
@@ -89,240 +109,257 @@ export default function Platforms() {
   const platform = platforms[active];
 
   return (
-    <section id="platforms" className="bg-[#0A0A0A] py-24 md:py-32 overflow-hidden relative">
+    <section id="platforms" className="bg-white py-24 md:py-32 overflow-hidden relative border-y border-slate-200/80">
       {/* Background grid */}
       <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        className="absolute inset-0 opacity-[0.3] pointer-events-none"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundImage:
+            "linear-gradient(rgb(148 163 184 / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 0.12) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />
-      {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/5 rounded-full blur-[120px] pointer-events-none" />
-      
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/5 rounded-full blur-[140px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Header */}
+        {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-16 text-center relative"
+          viewport={{ once: true, margin: "-100px", amount: 0.15 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16 text-center"
         >
-          {/* Section badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-[#51B8AB]/10 border border-[#51B8AB]/30 rounded-full px-5 py-2 mb-6"
+            className="inline-flex items-center gap-2 bg-[#e8f7f5] border border-[#51B8AB]/30 rounded-full px-5 py-2 mb-6"
           >
             <div className="w-2 h-2 rounded-full bg-[#51B8AB] animate-pulse" />
-            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#51B8AB]">
+            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#2d9d8f]">
               Robot Platforms
             </span>
           </motion.div>
 
-          {/* Main heading */}
-          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-white mb-6">
-            <span className="text-[#51B8AB]">Four</span> Platforms.
+          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-5">
+            <span className="text-[#2d9d8f]">Four</span> Platforms.
             <br />
-            <span className="text-white/70">Every</span> Industrial <span className="text-[#51B8AB]">Need</span>.
+            <span className="text-slate-400">Every</span> Industrial <span className="text-[#2d9d8f]">Need</span>.
           </h2>
-          
-          {/* Decorative divider */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-20 h-[1px] bg-gradient-to-r from-transparent to-[#51B8AB]/50" />
-            <div className="flex gap-1">
-              <div className="w-1 h-1 rounded-full bg-[#51B8AB]" />
-              <div className="w-1 h-1 rounded-full bg-[#51B8AB]/60" />
-              <div className="w-1 h-1 rounded-full bg-[#51B8AB]/30" />
-            </div>
-            <div className="w-20 h-[1px] bg-gradient-to-l from-transparent to-[#51B8AB]/50" />
-          </div>
 
-          <p className="text-[18px] md:text-[22px] text-white/70 leading-[1.75] max-w-3xl mx-auto">
-            From <span className="text-[#51B8AB] font-semibold">compact lab sorters</span> to <span className="text-[#51B8AB] font-semibold">1,000 kg heavy tuggers</span> — one subscription model across all platforms.
+          <p className="text-[17px] md:text-[20px] text-slate-500 leading-[1.75] max-w-2xl mx-auto">
+            From <span className="text-slate-800 font-semibold">compact lab sorters</span> to{" "}
+            <span className="text-slate-800 font-semibold">1,000 kg heavy tuggers</span> — one subscription model across all platforms.
           </p>
-
-          {/* Stats pills */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
-            {[
-              { icon: "🤖", text: "4 Platforms" },
-              { icon: "⚖️", text: "Up to 1,000 kg" },
-              { icon: "💰", text: "One subscription" },
-              { icon: "⚡", text: "RaaS model" }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-2 bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2 hover:border-[#51B8AB]/40 hover:bg-[#51B8AB]/5 transition-all duration-300"
-              >
-                <span className="text-[16px]">{item.icon}</span>
-                <span className="text-[13px] font-medium text-white/80">{item.text}</span>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Tab Selector */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-1 scrollbar-hide">
+        {/* ── Platform Selector Tabs ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"
+        >
           {platforms.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActive(i)}
-              className={`shrink-0 flex items-center gap-2 px-5 py-3 rounded-full text-[14px] font-bold transition-all duration-200 border ${
+              className={`group relative text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
                 active === i
-                  ? "bg-white/10 text-white border-white/20"
-                  : "bg-transparent text-white/70 border-white/10 hover:bg-[#51B8AB] hover:text-[#0A0A0A] hover:border-[#51B8AB]"
+                  ? "border-[#51B8AB] bg-[#e8f7f5] shadow-[0_4px_20px_rgba(81,184,171,0.18)]"
+                  : "border-slate-200 bg-white hover:border-[#51B8AB]/40 hover:bg-slate-50"
               }`}
             >
-              <span className="font-heading tracking-wider">{p.id}</span>
-              <span className={`text-[11px] font-medium ${active === i ? "text-white/60" : "text-white/50"}`}>
+              {/* Active indicator bar */}
+              <div
+                className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl transition-all duration-300 ${
+                  active === i ? "bg-[#51B8AB]" : "bg-transparent"
+                }`}
+              />
+
+              <div className={`text-[10px] font-bold tracking-[0.15em] uppercase mb-2 transition-colors ${
+                active === i ? "text-[#2d9d8f]" : "text-slate-400"
+              }`}>
                 {p.tag}
-              </span>
+              </div>
+              <div className={`font-heading font-bold text-[18px] md:text-[22px] leading-none mb-1 transition-colors ${
+                active === i ? "text-slate-900" : "text-slate-700"
+              }`}>
+                {p.id}
+              </div>
+              <div className={`text-[12px] font-medium transition-colors ${
+                active === i ? "text-[#2d9d8f]" : "text-slate-500"
+              }`}>
+                {p.specs.payload}
+              </div>
+
+              {/* Payload bar */}
+              <div className={`mt-3 h-1 rounded-full overflow-hidden ${active === i ? "bg-[#51B8AB]/20" : "bg-slate-200"}`}>
+                <motion.div
+                  className="h-full bg-[#51B8AB] rounded-full"
+                  initial={false}
+                  animate={{ width: active === i ? `${p.specs.payloadBar}%` : "0%" }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                />
+              </div>
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Main Card */}
+        {/* ── Main Platform Card ── */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-[#1A1A1A] rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(81,184,171,0.1)]"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_20px_60px_rgba(15,23,42,0.09)] bg-white"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr]">
 
-              {/* Image Panel — clickable, navigates to /platforms */}
+              {/* ── Left: Image Panel ── */}
               <a
                 href="/platforms"
-                className="group/img relative bg-[#111] aspect-[4/3] lg:aspect-auto lg:min-h-[540px] overflow-hidden block cursor-pointer"
+                className="group/img relative bg-slate-950 aspect-[4/3] lg:aspect-auto lg:min-h-[580px] overflow-hidden block"
               >
                 <Image
                   src={platform.image}
                   alt={platform.name}
                   fill
-                  className="object-cover group-hover/img:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover opacity-90 group-hover/img:opacity-100 group-hover/img:scale-[1.04] transition-all duration-700 ease-out"
                   priority
                 />
-                {/* Dark overlay for contrast + hover lift */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10 group-hover/img:from-black/80 transition-all duration-500" />
 
-                {/* ID badge */}
-                <div className="absolute top-5 left-5 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-lg">
-                  <span className="font-heading font-bold text-[18px] tracking-wider">{platform.id}</span>
-                </div>
-                {/* Tag badge */}
-                <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-lg">
-                  <span className="text-[12px] font-bold tracking-wider uppercase">{platform.tag}</span>
+                {/* Gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 to-transparent" />
+
+                {/* Top badges */}
+                <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-xl">
+                    <span className="font-heading font-bold text-[20px] tracking-wider">{platform.id}</span>
+                  </div>
+                  <div className="bg-[#51B8AB]/90 backdrop-blur-md text-slate-950 px-3 py-1.5 rounded-xl">
+                    <span className="text-[11px] font-bold tracking-wider uppercase">{platform.tag}</span>
+                  </div>
                 </div>
 
-                {/* Bottom info strip */}
-                <div className="absolute bottom-0 inset-x-0 p-6">
-                  <p className="text-white/60 text-[12px] font-bold tracking-widest uppercase mb-1">Platform</p>
-                  <p className="text-white font-heading font-bold text-[22px] leading-tight mb-3">{platform.name}</p>
-                  <span className="inline-flex items-center gap-2 text-white/80 text-[13px] font-bold group-hover/img:text-white group-hover/img:gap-3 transition-all duration-300">
-                    View full platform <ArrowRight className="w-4 h-4" />
+                {/* Key stats row — mid panel */}
+                <div className="absolute left-5 right-5 bottom-[88px] flex gap-3">
+                  {platform.keyStats.map((s, i) => (
+                    <div key={i} className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl p-3 text-center">
+                      <p className="font-heading font-bold text-white text-[15px] leading-none mb-0.5">{s.value}</p>
+                      <p className="text-white/55 text-[10px] uppercase tracking-wider">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom CTA strip */}
+                <div className="absolute bottom-0 inset-x-0 p-5 flex items-center justify-between border-t border-white/10">
+                  <p className="text-white/70 text-[13px] font-medium">View full specifications</p>
+                  <span className="inline-flex items-center gap-1.5 text-[#51B8AB] text-[13px] font-bold group-hover/img:gap-2.5 transition-all duration-300">
+                    Explore <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
               </a>
 
-              {/* Content Panel */}
-              <div className="p-8 md:p-10 lg:p-12 flex flex-col bg-[#1A1A1A]">
+              {/* ── Right: Content Panel ── */}
+              <div className="flex flex-col p-8 md:p-10 lg:p-12 bg-white">
 
-                <h3 className="font-heading font-bold text-[26px] md:text-[32px] text-white leading-[1.15] mb-2">
-                  {platform.name}
-                </h3>
-                <p className="text-[16px] font-semibold text-[#51B8AB] mb-5 italic">
-                  "{platform.headline}"
-                </p>
-                <p className="text-[16px] text-white/70 leading-[1.7] mb-8">
-                  {platform.description}
-                </p>
+                {/* Platform name + headline */}
+                <div className="mb-7 pb-7 border-b border-slate-100">
+                  <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#51B8AB] mb-2">
+                    {platform.tag}
+                  </p>
+                  <h3 className="font-heading font-bold text-[24px] md:text-[30px] text-slate-900 leading-[1.15] mb-3">
+                    {platform.name}
+                  </h3>
+                  <p className="text-[15px] text-slate-500 leading-[1.7]">
+                    {platform.description}
+                  </p>
+                </div>
 
                 {/* Spec Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-2 gap-3 mb-7">
                   <SpecTile icon={<Weight className="w-4 h-4" />} label="Payload" value={platform.specs.payload} />
                   <SpecTile icon={<Zap className="w-4 h-4" />} label="Drive" value={platform.specs.drive} />
                   <SpecTile icon={<Gauge className="w-4 h-4" />} label="Max Speed" value={platform.specs.speed} />
                   <SpecTile icon={<MapPin className="w-4 h-4" />} label="Navigation" value={platform.specs.nav} />
                 </div>
 
-                {/* Payload bar */}
-                <div className="mb-8">
-                  <div className="flex justify-between text-[13px] font-medium text-white/60 mb-2">
-                    <span>Payload capacity</span>
-                    <span className="text-white font-bold">{platform.specs.payload}</span>
+                {/* Payload capacity bar */}
+                <div className="mb-7 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                  <div className="flex justify-between items-center mb-2.5">
+                    <span className="text-[12px] font-bold uppercase tracking-widest text-slate-400">Payload Capacity</span>
+                    <span className="text-[13px] font-bold text-slate-900">{platform.specs.payload}</span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2.5 bg-slate-200 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-[#51B8AB] rounded-full"
+                      className="h-full rounded-full"
+                      style={{ background: "linear-gradient(90deg, #51B8AB, #2d9d8f)" }}
                       initial={{ width: 0 }}
                       animate={{ width: `${platform.specs.payloadBar}%` }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
                     />
                   </div>
-                  <div className="flex justify-between text-[11px] text-white/50 mt-1">
-                    <span>Light</span><span>Heavy</span>
+                  <div className="flex justify-between text-[11px] text-slate-400 mt-1.5">
+                    <span>Light</span>
+                    <span>1,000 kg max</span>
                   </div>
                 </div>
 
-                {/* Tags */}
+                {/* Best For */}
+                <div className="mb-7">
+                  <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-3">Best Deployed In</p>
+                  <div className="flex flex-wrap gap-2">
+                    {platform.bestFor.map((use) => (
+                      <span
+                        key={use}
+                        className="inline-flex items-center gap-1.5 text-[13px] font-medium text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#51B8AB]" />
+                        {use}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Feature tags */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {platform.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[12px] font-bold tracking-wide bg-[#0A0A0A] text-white/80 border border-white/10 px-3 py-1.5 rounded-full hover:border-[#51B8AB]/40 transition-colors"
+                      className="text-[11px] font-bold tracking-wide bg-[#e8f7f5] text-[#2d9d8f] border border-[#51B8AB]/20 px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Best For */}
-                <div className="mb-8 p-5 bg-[#0A0A0A] rounded-xl border border-white/10">
-                  <p className="text-[12px] font-bold tracking-widest uppercase text-[#51B8AB] mb-3">Best deployed in</p>
-                  <div className="flex flex-wrap gap-2">
-                    {platform.bestFor.map((use) => (
-                      <span key={use} className="text-[14px] font-medium text-white/80">
-                        {use}
-                      </span>
-                    )).reduce((acc: React.ReactNode[], el, i, arr) => {
-                      acc.push(el);
-                      if (i < arr.length - 1) acc.push(<span key={`dot-${i}`} className="text-white/30">·</span>);
-                      return acc;
-                    }, [])}
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                {/* CTAs */}
+                <div className="mt-auto flex flex-col sm:flex-row gap-3">
                   <a
                     href="/platforms"
-                    className="flex-1 bg-[#1A1A1A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#51B8AB] hover:text-[#0A0A0A] transition-colors flex items-center justify-center gap-2 border border-white/10"
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
                   >
                     View Platform <ArrowRight className="w-4 h-4" />
                   </a>
                   <a
                     href="#contact"
-                    className="flex-1 bg-[#0A0A0A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-black transition-colors border border-white/10 hover:border-white/20"
+                    className="flex-1 inline-flex items-center justify-center bg-[#51B8AB] text-slate-950 py-3.5 rounded-xl font-bold text-[14px] hover:bg-[#3FA89A] active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(81,184,171,0.25)]"
                   >
                     Get a Quote
                   </a>
                   <a
                     href="#roi-calculator"
-                    className="flex-1 bg-[#0A0A0A] text-white text-center py-3.5 rounded-xl font-bold text-[15px] hover:bg-black transition-colors border border-white/10 hover:border-white/20"
+                    className="sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-[14px] text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all"
                   >
-                    Calculate ROI
+                    ROI
                   </a>
                 </div>
               </div>
@@ -330,43 +367,59 @@ export default function Platforms() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Comparison Strip */}
+        {/* ── Bottom: Platform Quick-Compare ── */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-6 bg-slate-50 rounded-2xl border border-slate-200/80 p-5 md:p-6"
         >
-          {platforms.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => setActive(i)}
-              className={`group p-5 rounded-xl border text-left transition-all duration-200 ${
-                active === i
-                  ? "bg-white/10 border-white/20"
-                  : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:text-[#0A0A0A]"
-              }`}
+          <div className="flex flex-col md:flex-row md:items-center gap-5">
+            <div className="shrink-0">
+              <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-1">Quick Compare</p>
+              <p className="text-[14px] font-semibold text-slate-700">All platforms on one subscription</p>
+            </div>
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-3">
+              {platforms.map((p, i) => (
+                <button
+                  key={p.id}
+                  onClick={() => setActive(i)}
+                  className={`text-left p-3 rounded-xl border transition-all duration-200 ${
+                    active === i
+                      ? "bg-white border-[#51B8AB]/50 shadow-sm"
+                      : "bg-white/60 border-slate-200 hover:border-[#51B8AB]/30 hover:bg-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className={`font-heading font-bold text-[14px] ${active === i ? "text-slate-900" : "text-slate-600"}`}>
+                      {p.id}
+                    </span>
+                    {active === i && (
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB]" />
+                    )}
+                  </div>
+                  <p className={`text-[11px] font-medium ${active === i ? "text-[#2d9d8f]" : "text-slate-400"}`}>
+                    {p.specs.payload}
+                  </p>
+                  <div className="mt-2 h-1 bg-slate-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#51B8AB] rounded-full transition-all duration-500"
+                      style={{ width: `${p.specs.payloadBar}%` }}
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
+            <a
+              href="/platforms"
+              className="shrink-0 inline-flex items-center gap-2 text-[13px] font-bold text-[#2d9d8f] hover:text-[#51B8AB] transition-colors"
             >
-              <div className={`text-[11px] font-bold tracking-widest uppercase mb-2 ${active === i ? "text-white/50" : "text-white/50"}`}>
-                {p.tag}
-              </div>
-              <div className={`font-heading font-bold text-[20px] mb-1 ${active === i ? "text-white" : "text-white"}`}>
-                {p.id}
-              </div>
-              <div className={`text-[13px] ${active === i ? "text-white/60" : "text-white/60"}`}>
-                {p.specs.payload}
-              </div>
-              {/* Mini payload bar */}
-              <div className={`mt-3 h-1 rounded-full overflow-hidden ${active === i ? "bg-white/20" : "bg-white/10"}`}>
-                <div
-                  className={`h-full rounded-full transition-all duration-500 ${active === i ? "bg-white" : "bg-[#51B8AB]"}`}
-                  style={{ width: `${p.specs.payloadBar}%` }}
-                />
-              </div>
-            </button>
-          ))}
+              Compare all <ChevronRight className="w-4 h-4" />
+            </a>
+          </div>
         </motion.div>
+
       </div>
     </section>
   );
@@ -374,16 +427,12 @@ export default function Platforms() {
 
 function SpecTile({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="bg-[#0A0A0A] rounded-xl p-4 border border-white/10">
-      <div className="flex items-center gap-2 text-white/60 mb-2">
+    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 hover:border-[#51B8AB]/25 transition-colors group">
+      <div className="flex items-center gap-2 text-slate-400 mb-2 group-hover:text-[#51B8AB] transition-colors">
         {icon}
-        <span className="text-[11px] font-bold tracking-widest uppercase">{label}</span>
+        <span className="text-[10px] font-bold tracking-[0.15em] uppercase">{label}</span>
       </div>
-      <p className="text-[14px] font-bold text-white leading-tight">{value}</p>
+      <p className="text-[13px] font-bold text-slate-900 leading-snug">{value}</p>
     </div>
   );
 }
-
-
-
-

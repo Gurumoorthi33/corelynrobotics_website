@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Factory, PackageSearch, GraduationCap, ShieldCheck, ShieldAlert, HardHat, Tractor, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useScrollLock, useSwipe } from "@/lib/useScrollLock";
+import { Factory, PackageSearch, GraduationCap, ShieldCheck, ShieldAlert, HardHat, Tractor, ArrowRight, ChevronLeft, ChevronRight, Wrench, Briefcase, Zap } from "lucide-react";
+import { useSwipe } from "@/lib/useScrollLock";
 
 const industries = [
   {
@@ -116,27 +116,25 @@ export default function Industries() {
     setProgress(0); startRef.current = performance.now();
   }, []);
 
-  useScrollLock(sectionRef, active, industries.length, goNext, goPrev);
   const swipeProps = useSwipe(goNext, goPrev);
 
   return (
-    <section id="industries" ref={sectionRef} className="bg-[#0A0A0A] py-24 md:py-32 relative overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{
-        backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+    <section id="industries" ref={sectionRef} className="bg-slate-50 py-24 md:py-32 relative overflow-hidden border-y border-slate-200/80">
+      <div className="absolute inset-0 opacity-[0.35] pointer-events-none" style={{
+        backgroundImage:
+          "linear-gradient(rgb(148 163 184 / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 0.12) 1px, transparent 1px)",
         backgroundSize: "56px 56px",
       }} />
-      {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/6 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px", amount: 0.15 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 text-center relative"
         >
           {/* Section badge */}
@@ -145,19 +143,19 @@ export default function Industries() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-[#51B8AB]/10 border border-[#51B8AB]/30 rounded-full px-5 py-2 mb-6"
+            className="inline-flex items-center gap-2 bg-[#e8f7f5] border border-[#51B8AB]/30 rounded-full px-5 py-2 mb-6"
           >
             <div className="w-2 h-2 rounded-full bg-[#51B8AB] animate-pulse" />
-            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#51B8AB]">
+            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#2d9d8f]">
               Industries
             </span>
           </motion.div>
 
           {/* Main heading */}
-          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-white mb-6">
-            <span className="text-[#51B8AB]">Robots</span> for
+          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
+            <span className="text-[#2d9d8f]">Robots</span> for
             <br />
-            <span className="text-white/70">Every</span> <span className="text-[#51B8AB]">Sector</span>.
+            <span className="text-slate-500">Every</span> <span className="text-[#2d9d8f]">Sector</span>.
           </h2>
           
           {/* Decorative divider */}
@@ -171,30 +169,34 @@ export default function Industries() {
             <div className="w-20 h-[1px] bg-gradient-to-l from-transparent to-[#51B8AB]/50" />
           </div>
 
-          <p className="text-[18px] md:text-[22px] text-white/70 leading-[1.75] max-w-3xl mx-auto">
-            <span className="text-[#51B8AB] font-semibold">Seven verticals</span>. One subscription model. From <span className="text-white font-semibold">manufacturing</span> to <span className="text-white font-semibold">defence</span>.
+          <p className="text-[18px] md:text-[22px] text-slate-600 leading-[1.75] max-w-3xl mx-auto">
+            <span className="text-[#2d9d8f] font-semibold">Seven verticals</span>. One subscription model. From <span className="text-slate-900 font-semibold">manufacturing</span> to <span className="text-slate-900 font-semibold">defence</span>.
           </p>
 
           {/* Stats pills */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
-            {[
-              { icon: "🏭", text: "7 Industries" },
-              { icon: "🔧", text: "Custom solutions" },
-              { icon: "💼", text: "B2B focused" },
-              { icon: "⚡", text: "Quick deploy" }
-            ].map((item, i) => (
+            {(
+              [
+                { icon: Factory, text: "7 Industries" },
+                { icon: Wrench, text: "Custom solutions" },
+                { icon: Briefcase, text: "B2B focused" },
+                { icon: Zap, text: "Quick deploy" },
+              ] as const
+            ).map((item, i) => {
+              const PillIcon = item.icon;
+              return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-2 bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2 hover:border-[#51B8AB]/40 hover:bg-[#51B8AB]/5 transition-all duration-300"
+                className="flex items-center gap-2 bg-white border border-slate-200/90 rounded-full px-4 py-2 hover:border-[#51B8AB]/35 shadow-sm transition-all duration-300"
               >
-                <span className="text-[16px]">{item.icon}</span>
-                <span className="text-[13px] font-medium text-white/80">{item.text}</span>
+                <PillIcon className="w-4 h-4 text-[#2d9d8f] shrink-0" aria-hidden />
+                <span className="text-[13px] font-medium text-slate-700">{item.text}</span>
               </motion.div>
-            ))}
+            );})}
           </div>
         </motion.div>
 
@@ -210,12 +212,12 @@ export default function Industries() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px] touch-pan-y backdrop-blur-xl bg-[#1A1A1A] border border-white/10 shadow-[0_8px_32px_rgba(81,184,171,0.15)]"
+                className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px] touch-pan-y bg-white border border-slate-200/90 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
                 {...swipeProps}
               >
                 <Image src={current.image} alt={current.name} fill className="object-cover opacity-30" priority />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/92 via-slate-900/75 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/88 via-transparent to-transparent" />
                 {/* Glowing edge effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-[#51B8AB]/10 to-transparent opacity-50" />
 
@@ -234,7 +236,7 @@ export default function Industries() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3, duration: 0.3 }}
-                      className="bg-[#51B8AB] text-[#0A0A0A] text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded-lg border border-[#51B8AB]/30 shadow-lg"
+                      className="bg-[#51B8AB] text-slate-950 text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded-lg border border-[#51B8AB]/30 shadow-lg"
                     >
                       {current.badge}
                     </motion.span>
@@ -267,10 +269,10 @@ export default function Industries() {
                       transition={{ delay: 0.6, duration: 0.3 }}
                       className="flex flex-wrap gap-3"
                     >
-                      <a href="#contact" className="group inline-flex items-center gap-2 bg-[#1A1A1A] text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-[#51B8AB] hover:text-[#0A0A0A] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border border-white/10">
+                      <a href="#contact" className="group inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-[#51B8AB] hover:text-slate-950 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border border-slate-200">
                         Deploy in {current.shortName} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </a>
-                      <a href="#platforms" className="inline-flex items-center gap-2 bg-[#1A1A1A] backdrop-blur-md border border-white/20 text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-black hover:border-white/30 transition-all duration-300">
+                      <a href="#platforms" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/25 text-white px-5 py-3 rounded-xl font-bold text-[13px] sm:text-[14px] hover:bg-white/20 hover:border-white/40 transition-all duration-300">
                         {current.badge}
                       </a>
                     </motion.div>
@@ -287,8 +289,8 @@ export default function Industries() {
                 onClick={() => active > 0 && handleSelect(active - 1)}
                 className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
                   active > 0 
-                    ? "border-white/20 text-white hover:bg-[#0A0A0A]/10 hover:border-white/30 shadow-lg" 
-                    : "border-white/10 text-white/20 cursor-not-allowed"
+                    ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm" 
+                    : "border-slate-200 text-slate-300 cursor-not-allowed"
                 }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -322,8 +324,8 @@ export default function Industries() {
                 onClick={() => active < industries.length - 1 && handleSelect(active + 1)}
                 className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
                   active < industries.length - 1 
-                    ? "border-white/20 text-white hover:bg-[#0A0A0A]/10 hover:border-white/30 shadow-lg" 
-                    : "border-white/10 text-white/20 cursor-not-allowed"
+                    ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm" 
+                    : "border-slate-200 text-slate-300 cursor-not-allowed"
                 }`}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -344,8 +346,8 @@ export default function Industries() {
                   whileTap={{ scale: 0.98 }}
                   className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group
                     ${isActive 
-                      ? "bg-white/10 border-white/20 shadow-lg" 
-                      : "bg-[#1A1A1A] border-white/10 hover:bg-[#51B8AB] hover:border-[#51B8AB] hover:text-[#0A0A0A] hover:shadow-lg"}`}
+                      ? "bg-slate-900 border-slate-900 text-white shadow-lg" 
+                      : "bg-white border-slate-200 hover:bg-[#e8f7f5] hover:border-[#51B8AB]/40 hover:shadow-md text-slate-900"}`}
                 >
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -358,8 +360,8 @@ export default function Industries() {
                     transition={{ duration: 0.3 }}
                     className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
                       isActive 
-                        ? "bg-white text-[#0A0A0A] shadow-lg" 
-                        : "bg-[#0A0A0A] text-[#51B8AB] group-hover:bg-black"
+                        ? "bg-white text-slate-900 shadow-lg" 
+                        : "bg-slate-100 text-[#2d9d8f] group-hover:bg-white"
                     }`}
                   >
                     <IndIcon className="w-4.5 h-4.5" />
@@ -368,20 +370,18 @@ export default function Industries() {
                     <p className={`font-heading font-bold text-[13px] leading-tight truncate transition-colors duration-300 ${
                       isActive 
                         ? "text-white" 
-                        : "text-white group-hover:text-white"
+                        : "text-slate-900 group-hover:text-slate-900"
                     }`}>{ind.shortName}</p>
                     <p className={`text-[10px] font-medium mt-0.5 truncate transition-colors duration-300 ${
                       isActive 
                         ? "text-white/70" 
-                        : "text-white/50 group-hover:text-white/70"
+                        : "text-slate-500 group-hover:text-slate-600"
                     }`}>{ind.badge}</p>
                   </div>
                   <motion.div 
                     animate={{ width: isActive ? "4px" : "2px" }}
                     className={`h-5 rounded-full overflow-hidden shrink-0 transition-all duration-300 ${
-                      isActive 
-                        ? "bg-white" 
-                        : "bg-white/20 group-hover:bg-white/30"
+                      isActive ? "bg-white/40" : "bg-slate-300 group-hover:bg-slate-400"
                     }`}
                   >
                     {isActive && (
@@ -400,10 +400,10 @@ export default function Industries() {
 
         {/* Bottom stats */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: "-40px", amount: 0.12 }}
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3"
         >
           {[
@@ -419,10 +419,9 @@ export default function Industries() {
               transition={{ duration: 0.4, delay: 0.1 * i }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative overflow-hidden rounded-xl bg-[#1A1A1A] backdrop-blur-md border border-white/10 p-4 hover:bg-[#1A1A1A]/80 hover:border-[#51B8AB]/40 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="group relative overflow-hidden rounded-xl bg-white border border-slate-200/90 p-4 hover:border-[#51B8AB]/35 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB]/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="relative z-10">
                 <motion.p 
@@ -430,11 +429,11 @@ export default function Industries() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
                   viewport={{ once: true }}
-                  className="font-heading font-bold text-[22px] sm:text-[24px] text-white leading-none mb-1"
+                  className="font-heading font-bold text-[22px] sm:text-[24px] text-slate-900 leading-none mb-1"
                 >
                   {s.value}
                 </motion.p>
-                <p className="text-[10px] sm:text-[11px] text-white/60 font-medium uppercase tracking-wider group-hover:text-[#51B8AB] transition-colors duration-300">
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium uppercase tracking-wider group-hover:text-[#2d9d8f] transition-colors duration-300">
                   {s.label}
                 </p>
               </div>

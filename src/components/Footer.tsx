@@ -1,54 +1,60 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="bg-white text-[#1A1A1A] pt-20 pb-8 border-t border-[#51B8AB]/20">
+    <footer className="bg-white text-slate-900 pt-20 pb-8 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mb-16">
           
-          {/* Col 1 */}
           <div className="flex flex-col col-span-2 lg:col-span-1">
             <div className="mb-6">
-              <img src="/assets/logo/corelyn robotics.png" alt="Corelyn Robotics" className="h-16 w-auto object-contain" />
+              <img src="/assets/logo/corelyn robotics new.png" alt="Corelyn Robotics" className="h-28 w-auto object-contain" />
             </div>
-            <p className="text-[#4A4A4A] text-[16px] leading-[1.7] max-w-xs">
+            <p className="text-slate-600 text-[16px] leading-[1.7] max-w-xs mb-6">
               Industrial-grade autonomous mobile robots for Indian industry — subscription-based,
               locally supported, built to last.
             </p>
+            <div className="flex items-center gap-3">
+              <a href="mailto:info@transista.in" className="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#51B8AB] hover:text-white flex items-center justify-center transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2" aria-label="Email us">
+                <Mail size={18} />
+              </a>
+              <a href="tel:+919367952877" className="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#51B8AB] hover:text-white flex items-center justify-center transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#51B8AB] focus-visible:ring-offset-2" aria-label="Call us">
+                <Phone size={18} />
+              </a>
+            </div>
           </div>
 
-          {/* Col 2 */}
           <div className="flex flex-col">
-            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#51B8AB]">Platforms</h4>
-            <ul className="space-y-3 text-[#4A4A4A]/80 text-[16px]">
-              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors">C100</a></li>
-              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors">C100 4WD</a></li>
-              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors">C500</a></li>
-              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors">C1000</a></li>
+            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#2d9d8f]">Platforms</h4>
+            <ul className="space-y-3 text-slate-600 text-[16px]">
+              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors inline-flex items-center gap-1 focus-visible:text-[#51B8AB]">C100 <ExternalLink size={12} className="opacity-0 group-hover:opacity-100" /></a></li>
+              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">C100 4WD</a></li>
+              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">C500</a></li>
+              <li><a href="#platforms" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">C1000</a></li>
             </ul>
           </div>
 
-          {/* Col 3 */}
           <div className="flex flex-col">
-            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#51B8AB]">Company</h4>
-            <ul className="space-y-3 text-[#4A4A4A]/80 text-[16px]">
-              <li><a href="#" className="hover:text-[#51B8AB] transition-colors">About</a></li>
-              <li><a href="#how-it-works" className="hover:text-[#51B8AB] transition-colors">How It Works</a></li>
-              <li><a href="#roi-calculator" className="hover:text-[#51B8AB] transition-colors">ROI Calculator</a></li>
-              <li><a href="#industries" className="hover:text-[#51B8AB] transition-colors">Industries</a></li>
-              <li><a href="#technology" className="hover:text-[#51B8AB] transition-colors">Technology</a></li>
+            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#2d9d8f]">Company</h4>
+            <ul className="space-y-3 text-slate-600 text-[16px]">
+              <li><a href="#" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">About</a></li>
+              <li><a href="#how-it-works" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">How It Works</a></li>
+              <li><a href="#roi-calculator" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">ROI Calculator</a></li>
+              <li><a href="#industries" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">Industries</a></li>
+              <li><a href="#technology" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">Technology</a></li>
             </ul>
           </div>
 
-          {/* Col 4 */}
           <div className="flex flex-col">
-            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#51B8AB]">Contact</h4>
-            <ul className="space-y-4 text-[#4A4A4A]/80 text-[16px]">
+            <h4 className="font-heading font-bold text-[18px] mb-6 text-[#2d9d8f]">Contact</h4>
+            <ul className="space-y-4 text-slate-600 text-[16px]">
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#51B8AB]/10 flex items-center justify-center text-[#51B8AB] shrink-0">
                   <Mail size={16} />
                 </div>
-                <a href="mailto:info@transista.in" className="hover:text-[#51B8AB] transition-colors">
+                <a href="mailto:info@transista.in" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">
                   info@transista.in
                 </a>
               </li>
@@ -56,7 +62,7 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-full bg-[#51B8AB]/10 flex items-center justify-center text-[#51B8AB] shrink-0">
                   <Phone size={16} />
                 </div>
-                <a href="tel:+919367952877" className="hover:text-[#51B8AB] transition-colors">
+                <a href="tel:+919367952877" className="hover:text-[#51B8AB] transition-colors focus-visible:text-[#51B8AB]">
                   +91 93679 52877
                 </a>
               </li>
@@ -73,9 +79,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-[#1A1A1A]/10 pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-[#4A4A4A]/60 text-[14px]">
-          <p>© 2026 Corelyn Robotics. Made in India 🇮🇳</p>
+        <div className="border-t border-slate-200 pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-slate-500 text-[14px]">
+          <p>© {currentYear} Corelyn Robotics. Made in India.</p>
           <p className="text-left lg:text-right max-w-xl leading-[1.6]">
             A Transista Technologies Company | Incubated at R Shivakumar Foundation – TBIF,
             SRM TRP Engineering College, Trichy

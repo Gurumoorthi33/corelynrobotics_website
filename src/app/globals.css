@@ -2,32 +2,150 @@
 
 :root {
   --background: #ffffff;
-  --foreground: rgb(81,184,171);
-  --accent: rgb(81,184,171);
-  --accent-dark: #3FA89A;
-  --accent-light: #E8F7F5;
+  --foreground: #0f172a;
+  --accent: rgb(81, 184, 171);
+  --accent-dark: #2d9d8f;
+  --accent-light: #e8f7f5;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --surface-soft: #f3f6f8;
+  --surface-card: #f8fafc;
+  --surface-card-strong: #eef3f5;
+  --accent-border: rgba(81, 184, 171, 0.36);
+  --accent-border-strong: rgba(81, 184, 171, 0.52);
+  --card-shadow: 0 14px 42px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(81, 184, 171, 0.08);
 }
 
 @theme inline {
   --color-corelyn-white: #ffffff;
-  --color-corelyn-light: #F5F5F5;
-  --color-corelyn-surface: #EEEEEE;
-  --color-corelyn-dark: rgb(81,184,171);
-  --color-corelyn-body: #4A4A4A;
-  --color-corelyn-accent: rgb(81,184,171);
-  --color-corelyn-accent-dark: #3FA89A;
-  --color-corelyn-accent-light: #E8F7F5;
-  --color-corelyn-line: #D0D0D0;
+  --color-corelyn-light: #f8fafc;
+  --color-corelyn-surface: #f1f5f9;
+  --color-corelyn-dark: #0f172a;
+  --color-corelyn-body: #475569;
+  --color-corelyn-accent: rgb(81, 184, 171);
+  --color-corelyn-accent-dark: #2d9d8f;
+  --color-corelyn-accent-light: #e8f7f5;
+  --color-corelyn-line: #e2e8f0;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-dm-sans);
 }
 
 body {
-  background: #0F0F0F;
+  background: var(--surface-soft);
   color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+/* Site-wide visibility pass: stronger grey surfaces with Corelyn green definition */
+main {
+  background: var(--surface-soft);
+}
+
+main > section {
+  background-color: var(--surface-soft) !important;
+  border-color: var(--accent-border) !important;
+}
+
+main > section:nth-of-type(even) {
+  background-color: #eaf0f3 !important;
+}
+
+main > section[id],
+main > section.w-full {
+  box-shadow: inset 0 1px 0 rgba(81, 184, 171, 0.22), inset 0 -1px 0 rgba(81, 184, 171, 0.22);
+}
+
+section :where(.bg-white) {
+  background-color: var(--surface-card) !important;
+}
+
+section :where(.bg-slate-50) {
+  background-color: var(--surface-card-strong) !important;
+}
+
+section :where(.border-slate-200, .border-slate-200\/80, .border-slate-200\/90, .border-slate-300) {
+  border-color: var(--accent-border) !important;
+}
+
+section :where(.rounded-xl, .rounded-2xl, .rounded-3xl):where(.border, .border-2) {
+  box-shadow: var(--card-shadow);
+}
+
+section :where(.rounded-xl, .rounded-2xl, .rounded-3xl):where(.border, .border-2):hover {
+  border-color: var(--accent-border-strong) !important;
+  box-shadow: 0 18px 52px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(81, 184, 171, 0.18);
+}
+
+section :where(input, select, textarea) {
+  background-color: #ffffff !important;
+  border-color: var(--accent-border) !important;
+}
+
+section :where(input, select, textarea):focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(81, 184, 171, 0.16) !important;
+}
+
+section :where(.bg-\[\#e8f7f5\]) {
+  background-color: #dff3f0 !important;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Remove transitions for animations and transforms */
+*:where([class*="animate-"], [class*="motion-"]) {
+  transition: none;
+}
+
+/* ROI Calculator dark background override */
+main > section#roi-calculator {
+  background-color: #1a1a1a !important;
+}
+
+/* How It Works dark background override */
+main > section#how-it-works {
+  background-color: #1e1e1e !important;
 }

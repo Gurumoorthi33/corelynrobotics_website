@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dmSans.variable} h-full antialiased scroll-smooth`}
+      className={`${inter.variable} ${dmSans.variable} antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-sans text-[18px] leading-[1.7] text-[#1A1A1A] bg-white">
+      <body className="min-h-full flex flex-col font-sans text-[18px] leading-[1.7] text-slate-900 bg-white">
         <SplashScreen />
         {children}
       </body>

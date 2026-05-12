@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Check } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -63,24 +63,24 @@ export default function Contact() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 border border-white/20 rounded-lg focus:outline-none focus:border-[#51B8AB] bg-[#0A0A0A] text-white text-[16px] transition-colors";
+    "w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-[#51B8AB] focus:ring-2 focus:ring-[#51B8AB]/15 bg-white text-slate-900 text-[16px] transition-colors";
 
   return (
-    <section id="contact" className="bg-[#1A1A1A] py-24 md:py-32">
+    <section id="contact" className="bg-white py-24 md:py-32 border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
           {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px", amount: 0.12 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="font-heading font-bold text-[36px] md:text-[48px] leading-[1.1] text-white mb-6">
+            <h2 className="font-heading font-bold text-[36px] md:text-[48px] leading-[1.1] text-slate-900 mb-6">
               Have an Automation Challenge?
             </h2>
-            <p className="text-[18px] text-white/70 leading-[1.7] mb-12 max-w-lg">
+            <p className="text-[18px] text-slate-600 leading-[1.7] mb-12 max-w-lg">
               Tell us about your floor, your workflow, and your constraints. We&apos;ll come back with a deployment plan — not a brochure.
             </p>
 
@@ -98,12 +98,12 @@ export default function Contact() {
                 href="tel:+919367952877"
               />
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#0A0A0A] border border-white/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-[#e8f7f5] border border-[#51B8AB]/25 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-[#2d9d8f]" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-white text-[17px] mb-1">Location</h4>
-                  <p className="text-white/70 text-[16px] leading-[1.6]">
+                  <h4 className="font-heading font-bold text-slate-900 text-[17px] mb-1">Location</h4>
+                  <p className="text-slate-600 text-[16px] leading-[1.6]">
                     SRM TRP Engineering College<br />
                     Trichy, Tamil Nadu, India
                   </p>
@@ -111,9 +111,9 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-12 p-6 bg-[#0A0A0A] border border-white/10 rounded-xl">
-              <p className="text-[15px] text-white/70 leading-[1.6]">
-                <strong className="text-white">Typical response time: 24 hours.</strong><br />
+            <div className="mt-12 p-6 bg-slate-50 border border-slate-200/90 rounded-xl">
+              <p className="text-[15px] text-slate-600 leading-[1.6]">
+                <strong className="text-slate-900">Typical response time: 24 hours.</strong><br />
                 For urgent deployment enquiries, call directly. We cover Coimbatore, Trichy, Chennai, and surrounding industrial corridors.
               </p>
             </div>
@@ -121,39 +121,39 @@ export default function Contact() {
 
           {/* Right Column (Form) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px", amount: 0.12 }}
+            transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
             {submitted ? (
-              <div className="bg-[#0A0A0A] p-10 rounded-xl border border-white/10 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
+              <div className="bg-slate-50 p-10 rounded-2xl border border-slate-200/90 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
                 <div className="w-16 h-16 bg-[#51B8AB] rounded-full flex items-center justify-center mb-6">
-                  <span className="text-[#0A0A0A] text-2xl font-bold">✓</span>
+                  <Check className="w-8 h-8 text-slate-950" strokeWidth={2.5} aria-hidden />
                 </div>
-                <h3 className="font-heading font-bold text-[28px] text-white mb-4">Enquiry Received</h3>
-                <p className="text-[18px] text-white/70 leading-[1.7] max-w-sm">
+                <h3 className="font-heading font-bold text-[28px] text-slate-900 mb-4">Enquiry Received</h3>
+                <p className="text-[18px] text-slate-600 leading-[1.7] max-w-sm">
                   We&apos;ll review your requirements and get back to you within 24 hours with a deployment plan.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-white/70 underline text-[15px] hover:text-white transition-colors"
+                  className="mt-8 text-slate-500 underline text-[15px] hover:text-slate-900 transition-colors"
                 >
                   Submit another enquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-[#0A0A0A] p-8 md:p-10 rounded-xl border border-white/10">
+              <form onSubmit={handleSubmit} className="bg-slate-50 p-8 md:p-10 rounded-2xl border border-slate-200/90 shadow-sm">
                 <div className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-white font-medium mb-2 text-[15px]">
+                      <label htmlFor="name" className="block text-slate-800 font-medium mb-2 text-[15px]">
                         Full Name *
                       </label>
                       <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className={inputClass} placeholder="Your name" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-white font-medium mb-2 text-[15px]">
+                      <label htmlFor="email" className="block text-slate-800 font-medium mb-2 text-[15px]">
                         Email *
                       </label>
                       <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className={inputClass} placeholder="you@company.com" />
@@ -162,13 +162,13 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="company" className="block text-white font-medium mb-2 text-[15px]">
+                      <label htmlFor="company" className="block text-slate-800 font-medium mb-2 text-[15px]">
                         Company *
                       </label>
                       <input type="text" id="company" name="company" required value={formData.company} onChange={handleChange} className={inputClass} placeholder="Company name" />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-white font-medium mb-2 text-[15px]">
+                      <label htmlFor="phone" className="block text-slate-800 font-medium mb-2 text-[15px]">
                         Phone
                       </label>
                       <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className={inputClass} placeholder="+91 XXXXX XXXXX" />
@@ -176,7 +176,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="industry" className="block text-white font-medium mb-2 text-[15px]">
+                    <label htmlFor="industry" className="block text-slate-800 font-medium mb-2 text-[15px]">
                       Industry *
                     </label>
                     <select id="industry" name="industry" required value={formData.industry} onChange={handleChange} className={inputClass}>
@@ -193,7 +193,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-white font-medium mb-2 text-[15px]">
+                    <label htmlFor="message" className="block text-slate-800 font-medium mb-2 text-[15px]">
                       Describe your automation challenge *
                     </label>
                     <textarea
@@ -207,12 +207,12 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#51B8AB] text-[#0A0A0A] py-4 rounded-lg hover:bg-[#3FA89A] transition-colors font-bold text-[17px] mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#51B8AB] text-slate-950 py-4 rounded-xl hover:bg-[#3FA89A] transition-colors font-bold text-[17px] mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending Enquiry..." : "Send Deployment Enquiry →"}
                   </button>
 
-                  <p className="text-[13px] text-white/70 text-center">
+                  <p className="text-[13px] text-slate-500 text-center">
                     No sales calls. No spam. Just a deployment plan.
                   </p>
                 </div>
@@ -230,12 +230,12 @@ function ContactDetail({ icon, label, value, href }: {
 }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="w-10 h-10 bg-[#0A0A0A] border border-white/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-        <span className="text-white">{icon}</span>
+      <div className="w-10 h-10 bg-[#e8f7f5] border border-[#51B8AB]/25 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+        <span className="text-[#2d9d8f]">{icon}</span>
       </div>
       <div>
-        <h4 className="font-heading font-bold text-white text-[17px] mb-1">{label}</h4>
-        <a href={href} className="text-white/70 hover:text-white transition-colors text-[16px]">
+        <h4 className="font-heading font-bold text-slate-900 text-[17px] mb-1">{label}</h4>
+        <a href={href} className="text-slate-600 hover:text-[#2d9d8f] transition-colors text-[16px]">
           {value}
         </a>
       </div>
