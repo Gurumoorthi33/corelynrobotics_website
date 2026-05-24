@@ -48,7 +48,7 @@ export default function HeroScrolly() {
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/60 to-transparent" />
 
       {/* Main content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center px-5 md:px-12 lg:px-20 max-w-7xl mx-auto pt-24 pb-24">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center px-5 md:px-12 lg:px-20 max-w-7xl mx-auto pt-[120px] md:pt-[140px] pb-24">
 
         <div className="max-w-2xl lg:max-w-3xl">
 
