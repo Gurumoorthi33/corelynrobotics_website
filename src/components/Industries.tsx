@@ -215,12 +215,10 @@ export default function Industries() {
                 className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px] touch-pan-y bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
                 {...swipeProps}
               >
-                {/* Radial glow behind robot */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_45%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
-                <Image src={current.image} alt={current.name} fill className="object-contain p-8 md:p-12" priority />
-                {/* Bottom fade for text legibility */}
-                <div className="absolute bottom-0 inset-x-0 h-[65%] bg-gradient-to-t from-[#0d1a18]/95 via-[#0d1a18]/60 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_40%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
+                <Image src={current.image} alt={current.name} fill className="object-contain p-6 md:p-10" priority />
+                <div className="absolute bottom-0 inset-x-0 h-[55%] bg-gradient-to-t from-[#0d1a18]/95 via-[#0d1a18]/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/50 via-transparent to-transparent" />
 
                 <div className="relative h-full flex flex-col justify-between p-5 sm:p-6 md:p-8">
                   {/* Top */}
