@@ -10,7 +10,7 @@ const platforms = [
     id: "C100",
     tag: "Research & Sorting",
     color: "#51B8AB",
-    image: "/assets/products/c100.png",
+    image: "/assets/sample/WhatsApp Image 2026-05-24 at 1.50.16 PM.jpeg",
     name: "Compact Sorter & Research Platform",
     headline: "Built for labs, sorting lines, and R&D floors.",
     description:
@@ -34,7 +34,7 @@ const platforms = [
     id: "C100 4WD",
     tag: "Outdoor Inspection",
     color: "#3d9e91",
-    image: "/assets/products/c100-4wd.png",
+    image: "/assets/sample/WhatsApp Image 2026-05-24 at 2.19.42 PM.jpeg",
     name: "Outdoor Inspection Robot",
     headline: "Goes where conventional AMRs cannot.",
     description:
@@ -58,7 +58,7 @@ const platforms = [
     id: "C500",
     tag: "Industrial AMR",
     color: "#2d9d8f",
-    image: "/assets/products/c500.png",
+    image: "/assets/sample/img_2.jpeg",
     name: "Industrial Lifter-Tugger AMR",
     headline: "Moves 500 kg between stations. Every shift.",
     description:
@@ -82,7 +82,7 @@ const platforms = [
     id: "C1000",
     tag: "Heavy Industry",
     color: "#1e7a6e",
-    image: "/assets/products/c1000.png",
+    image: "/assets/sample/WhatsApp Image 2026-05-24 at 1.50.16 PM.jpeg",
     name: "Heavy Lifter-Tugger AMR",
     headline: "1,000 kg. Continuous duty. No compromise.",
     description:
@@ -344,7 +344,7 @@ export default function Platforms() {
                 {/* CTAs */}
                 <div className="mt-auto flex flex-col sm:flex-row gap-3">
                   <a
-                    href="/platforms"
+                  href="#contact"
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
                   >
                     View Platform <ArrowRight className="w-4 h-4" />
