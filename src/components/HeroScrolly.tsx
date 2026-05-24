@@ -7,7 +7,6 @@ const stats = [
   { value: "₹50/hr", label: "Starting rate" },
   { value: "4", label: "Robot platforms" },
   { value: "2,000 kg", label: "Max payload" },
-  { value: "₹0", label: "Upfront capital" },
 ];
 
 export default function HeroScrolly() {
