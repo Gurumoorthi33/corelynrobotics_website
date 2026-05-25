@@ -225,20 +225,19 @@ export default function Platforms() {
               {/* ── Left: Image Panel ── */}
               <a
                 href="/platforms"
-                className="group/img relative bg-[#0f1a1a] aspect-[4/3] lg:aspect-auto lg:min-h-[580px] overflow-hidden block"
+                className="group/img relative bg-slate-950 aspect-[4/3] lg:aspect-auto lg:min-h-[580px] overflow-hidden block"
               >
-                {/* Subtle radial glow behind robot */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_55%,rgba(81,184,171,0.12),transparent)] pointer-events-none" />
                 <Image
                   src={platform.image}
                   alt={platform.name}
                   fill
-                  className="object-contain p-6 group-hover/img:scale-[1.04] transition-all duration-700 ease-out"
+                  className="object-cover opacity-90 group-hover/img:opacity-100 group-hover/img:scale-[1.04] transition-all duration-700 ease-out"
                   priority
                 />
 
-                {/* Thin bottom fade only */}
-                <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0f1a1a]/80 to-transparent" />
+                {/* Gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 to-transparent" />
 
                 {/* Top badges */}
                 <div className="absolute top-5 left-5 right-5 flex items-start justify-between">

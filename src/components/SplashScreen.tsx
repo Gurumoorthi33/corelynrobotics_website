@@ -23,7 +23,7 @@ export default function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[10000] bg-white flex items-center justify-center"
+          className="fixed inset-0 z-[10000] bg-[#f3f6f8] flex items-center justify-center"
         >
           <RobotLoader size="lg" />
         </motion.div>

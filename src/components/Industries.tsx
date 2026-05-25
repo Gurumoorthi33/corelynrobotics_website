@@ -65,7 +65,7 @@ export default function Industries() {
   const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const rafRef = useRef<number | null>(null);
-  const startRef = useRef(performance.now());
+  const startRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -73,7 +73,7 @@ export default function Industries() {
   const Icon = current.icon;
 
   useEffect(() => {
-    if (paused) { setProgress(0); return; }
+    if (paused) return;
     startRef.current = performance.now();
     const tick = (now: number) => {
       const pct = Math.min((now - startRef.current) / INTERVAL, 1);
@@ -201,7 +201,7 @@ export default function Industries() {
         </motion.div>
 
         {/* Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_220px] gap-5 items-stretch">
 
           {/* Featured panel — swipeable on mobile */}
           <div>
@@ -212,15 +212,22 @@ export default function Industries() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px] touch-pan-y bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
+                className="relative rounded-2xl overflow-hidden h-[400px] sm:h-[460px] md:h-[520px] touch-pan-y bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
                 {...swipeProps}
               >
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_40%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
-                <Image src={current.image} alt={current.name} fill className="object-contain p-6 md:p-10" priority />
-                <div className="absolute bottom-0 inset-x-0 h-[55%] bg-gradient-to-t from-[#0d1a18]/95 via-[#0d1a18]/50 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/50 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
+                <Image
+                  src={current.image}
+                  alt={current.name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 980px"
+                  className="object-cover object-center opacity-85"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-[#0d1a18]/5 to-[#0d1a18]/94" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
 
-                <div className="relative h-full flex flex-col justify-between p-5 sm:p-6 md:p-8">
+                <div className="relative h-full flex flex-col justify-between p-5 pb-8 sm:p-6 sm:pb-10 md:p-8 md:pb-12">
                   {/* Top */}
                   <div className="flex items-start justify-between">
                     <motion.div 
@@ -242,23 +249,24 @@ export default function Industries() {
                   </div>
 
                   {/* Bottom */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.3 }}
+                    className="max-w-2xl -translate-y-3 sm:-translate-y-4 md:-translate-y-5"
                   >
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.5, duration: 0.3 }}
-                      className="mb-4 inline-flex items-center gap-3 bg-[#51B8AB]/15 backdrop-blur-md border border-[#51B8AB]/30 rounded-xl px-4 py-3 shadow-lg"
+                      className="mb-3 inline-flex items-center gap-3 bg-[#51B8AB]/15 backdrop-blur-md border border-[#51B8AB]/30 rounded-xl px-4 py-3 shadow-lg"
                     >
                       <span className="font-heading font-bold text-[20px] sm:text-[22px] text-white leading-none">{current.stat}</span>
                       <span className="text-[11px] sm:text-[12px] text-white/70 font-medium leading-tight max-w-[90px]">{current.statLabel}</span>
                     </motion.div>
                     <h3 className="font-heading font-bold text-[22px] sm:text-[26px] md:text-[32px] text-white leading-[1.1] mb-3">{current.name}</h3>
-                    <p className="text-[14px] sm:text-[15px] text-white/80 leading-[1.6] max-w-xl mb-4 line-clamp-3 md:line-clamp-none">{current.application}</p>
-                    <div className="flex items-center gap-2 mb-6">
+                    <p className="text-[14px] sm:text-[15px] text-white/85 leading-[1.55] max-w-xl mb-4 line-clamp-3 md:line-clamp-none">{current.application}</p>
+                    <div className="flex items-center gap-2 mb-5">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB] shrink-0" />
                       <p className="text-[13px] text-white/60 italic font-medium">{current.outcome}</p>
                     </div>
