@@ -47,7 +47,7 @@ export default function HeroScrolly() {
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/60 to-transparent" />
 
       {/* Main content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center px-5 md:px-12 lg:px-20 max-w-7xl mx-auto pt-[120px] md:pt-[140px] pb-24">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 xs:px-5 md:px-12 lg:px-20 max-w-7xl mx-auto pt-[110px] md:pt-[140px] pb-16">
 
         <div className="max-w-2xl lg:max-w-3xl">
 
@@ -72,7 +72,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="font-heading font-bold text-[40px] md:text-[62px] lg:text-[74px] leading-[1.04] tracking-tight text-white mb-6"
+            className="font-heading font-bold text-[36px] xs:text-[40px] md:text-[62px] lg:text-[74px] leading-[1.04] tracking-tight text-white mb-6"
           >
             Autonomous Robots.
             <br />
@@ -104,18 +104,18 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-wrap gap-4 mb-14"
+            className="flex flex-col xs:flex-row gap-3.5 mb-14"
           >
             <a
               href="#platforms"
-              className="group inline-flex items-center gap-2 bg-[#51B8AB] text-slate-950 px-7 py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#3FA89A] active:scale-95 transition-all shadow-[0_0_28px_rgba(81,184,171,0.45)] hover:shadow-[0_0_40px_rgba(81,184,171,0.6)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              className="group inline-flex items-center justify-center gap-2 bg-[#51B8AB] text-slate-950 px-7 py-3.5 rounded-xl font-bold text-[15px] hover:bg-[#3FA89A] active:scale-95 transition-all shadow-[0_0_28px_rgba(81,184,171,0.45)] hover:shadow-[0_0_40px_rgba(81,184,171,0.6)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               Explore Platforms
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 border border-white/25 text-white px-7 py-3.5 rounded-xl font-bold text-[15px] hover:bg-white/10 hover:border-white/45 active:scale-95 transition-all backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              className="group inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 rounded-xl font-bold text-[15px] hover:bg-white/10 hover:border-white/45 active:scale-95 transition-all backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               <span className="flex items-center justify-center w-5 h-5 rounded-full border border-white/40 group-hover:border-white/70 transition-colors">
                 <Play size={8} fill="currentColor" />

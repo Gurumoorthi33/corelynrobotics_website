@@ -46,7 +46,7 @@ export default function TrustSignals() {
         backgroundSize: "40px 40px",
       }} />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12 relative z-10">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {trustMetrics.map((metric, index) => {

@@ -28,7 +28,7 @@ const features = [
 
 export default function Positioning() {
   return (
-    <section className="bg-white py-24 md:py-32 relative overflow-hidden">
+    <section className="bg-white py-16 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.4] pointer-events-none"
         style={{
           backgroundImage:
@@ -38,7 +38,7 @@ export default function Positioning() {
       />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,1000px)] h-[480px] bg-[#51B8AB]/[0.06] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function Positioning() {
             className="space-y-8"
           >
             <div>
-              <h2 className="font-heading font-bold text-[28px] md:text-[48px] lg:text-[64px] leading-[1.1] text-slate-900 mb-6">
+              <h2 className="font-heading font-bold text-[28px] md:text-[48px] lg:text-[64px] leading-tight text-slate-900 mb-6">
                 A <span className="text-[#2d9d8f]">Robotics Infrastructure</span> Company.
                 <br />
                 <span className="text-slate-500">Not a Robot Seller.</span>

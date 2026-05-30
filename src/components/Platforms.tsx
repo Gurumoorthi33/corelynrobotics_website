@@ -109,7 +109,7 @@ export default function Platforms() {
   const platform = platforms[active];
 
   return (
-    <section id="platforms" className="bg-white py-24 md:py-32 overflow-hidden relative border-y border-slate-200/80">
+    <section id="platforms" className="bg-white py-16 md:py-28 overflow-hidden relative border-y border-slate-200/80">
       {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.3] pointer-events-none"
@@ -121,7 +121,7 @@ export default function Platforms() {
       />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12 relative z-10">
 
         {/* ── Section Header ── */}
         <motion.div
@@ -168,7 +168,7 @@ export default function Platforms() {
             <button
               key={p.id}
               onClick={() => setActive(i)}
-              className={`group relative text-left p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
+              className={`group relative text-left p-2.5 xs:p-4 rounded-xl xs:rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
                 active === i
                   ? "border-[#51B8AB] bg-[#e8f7f5] shadow-[0_4px_20px_rgba(81,184,171,0.18)]"
                   : "border-slate-200 bg-white hover:border-[#51B8AB]/40 hover:bg-slate-50"
@@ -225,7 +225,7 @@ export default function Platforms() {
               {/* ── Left: Image Panel ── */}
               <a
                 href="/platforms"
-                className="group/img relative bg-slate-950 aspect-[4/3] lg:aspect-auto lg:min-h-[580px] overflow-hidden block"
+                className="group/img relative bg-slate-950 aspect-[4/3] xs:aspect-[16/10] sm:aspect-square lg:aspect-auto lg:min-h-[580px] overflow-hidden block"
               >
                 <Image
                   src={platform.image}
@@ -250,7 +250,7 @@ export default function Platforms() {
                 </div>
 
                 {/* Key stats row — mid panel */}
-                <div className="absolute left-5 right-5 bottom-[88px] flex gap-3">
+                <div className="absolute left-5 right-5 bottom-[88px] hidden sm:flex gap-3">
                   {platform.keyStats.map((s, i) => (
                     <div key={i} className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl p-3 text-center">
                       <p className="font-heading font-bold text-white text-[15px] leading-none mb-0.5">{s.value}</p>
@@ -282,6 +282,16 @@ export default function Platforms() {
                   <p className="text-[15px] text-slate-500 leading-[1.7]">
                     {platform.description}
                   </p>
+
+                  {/* Mobile-only Key Stats Grid */}
+                  <div className="grid grid-cols-3 gap-2 mt-5 sm:hidden">
+                    {platform.keyStats.map((s, i) => (
+                      <div key={i} className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 text-center shadow-sm">
+                        <p className="font-heading font-bold text-[#2d9d8f] text-[14px] leading-none mb-1">{s.value}</p>
+                        <p className="text-slate-500 text-[9px] uppercase tracking-wider font-semibold">{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Spec Grid */}
@@ -342,7 +352,7 @@ export default function Platforms() {
                 </div>
 
                 {/* CTAs */}
-                <div className="mt-auto flex flex-col sm:flex-row gap-3">
+                <div className="mt-auto flex flex-col xs:flex-row gap-3">
                   <a
                   href="#contact"
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"

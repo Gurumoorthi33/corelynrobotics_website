@@ -147,7 +147,7 @@ export default function TechStack() {
   const swipeProps = useSwipe(goNext, goPrev);
 
   return (
-    <section id="technology" ref={sectionRef} className="bg-white py-24 md:py-32 relative overflow-hidden border-y border-slate-200/80">
+    <section id="technology" ref={sectionRef} className="bg-white py-16 md:py-28 relative overflow-hidden border-y border-slate-200/80">
       <div className="absolute inset-0 opacity-[0.35] pointer-events-none" style={{
         backgroundImage:
           "linear-gradient(rgb(148 163 184 / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 0.12) 1px, transparent 1px)",
@@ -155,7 +155,7 @@ export default function TechStack() {
       }} />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/6 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 xs:px-6 md:px-12">
 
         {/* Header */}
         <motion.div
@@ -275,7 +275,7 @@ export default function TechStack() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -8 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 touch-pan-y border border-slate-200/90 shadow-[0_8px_32px_rgba(15,23,42,0.06)]"
+                className="bg-white rounded-2xl p-4 xs:p-6 md:p-8 touch-pan-y border border-slate-200/90 shadow-[0_8px_32px_rgba(15,23,42,0.06)]"
                 {...swipeProps}
               >
                 {/* Top row */}
@@ -315,7 +315,7 @@ export default function TechStack() {
                   ))}
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-col xs:flex-row gap-2">
                   <a href="#contact" className="flex-1 bg-[#51B8AB] text-slate-950 text-center py-3 rounded-xl font-bold text-[12px] sm:text-[13px] hover:bg-[#3FA89A] transition-colors flex items-center justify-center gap-1.5">
                     Discuss Requirements <ArrowRight className="w-3.5 h-3.5" />
                   </a>

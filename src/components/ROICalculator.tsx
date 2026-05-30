@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, TrendingDown, IndianRupee, ArrowRight, Users, Bot, CheckCircle2 } from "lucide-react";
 
 const ROBOT_PRICING = {
-  "C100":     { hourlyRate: 30, tag: "Research & Sorting",   payload: "Light",      icon: "🔬" },
-  "C100_4WD": { hourlyRate: 40, tag: "Outdoor Inspection",   payload: "Light",      icon: "🌿" },
-  "C500":     { hourlyRate: 50, tag: "Industrial AMR",        payload: "500 kg",    icon: "🏭" },
-  "C1000":    { hourlyRate: 70, tag: "Heavy Lifter",          payload: "1,000 kg",  icon: "⚙️" },
+  "C100":     { hourlyRate: 30, tag: "Research & Sorting",   payload: "Light" },
+  "C100_4WD": { hourlyRate: 40, tag: "Outdoor Inspection",   payload: "Light" },
+  "C500":     { hourlyRate: 50, tag: "Industrial AMR",        payload: "500 kg" },
+  "C1000":    { hourlyRate: 70, tag: "Heavy Lifter",          payload: "1,000 kg" },
 };
 
 type RobotType = keyof typeof ROBOT_PRICING;
@@ -48,7 +48,7 @@ export default function ROICalculator() {
   const hasSavings = results.savings >= 0;
 
   return (
-    <section id="roi-calculator" className="relative bg-[#1a1a1a] py-24 md:py-32 overflow-hidden">
+    <section id="roi-calculator" className="relative bg-[#1a1a1a] py-16 md:py-28 overflow-hidden">
 
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{
@@ -59,7 +59,7 @@ export default function ROICalculator() {
       {/* Teal glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#51B8AB]/12 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 xs:px-6 md:px-12">
 
         {/* ── Header ── */}
         <motion.div
@@ -114,8 +114,7 @@ export default function ROICalculator() {
                       {isSelected && (
                         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#51B8AB] to-transparent" />
                       )}
-                      <div className="flex items-start justify-between mb-2">
-                        <span className="text-[18px] leading-none">{r.icon}</span>
+                      <div className="flex items-start justify-end mb-2">
                         <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
                           isSelected ? "bg-[#51B8AB] text-slate-950" : "bg-white/8 text-white/50"
                         }`}>
@@ -176,7 +175,7 @@ export default function ROICalculator() {
                     key={results.humanCostPerMonth}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="font-heading font-bold text-[22px] text-white leading-none mb-1"
+                    className="font-heading font-bold text-[18px] xs:text-[20px] sm:text-[22px] text-white leading-none mb-1"
                   >
                     {formatINR(results.humanCostPerMonth)}
                   </motion.p>
@@ -196,7 +195,7 @@ export default function ROICalculator() {
                     key={results.robotCostPerMonth}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="font-heading font-bold text-[22px] text-[#51B8AB] leading-none mb-1"
+                    className="font-heading font-bold text-[18px] xs:text-[20px] sm:text-[22px] text-[#51B8AB] leading-none mb-1"
                   >
                     {formatINR(results.robotCostPerMonth)}
                   </motion.p>
@@ -240,7 +239,7 @@ export default function ROICalculator() {
                       key={results.savings}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className={`font-heading font-bold text-[44px] md:text-[52px] leading-none mb-4 ${hasSavings ? "text-slate-950" : "text-white"}`}
+                      className={`font-heading font-bold text-[32px] xs:text-[40px] md:text-[52px] leading-none mb-4 ${hasSavings ? "text-slate-950" : "text-white"}`}
                     >
                       {hasSavings ? formatINR(results.savings) : `–`}
                     </motion.div>

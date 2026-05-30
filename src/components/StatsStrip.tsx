@@ -78,7 +78,7 @@ export default function StatsStrip() {
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/60 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(90vw,800px)] h-[120px] bg-[#51B8AB]/6 rounded-full blur-[70px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+      <div className="relative max-w-7xl mx-auto px-4 xs:px-6 py-16 md:px-12 md:py-28">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -118,7 +118,7 @@ export default function StatsStrip() {
                   </span>
                 </div>
 
-                <div className="font-heading font-bold text-[52px] md:text-[58px] leading-none text-slate-900 mb-1 tabular-nums tracking-tight">
+                <div className="font-heading font-bold text-[44px] xs:text-[50px] md:text-[58px] leading-none text-slate-900 mb-1 tabular-nums tracking-tight">
                   <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 </div>
 
@@ -145,7 +145,7 @@ export default function StatsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px", amount: 0.12 }}
           transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 bg-white rounded-3xl border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.05)] px-6 py-6 flex flex-col items-start justify-between gap-5 relative overflow-hidden"
+          className="mt-6 bg-white rounded-3xl border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.05)] px-5 py-5 sm:px-8 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 relative overflow-hidden"
         >
           <div className="absolute left-0 top-4 bottom-4 w-[3px] bg-gradient-to-b from-transparent via-[#51B8AB] to-transparent rounded-full" />
           <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/25 to-transparent" />
@@ -159,7 +159,7 @@ export default function StatsStrip() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto shrink-0">
             <a
               href="#roi-calculator"
               className="text-[14px] font-bold text-slate-700 border border-slate-300 px-5 py-3 rounded-2xl hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"

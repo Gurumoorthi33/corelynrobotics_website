@@ -66,8 +66,8 @@ export default function Contact() {
     "w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-[#51B8AB] focus:ring-2 focus:ring-[#51B8AB]/15 bg-white text-slate-900 text-[16px] transition-colors";
 
   return (
-    <section id="contact" className="bg-white py-24 md:py-32 border-t border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="contact" className="bg-white py-16 md:py-28 border-t border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
           {/* Left Column */}

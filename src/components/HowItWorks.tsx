@@ -48,19 +48,22 @@ const inclusionRows = [inclusions.slice(0, 3), inclusions.slice(3, 6)];
 interface StepCardProps {
   step: typeof steps[0];
   index: number;
-  scrollYProgress: MotionValue<number>;
 }
 
-function StepCard({ step, index, scrollYProgress }: StepCardProps) {
-  const start = index * 0.33 + 0.1;
-  const end = start + 0.25;
-  const borderProgress = useTransform(scrollYProgress, [start, end], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0.55, 1, 1, 0.55]);
-  const cardScale = useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0.97, 1, 1, 0.97]);
-  const glowOpacity = useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0, 1, 1, 0]);
+function StepCard({ step, index }: StepCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const borderProgress = useTransform(scrollYProgress, [0.25, 0.45], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.85], [0.78, 1, 1, 0.78]);
+  const cardScale = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.85], [0.97, 1, 1, 0.97]);
+  const glowOpacity = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.85], [0, 1, 1, 0]);
 
   return (
-    <motion.div style={{ opacity, scale: cardScale }} className="relative w-full max-w-2xl">
+    <motion.div ref={cardRef} style={{ opacity, scale: cardScale }} className="relative w-full max-w-2xl">
       <motion.div
         className="absolute -inset-[8px] rounded-[32px] pointer-events-none"
         style={{
@@ -70,7 +73,7 @@ function StepCard({ step, index, scrollYProgress }: StepCardProps) {
         }}
       />
 
-      <div className="relative bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden">
+      <div className="relative bg-white/5 backdrop-blur-sm p-5 xs:p-6 sm:p-8 rounded-3xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden">
         <motion.div
           className="absolute inset-0 rounded-3xl pointer-events-none"
           style={{
@@ -180,7 +183,7 @@ export default function HowItWorks() {
   const blastOpacity = useTransform(stepsProgress, [0.95, 0.98, 1], [0, 1, 0]);
 
   return (
-    <section id="how-it-works" className="bg-[#1e1e1e] py-24 md:py-32 overflow-hidden relative border-y border-white/8">
+    <section id="how-it-works" className="bg-[#1e1e1e] py-16 md:py-28 overflow-hidden relative border-y border-white/8">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(90vw,700px)] h-[280px] bg-[#51B8AB]/10 rounded-full blur-[90px] pointer-events-none" />
       
       <div
@@ -192,7 +195,7 @@ export default function HowItWorks() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12">
 
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -286,7 +289,7 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div key={index} className="w-full flex flex-col items-center">
               <Connector index={index} scrollYProgress={stepsProgress} />
-              <StepCard step={step} index={index} scrollYProgress={stepsProgress} />
+              <StepCard step={step} index={index} />
             </div>
           ))}
 

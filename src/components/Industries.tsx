@@ -119,7 +119,7 @@ export default function Industries() {
   const swipeProps = useSwipe(goNext, goPrev);
 
   return (
-    <section id="industries" ref={sectionRef} className="bg-slate-50 py-24 md:py-32 relative overflow-hidden border-y border-slate-200/80">
+    <section id="industries" ref={sectionRef} className="bg-slate-50 py-16 md:py-28 relative overflow-hidden border-y border-slate-200/80">
       <div className="absolute inset-0 opacity-[0.35] pointer-events-none" style={{
         backgroundImage:
           "linear-gradient(rgb(148 163 184 / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 0.12) 1px, transparent 1px)",
@@ -127,7 +127,7 @@ export default function Industries() {
       }} />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#51B8AB]/6 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 xs:px-6 md:px-12">
 
         {/* Header */}
         <motion.div
@@ -212,7 +212,7 @@ export default function Industries() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden h-[400px] sm:h-[460px] md:h-[520px] touch-pan-y bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
+                className="relative rounded-2xl overflow-hidden h-[470px] xs:h-[450px] sm:h-[460px] md:h-[520px] touch-pan-y bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
                 {...swipeProps}
               >
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
