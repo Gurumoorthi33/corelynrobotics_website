@@ -10,7 +10,7 @@ const platforms = [
     id: "C100",
     tag: "Research & Sorting",
     color: "#51B8AB",
-    image: "/assets/sample/WhatsApp Image 2026-05-24 at 1.50.16 PM.jpeg",
+    image: "/assets/products/c100top.png",
     name: "Compact Sorter & Research Platform",
     headline: "Built for labs, sorting lines, and R&D floors.",
     description:
@@ -34,7 +34,7 @@ const platforms = [
     id: "C100 4WD",
     tag: "Outdoor Inspection",
     color: "#3d9e91",
-    image: "/assets/sample/WhatsApp Image 2026-05-24 at 2.19.42 PM.jpeg",
+    image: "/assets/products/c100-4wd.png",
     name: "Outdoor Inspection Robot",
     headline: "Goes where conventional AMRs cannot.",
     description:
@@ -58,7 +58,7 @@ const platforms = [
     id: "C500",
     tag: "Industrial AMR",
     color: "#2d9d8f",
-    image: "/assets/sample/img_2.jpeg",
+    image: "/assets/products/c500.png",
     name: "Industrial Lifter-Tugger AMR",
     headline: "Moves 500 kg between stations. Every shift.",
     description:
@@ -82,7 +82,7 @@ const platforms = [
     id: "C1000",
     tag: "Heavy Industry",
     color: "#1e7a6e",
-    image: "/assets/sample/WhatsApp Image 2026-05-24 at 1.50.16 PM.jpeg",
+    image: "/assets/products/c1000.png",
     name: "Heavy Lifter-Tugger AMR",
     headline: "1,000 kg. Continuous duty. No compromise.",
     description:
