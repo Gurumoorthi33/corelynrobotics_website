@@ -28,19 +28,7 @@ export default function RobotLoader({ size = "md", speed = 1800 }: RobotLoaderPr
       aria-label="Loading"
       style={{ "--progress": `${progress}%` } as React.CSSProperties}
     >
-      <div className={styles.frame}>
-        <div className={styles.scanline} />
-        <div className={styles.header}>
-          <span className={styles.kicker}>Autonomous robotics OS</span>
-          <span className={styles.status}>Booting</span>
-        </div>
-
-        <div className={styles.brandBlock}>
-          <span className={styles.brandEyebrow}>Robotics-as-a-Service</span>
-          <span className={styles.brandName} data-text="Corelyn Robotics">
-            Corelyn Robotics
-          </span>
-        </div>
+      
 
         <div className={styles.readout}>
           <span className={styles.loadingText} data-text="System Load">
@@ -58,12 +46,9 @@ export default function RobotLoader({ size = "md", speed = 1800 }: RobotLoaderPr
           </div>
         </div>
 
-        <div className={styles.footer}>
-          <span>Calibrating SLAM, payload control, fleet telemetry</span>
-          <span>C100/C500/C1000</span>
-        </div>
+        
       </div>
-    </div>
+    
   );
 }
 

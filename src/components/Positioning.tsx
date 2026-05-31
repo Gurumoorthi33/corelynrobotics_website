@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Building2, Wrench, TrendingUp, Shield } from "lucide-react";
 
 const features = [
@@ -63,13 +64,11 @@ export default function Positioning() {
             className="relative aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.12)] border border-slate-200/90 group"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#51B8AB]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
-            <video 
-              src="/assets/section/vdo_1.mp4" 
-              className="w-full h-full object-cover"
-              autoPlay 
-              muted 
-              loop
-              playsInline
+            <Image
+              src="/assets/section/image_1.jpeg" 
+              alt="Industrial deployment"
+              fill
+              className="object-cover"
             />
             <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-[#51B8AB] rounded-tl-3xl" />
             <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-[#51B8AB] rounded-br-3xl" />

@@ -10,7 +10,8 @@ const platforms = [
     id: "C100",
     tag: "Research & Sorting",
     color: "#51B8AB",
-    image: "/assets/products/c100top.png",
+    image: "/assets/products/c100top-d.png",
+    mobileImage: "/assets/products/c100top-m.png",
     name: "Compact Sorter & Research Platform",
     headline: "Built for labs, sorting lines, and R&D floors.",
     description:
@@ -231,9 +232,18 @@ export default function Platforms() {
                   src={platform.image}
                   alt={platform.name}
                   fill
-                  className="object-cover opacity-90 group-hover/img:opacity-100 group-hover/img:scale-[1.04] transition-all duration-700 ease-out"
+                  className={`object-cover opacity-90 group-hover/img:opacity-100 group-hover/img:scale-[1.04] transition-all duration-700 ease-out ${(platform as any).mobileImage ? "hidden md:block" : ""}`}
                   priority
                 />
+                {(platform as any).mobileImage && (
+                  <Image
+                    src={(platform as any).mobileImage}
+                    alt={platform.name}
+                    fill
+                    className="object-cover opacity-90 group-hover/img:opacity-100 group-hover/img:scale-[1.04] transition-all duration-700 ease-out md:hidden"
+                    priority
+                  />
+                )}
 
                 {/* Gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />

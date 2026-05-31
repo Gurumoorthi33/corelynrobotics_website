@@ -94,26 +94,11 @@ export default function SplashScreen() {
               />
 
               {/* logo */}
-              <div className="relative w-[180px] h-[72px] md:w-[240px] md:h-[96px]">
-                <Image
-                  src="/assets/logo/corelyn robotics new.png"
-                  alt="Corelyn Robotics"
-                  fill
-                  className="object-contain drop-shadow-[0_0_32px_rgba(81,184,171,0.45)]"
-                  priority
-                />
-              </div>
+          
             </motion.div>
 
             {/* Tagline */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
-              className="text-[11px] md:text-[12px] font-bold tracking-[0.28em] uppercase text-[#51B8AB]/70 text-center"
-            >
-              Robotics-as-a-Service
-            </motion.p>
+          
 
             {/* Progress bar + counter */}
             <motion.div
@@ -162,17 +147,7 @@ export default function SplashScreen() {
           </div>
 
           {/* ── Bottom build label ── */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="absolute bottom-8 flex items-center gap-2"
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB] animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25">
-              C100 · C100 4WD · C500 · C1000
-            </span>
-          </motion.div>
+          
         </motion.div>
       )}
     </AnimatePresence>
