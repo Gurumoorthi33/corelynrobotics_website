@@ -39,28 +39,6 @@ const platforms = [
     ],
   },
   {
-    id: "C100 4WD",
-    tag: "Outdoor Inspection",
-    images: ["/assets/products/c100-4wd.png"],
-    name: "Outdoor Inspection Robot",
-    headline: "Goes where conventional AMRs cannot.",
-    description:
-      "All-terrain four-wheel drive platform engineered for outdoor surveillance, perimeter patrol, and field inspection. Camera-ready, weather-resistant, deployable on uneven ground.",
-    specs: {
-      payload: "12 kg",
-      drive: "4WD off-road",
-      speed: "Up to 1.5 m/s",
-      nav: "GPS + SLAM hybrid",
-    },
-    tags: ["All-terrain", "Camera integration", "Outdoor rated", "4WD"],
-    bestFor: ["Perimeter inspection", "Surveillance", "Agriculture", "Defence"],
-    keyStats: [
-      { value: "1.5 m/s", label: "Max Speed" },
-      { value: "4WD", label: "Drive" },
-      { value: "GPS+SLAM", label: "Navigation" },
-    ],
-  },
-  {
     id: "C500",
     tag: "Industrial AMR",
     images: [
@@ -87,6 +65,29 @@ const platforms = [
     ],
   },
   {
+    id: "C100 4WD",
+    tag: "Outdoor Inspection",
+    images: ["/assets/products/c100-4wd.png"],
+    name: "Outdoor Inspection Robot",
+    headline: "Goes where conventional AMRs cannot.",
+    description:
+      "All-terrain four-wheel drive platform engineered for outdoor surveillance, perimeter patrol, and field inspection. Camera-ready, weather-resistant, deployable on uneven ground.",
+    specs: {
+      payload: "12 kg",
+      drive: "4WD off-road",
+      speed: "Up to 1.5 m/s",
+      nav: "GPS + SLAM hybrid",
+    },
+    tags: ["All-terrain", "Camera integration", "Outdoor rated", "4WD"],
+    bestFor: ["Perimeter inspection", "Surveillance", "Agriculture", "Defence"],
+    keyStats: [
+      { value: "1.5 m/s", label: "Max Speed" },
+      { value: "4WD", label: "Drive" },
+      { value: "GPS+SLAM", label: "Navigation" },
+    ],
+    development: true,
+  },
+  {
     id: "C1000",
     tag: "Heavy Industry",
     images: ["/assets/products/c1000.png"],
@@ -107,6 +108,7 @@ const platforms = [
       { value: "Reinforced", label: "Frame" },
       { value: "Safety Zones", label: "Navigation" },
     ],
+    development: true,
   },
 ];
 
@@ -347,6 +349,15 @@ export default function Platforms() {
               </AnimatePresence>
 
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1a18]/30" />
+
+              {/* Under Development overlay */}
+              {(platform as any).development && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-3 shadow-xl">
+                    <p className="text-white/90 text-[13px] font-bold tracking-[0.15em] uppercase">Under Development</p>
+                  </div>
+                </div>
+              )}
 
               {/* Platform badge top-left */}
               <div className="absolute top-5 left-5 flex items-center gap-2">

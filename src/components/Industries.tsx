@@ -11,14 +11,14 @@ const industries = [
     id: "manufacturing", name: "Manufacturing", shortName: "Manufacturing",
     application: "Automated material handling and in-plant logistics — assembly line feeding, part transfer, and finished goods transport without a driver.",
     outcome: "Moves parts between stations without a worker.",
-    badge: "C500 / C1000", image: "/assets/products/c500.png",
+    badge: "C500 / C1000", image: "/assets/industries/manufacturing.jpeg",
     icon: Factory, stat: "3× faster", statLabel: "material cycle time",
   },
   {
     id: "warehousing", name: "Warehousing & Logistics", shortName: "Warehousing",
     application: "Pallet movement, cart tugging, cross-docking, and pick-and-place support across single and multi-shift warehouse operations.",
     outcome: "Runs pallet routes across your warehouse floor, every shift.",
-    badge: "C100 / C500 / C1000", image: "/assets/products/c1000.png",
+    badge: "C100 / C500 / C1000", image: "/assets/industries/warehousing.jpeg",
     icon: PackageSearch, stat: "20 hrs/day", statLabel: "continuous operation",
   },
   {
@@ -27,7 +27,6 @@ const industries = [
     outcome: "Deploy a real AMR in your lab — not a simulation.",
     badge: "C100", image: "/assets/products/c100.png",
     icon: GraduationCap, stat: "ROS 2", statLabel: "ready out of the box",
-    development: true,
   },
   {
     id: "inspection", name: "Inspection & Surveillance", shortName: "Inspection",
@@ -35,6 +34,7 @@ const industries = [
     outcome: "Patrols your perimeter on a schedule, autonomously.",
     badge: "C100 4WD", image: "/assets/products/c100-4wd.png",
     icon: ShieldCheck, stat: "360°", statLabel: "camera coverage",
+    development: true,
   },
   {
     id: "defence", name: "Defence & Tactical", shortName: "Defence",
@@ -42,6 +42,7 @@ const industries = [
     outcome: "Sends the robot in first.",
     badge: "C100 4WD / Custom", image: "/assets/products/c100-4wd.png",
     icon: ShieldAlert, stat: "All-terrain", statLabel: "4WD off-road chassis",
+    development: true,
   },
   {
     id: "mining", name: "Mining & Heavy Industry", shortName: "Mining",
@@ -49,6 +50,7 @@ const industries = [
     outcome: "Hauls material in environments humans shouldn't enter.",
     badge: "C1000 / Custom", image: "/assets/products/c1000.png",
     icon: HardHat, stat: "1,000 kg", statLabel: "max payload capacity",
+    development: true,
   },
   {
     id: "agriculture", name: "Agriculture & Outdoor", shortName: "Agriculture",
@@ -56,6 +58,7 @@ const industries = [
     outcome: "Covers ground your team can't cover cost-effectively.",
     badge: "C100 4WD", image: "/assets/products/c100-4wd.png",
     icon: Tractor, stat: "GPS + SLAM", statLabel: "outdoor navigation",
+    development: true,
   },
 ];
 
