@@ -110,7 +110,7 @@ const platforms = [
   },
 ];
 
-const IMAGE_INTERVAL = 1000;
+const IMAGE_INTERVAL = 2000;
 
 export default function Platforms() {
   const [activePlatform, setActivePlatform] = useState(0);
@@ -277,267 +277,243 @@ export default function Platforms() {
           </div>
         </motion.div>
 
-        {/* ── Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_220px] gap-5 items-stretch">
+        {/* ── Platform Selector Tabs ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="flex flex-wrap justify-center gap-2 mb-8"
+        >
+          {platforms.map((p, i) => (
+            <button
+              key={p.id}
+              onClick={() => handlePlatformSelect(i)}
+              className={`group relative px-5 py-3 rounded-2xl border-2 text-left transition-all duration-300 overflow-hidden ${
+                activePlatform === i
+                  ? "border-[#51B8AB] bg-[#e8f7f5] shadow-[0_4px_20px_rgba(81,184,171,0.18)]"
+                  : "border-slate-200 bg-white hover:border-[#51B8AB]/40 hover:bg-slate-50"
+              }`}
+            >
+              <div className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl transition-all duration-300 ${
+                activePlatform === i ? "bg-[#51B8AB]" : "bg-transparent"
+              }`} />
+              <span className={`font-heading font-bold text-[15px] md:text-[18px] leading-none transition-colors ${
+                activePlatform === i ? "text-slate-900" : "text-slate-700"
+              }`}>
+                {p.id}
+              </span>
+              <span className="hidden sm:inline text-[11px] text-slate-400 font-medium ml-2">{p.tag}</span>
+              {p.images.length > 1 && (
+                <span className="text-[10px] text-slate-400 ml-2">({p.images.length})</span>
+              )}
+            </button>
+          ))}
+        </motion.div>
 
-          {/* ── Featured panel ── */}
-          <div>
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={activePlatform}
-                custom={direction}
-                initial={{ opacity: 0, x: direction * 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -60 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
-                {...swipeProps}
-              >
-                {/* ── Image area ── */}
-                <div className="relative h-[400px] xs:h-[420px] sm:h-[460px] md:h-[500px]">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeImage}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={platform.images[activeImage]}
-                        alt={`${platform.name} view ${activeImage + 1}`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 980px"
-                        className="object-contain object-center p-4 sm:p-6 md:p-8"
-                        priority
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+        {/* ── Featured Panel ── */}
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={activePlatform}
+            custom={direction}
+            initial={{ opacity: 0, x: direction * 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -60 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="rounded-2xl overflow-hidden bg-[#0d1a18] border border-[#51B8AB]/20 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
+            {...swipeProps}
+          >
+            {/* ── Image area ── */}
+            <div className="relative h-[400px] xs:h-[420px] sm:h-[460px] md:h-[520px]">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeImage}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={platform.images[activeImage]}
+                    alt={`${platform.name} view ${activeImage + 1}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 980px"
+                    className="object-cover object-center"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-transparent to-[#0d1a18]/94" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-transparent to-[#0d1a18]/94" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
 
-                  {/* Platform badge top-left */}
-                  <div className="absolute top-5 left-5 flex items-center gap-2">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2">
-                      <span className="font-heading font-bold text-[20px] text-white tracking-wider">{platform.id}</span>
-                    </div>
-                    <div className="bg-[#51B8AB]/90 backdrop-blur-sm text-slate-950 px-3 py-1.5 rounded-xl">
-                      <span className="text-[11px] font-bold tracking-wider uppercase">{platform.tag}</span>
-                    </div>
-                  </div>
-
-                  {/* Image count indicator */}
-                  {imageCount > 1 && (
-                    <div className="absolute top-5 right-5 bg-black/40 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-1.5">
-                      <span className="text-white/80 text-[12px] font-medium">
-                        {activeImage + 1} / {imageCount}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Key stats at bottom */}
-                  <div className="absolute bottom-5 left-5 right-5 flex gap-3">
-                    {platform.keyStats.map((s, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl p-3 text-center"
-                      >
-                        <p className="font-heading font-bold text-white text-[14px] leading-none mb-0.5">{s.value}</p>
-                        <p className="text-white/55 text-[10px] uppercase tracking-wider">{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Image progress bar */}
-                  {imageCount > 1 && (
-                    <div className="absolute bottom-0 inset-x-0 h-1 bg-white/10">
-                      <motion.div
-                        className="h-full bg-[#51B8AB]"
-                        style={{ width: `${progress * 100}%` }}
-                      />
-                    </div>
-                  )}
+              {/* Platform badge top-left */}
+              <div className="absolute top-5 left-5 flex items-center gap-2">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2">
+                  <span className="font-heading font-bold text-[20px] text-white tracking-wider">{platform.id}</span>
                 </div>
-
-                {/* ── Content below image ── */}
-                <div className="p-5 sm:p-6 md:p-8 bg-white">
-                  {/* Headline + description */}
-                  <div className="mb-5 pb-5 border-b border-slate-100">
-                    <h3 className="font-heading font-bold text-[20px] sm:text-[26px] text-slate-900 leading-[1.15] mb-3">
-                      {platform.name}
-                    </h3>
-                    <p className="text-[14px] sm:text-[15px] text-slate-500 leading-[1.7]">
-                      {platform.description}
-                    </p>
-                  </div>
-
-                  {/* Spec grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    <SpecTile icon={<Weight className="w-4 h-4" />} label="Payload" value={platform.specs.payload} />
-                    <SpecTile icon={<Zap className="w-4 h-4" />} label="Drive" value={platform.specs.drive} />
-                    <SpecTile icon={<Gauge className="w-4 h-4" />} label="Max Speed" value={platform.specs.speed} />
-                    <SpecTile icon={<MapPin className="w-4 h-4" />} label="Navigation" value={platform.specs.nav} />
-                  </div>
-
-                  {/* Best For */}
-                  <div className="mb-4">
-                    <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-3">Best Deployed In</p>
-                    <div className="flex flex-wrap gap-2">
-                      {platform.bestFor.map((use) => (
-                        <span
-                          key={use}
-                          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full"
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#51B8AB]" />
-                          {use}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Feature tags */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {platform.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-bold tracking-wide bg-[#e8f7f5] text-[#2d9d8f] border border-[#51B8AB]/20 px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col xs:flex-row gap-3">
-                    <a
-                      href="#contact"
-                      className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
-                    >
-                      View Platform <ArrowRight className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="#contact"
-                      className="flex-1 inline-flex items-center justify-center bg-[#51B8AB] text-slate-950 py-3.5 rounded-xl font-bold text-[14px] hover:bg-[#3FA89A] active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(81,184,171,0.25)]"
-                    >
-                      Get a Quote
-                    </a>
-                    <a
-                      href="#roi-calculator"
-                      className="sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-[14px] text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all"
-                    >
-                      ROI
-                    </a>
-                  </div>
+                <div className="bg-[#51B8AB]/90 backdrop-blur-sm text-slate-950 px-3 py-1.5 rounded-xl">
+                  <span className="text-[11px] font-bold tracking-wider uppercase">{platform.tag}</span>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
 
-            {/* Mobile: dot indicators + prev/next */}
-            <div className="flex lg:hidden items-center justify-between mt-6 px-2">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goPrev}
-                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                  activePlatform > 0
-                    ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm"
-                    : "border-slate-200 text-slate-300 cursor-not-allowed"
-                }`}
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </motion.button>
+              {/* Image count indicator */}
+              {imageCount > 1 && (
+                <div className="absolute top-5 right-5 bg-black/40 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-1.5">
+                  <span className="text-white/80 text-[12px] font-medium">
+                    {activeImage + 1} / {imageCount}
+                  </span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-2">
-                {platforms.map((_, i) => (
-                  <motion.button
+              {/* Key stats at bottom */}
+              <div className="absolute bottom-5 left-5 right-5 flex gap-3">
+                {platform.keyStats.map((s, i) => (
+                  <div
                     key={i}
-                    onClick={() => handleDotClick(i)}
-                    className="p-2"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.8 }}
+                    className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl p-3 text-center"
                   >
-                    <motion.div
-                      animate={{
-                        width: i === activePlatform ? 20 : 8,
-                        height: 8,
-                        backgroundColor: i === activePlatform ? "#51B8AB" : "rgba(148,163,184,0.4)",
-                      }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="rounded-full"
-                    />
-                  </motion.button>
+                    <p className="font-heading font-bold text-white text-[14px] leading-none mb-0.5">{s.value}</p>
+                    <p className="text-white/55 text-[10px] uppercase tracking-wider">{s.label}</p>
+                  </div>
                 ))}
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goNext}
-                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                  activePlatform < platforms.length - 1
-                    ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm"
-                    : "border-slate-200 text-slate-300 cursor-not-allowed"
-                }`}
-              >
-                <ChevronRight className="w-5 h-5" />
-              </motion.button>
-            </div>
-          </div>
-
-          {/* ── Desktop sidebar ── */}
-          <div className="hidden lg:flex flex-col gap-2">
-            {platforms.map((p, i) => {
-              const isActive = activePlatform === i;
-              return (
-                <motion.button
-                  key={p.id}
-                  onClick={() => handlePlatformSelect(i)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group
-                    ${isActive
-                      ? "bg-slate-900 border-slate-900 text-white shadow-lg"
-                      : "bg-white border-slate-200 hover:bg-[#e8f7f5] hover:border-[#51B8AB]/40 hover:shadow-md text-slate-900"}`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#51B8AB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="min-w-0 flex-1 relative z-10">
-                    <p className={`font-heading font-bold text-[13px] leading-tight truncate transition-colors duration-300 ${
-                      isActive ? "text-white" : "text-slate-900 group-hover:text-slate-900"
-                    }`}>{p.id}</p>
-                    <p className={`text-[10px] font-medium mt-0.5 truncate transition-colors duration-300 ${
-                      isActive ? "text-white/70" : "text-slate-500 group-hover:text-slate-600"
-                    }`}>{p.tag}</p>
-                  </div>
-
-                  {isActive && (
-                    <div className="flex items-center gap-1.5 relative z-10">
-                      <span className="text-white/60 text-[10px] font-medium">{p.images.length} imgs</span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#51B8AB]" />
-                    </div>
-                  )}
-
+              {/* Image progress bar */}
+              {imageCount > 1 && (
+                <div className="absolute bottom-0 inset-x-0 h-1 bg-white/10">
                   <motion.div
-                    animate={{ width: isActive ? "4px" : "2px" }}
-                    className={`h-5 rounded-full overflow-hidden shrink-0 transition-all duration-300 ${
-                      isActive ? "bg-white/40" : "bg-slate-300 group-hover:bg-slate-400"
-                    }`}
+                    className="h-full bg-[#51B8AB]"
+                    style={{ width: `${progress * 100}%` }}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* ── Content below image ── */}
+            <div className="p-5 sm:p-6 md:p-8 bg-white">
+              {/* Headline + description */}
+              <div className="mb-5 pb-5 border-b border-slate-100">
+                <h3 className="font-heading font-bold text-[20px] sm:text-[26px] text-slate-900 leading-[1.15] mb-3">
+                  {platform.name}
+                </h3>
+                <p className="text-[14px] sm:text-[15px] text-slate-500 leading-[1.7]">
+                  {platform.description}
+                </p>
+              </div>
+
+              {/* Spec grid */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <SpecTile icon={<Weight className="w-4 h-4" />} label="Payload" value={platform.specs.payload} />
+                <SpecTile icon={<Zap className="w-4 h-4" />} label="Drive" value={platform.specs.drive} />
+                <SpecTile icon={<Gauge className="w-4 h-4" />} label="Max Speed" value={platform.specs.speed} />
+                <SpecTile icon={<MapPin className="w-4 h-4" />} label="Navigation" value={platform.specs.nav} />
+              </div>
+
+              {/* Best For */}
+              <div className="mb-4">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-3">Best Deployed In</p>
+                <div className="flex flex-wrap gap-2">
+                  {platform.bestFor.map((use) => (
+                    <span
+                      key={use}
+                      className="inline-flex items-center gap-1.5 text-[13px] font-medium text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#51B8AB]" />
+                      {use}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Feature tags */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {platform.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-bold tracking-wide bg-[#e8f7f5] text-[#2d9d8f] border border-[#51B8AB]/20 px-3 py-1 rounded-full"
                   >
-                    {isActive && (
-                      <motion.div
-                        className="w-full bg-[#51B8AB] rounded-full origin-top"
-                        style={{ height: "100%" }}
-                        animate={{ scaleY: imageCount > 1 ? progress : 1 }}
-                      />
-                    )}
-                  </motion.div>
-                </motion.button>
-              );
-            })}
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col xs:flex-row gap-3">
+                <a
+                  href="#contact"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
+                >
+                  View Platform <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="#contact"
+                  className="flex-1 inline-flex items-center justify-center bg-[#51B8AB] text-slate-950 py-3.5 rounded-xl font-bold text-[14px] hover:bg-[#3FA89A] active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(81,184,171,0.25)]"
+                >
+                  Get a Quote
+                </a>
+                <a
+                  href="#roi-calculator"
+                  className="sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-[14px] text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all"
+                >
+                  ROI
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dot indicators + prev/next */}
+        <div className="flex items-center justify-between mt-6 px-2">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={goPrev}
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              activePlatform > 0
+                ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm"
+                : "border-slate-200 text-slate-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </motion.button>
+
+          <div className="flex items-center gap-2">
+            {platforms.map((_, i) => (
+              <motion.button
+                key={i}
+                onClick={() => handleDotClick(i)}
+                className="p-2"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.8 }}
+              >
+                <motion.div
+                  animate={{
+                    width: i === activePlatform ? 20 : 8,
+                    height: 8,
+                    backgroundColor: i === activePlatform ? "#51B8AB" : "rgba(148,163,184,0.4)",
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="rounded-full"
+                />
+              </motion.button>
+            ))}
           </div>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={goNext}
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              activePlatform < platforms.length - 1
+                ? "border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 shadow-sm"
+                : "border-slate-200 text-slate-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </motion.button>
         </div>
 
         {/* ── Bottom stats ── */}
