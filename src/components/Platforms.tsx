@@ -353,8 +353,38 @@ export default function Platforms() {
               {/* Under Development overlay */}
               {(platform as any).development && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-3 shadow-xl">
-                    <p className="text-white/90 text-[13px] font-bold tracking-[0.15em] uppercase">Under Development</p>
+                  <div className="relative bg-white/20 backdrop-blur-2xl border border-white/40 rounded-3xl px-12 py-10 shadow-[0_8px_40px_rgba(0,0,0,0.35)] flex flex-col items-center gap-4">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    </div>
+                    <div className="flex gap-1.5">
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="w-5 h-5 border-2 border-white/70 border-t-white rounded-full"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-white font-bold text-[16px] tracking-[0.22em] uppercase drop-shadow-sm">Under Development</p>
+                      <p className="text-white/60 text-[12px] mt-1.5 tracking-wide font-medium">Coming soon</p>
+                    </div>
+                    <div className="flex gap-1.5">
+                      <motion.div
+                        animate={{ scaleY: [1, 0.3, 1] }}
+                        transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+                        className="w-1 h-5 bg-white/50 rounded-full"
+                      />
+                      <motion.div
+                        animate={{ scaleY: [1, 0.3, 1] }}
+                        transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
+                        className="w-1 h-5 bg-white/50 rounded-full"
+                      />
+                      <motion.div
+                        animate={{ scaleY: [1, 0.3, 1] }}
+                        transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                        className="w-1 h-5 bg-white/50 rounded-full"
+                      />
+                    </div>
                   </div>
                 </div>
               )}
