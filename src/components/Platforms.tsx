@@ -110,7 +110,7 @@ const platforms = [
   },
 ];
 
-const IMAGE_INTERVAL = 2000;
+const IMAGE_INTERVAL = 5000;
 
 export default function Platforms() {
   const [activePlatform, setActivePlatform] = useState(0);
@@ -346,8 +346,7 @@ export default function Platforms() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-transparent to-[#0d1a18]/94" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1a18]/30" />
 
               {/* Platform badge top-left */}
               <div className="absolute top-5 left-5 flex items-center gap-2">
