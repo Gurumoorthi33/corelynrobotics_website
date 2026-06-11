@@ -138,8 +138,8 @@ interface InclusionCardProps {
 }
 
 function InclusionCard({ text, start, end, scrollYProgress }: InclusionCardProps) {
-  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-  const y = useTransform(scrollYProgress, [start, end], [24, 0]);
+  const opacity = useTransform(scrollYProgress, [start, start + (end - start) * 0.45], [0, 1]);
+  const y = useTransform(scrollYProgress, [start, start + (end - start) * 0.5], [20, 0]);
   const cardScale = useTransform(scrollYProgress, [start, end], [0.94, 1]);
   const lineScaleX = useTransform(scrollYProgress, [start, end], [0, 1]);
 
@@ -159,8 +159,8 @@ function InclusionCard({ text, start, end, scrollYProgress }: InclusionCardProps
 }
 
 function InclusionRow({ row, rowIndex, scrollYProgress }: { row: string[]; rowIndex: number; scrollYProgress: MotionValue<number> }) {
-  const start = 0.1 + rowIndex * 0.4;
-  const end = start + 0.3;
+  const start = rowIndex * 0.25;
+  const end = start + 0.18;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
       {row.map((text, i) => (
