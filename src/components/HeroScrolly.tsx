@@ -27,8 +27,8 @@ export default function HeroScrolly() {
       </div>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/55 to-slate-950/15" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
 
       {/* Animated grid overlay */}
       <div
@@ -47,7 +47,7 @@ export default function HeroScrolly() {
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#51B8AB]/60 to-transparent" />
 
       {/* Main content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 xs:px-5 md:px-12 lg:px-20 max-w-7xl mx-auto pt-[110px] md:pt-[140px] pb-16">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 xs:px-6 sm:px-10 md:px-14 lg:px-20 max-w-7xl mx-auto pt-20 md:pt-24 pb-24">
 
         <div className="max-w-2xl lg:max-w-3xl">
 
@@ -56,7 +56,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 mb-7"
+            className="inline-flex items-center gap-2 mt-6 mb-7"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#51B8AB] opacity-75" />
@@ -94,7 +94,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-[16px] md:text-[18px] text-white/75 max-w-xl leading-[1.8] mb-10"
+            className="text-[16px] md:text-[18px] text-white/80 max-w-xl leading-[1.7] mb-8"
           >
             Industrial-grade autonomous mobile robots for factories, warehouses, and logistics — on a subscription. No capital investment. No maintenance overhead. Just output.
           </motion.p>
@@ -104,7 +104,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col xs:flex-row gap-3.5 mb-14"
+            className="flex flex-col xs:flex-row gap-4 mb-12"
           >
             <a
               href="#platforms"
@@ -137,10 +137,10 @@ export default function HeroScrolly() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.72 + i * 0.07 }}
-                className="flex flex-col items-start px-4 py-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-[#51B8AB]/40 transition-all"
+                className="flex flex-col items-start px-5 py-3.5 rounded-xl border border-white/15 bg-white/[0.08] backdrop-blur-md hover:bg-white/[0.12] hover:border-[#51B8AB]/40 transition-all"
               >
-                <span className="font-heading font-bold text-[20px] text-white leading-none">{s.value}</span>
-                <span className="text-[11px] text-white/45 mt-1 uppercase tracking-wider">{s.label}</span>
+                <span className="font-heading font-bold text-[22px] text-white leading-none">{s.value}</span>
+                <span className="text-[11px] text-white/60 mt-1 uppercase tracking-wider">{s.label}</span>
               </motion.div>
             ))}
           </motion.div>
