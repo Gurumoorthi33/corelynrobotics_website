@@ -114,6 +114,14 @@ const platforms = [
 
 const IMAGE_INTERVAL = 5000;
 
+const pdfPath = (id: string): string | null => {
+  const map: Record<string, string> = {
+    C100: "/assets/pdf/CORELYN C100.pdf",
+    C500: "/assets/pdf/CORELYN C500.pdf",
+  };
+  return map[id] ?? null;
+};
+
 export default function Platforms() {
   const [activePlatform, setActivePlatform] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
@@ -328,61 +336,62 @@ export default function Platforms() {
             {/* ── Image area ── */}
             <div className="relative h-[400px] xs:h-[420px] sm:h-[460px] md:h-[520px]">
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeImage}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={platform.images[activeImage]}
-                    alt={`${platform.name} view ${activeImage + 1}`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 980px"
-                    className="object-cover object-center"
-                    priority
-                  />
-                </motion.div>
-              </AnimatePresence>
+              {!(platform as any).development && (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeImage}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={platform.images[activeImage]}
+                      alt={`${platform.name} view ${activeImage + 1}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 980px"
+                      className="object-cover object-center"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              )}
 
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1a18]/30" />
+              {!(platform as any).development && (
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1a18]/30" />
+              )}
 
-              {/* Under Development overlay */}
+              {/* Under Development */}
               {(platform as any).development && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="relative bg-white/20 backdrop-blur-2xl border border-white/40 rounded-3xl px-12 py-10 shadow-[0_8px_40px_rgba(0,0,0,0.35)] flex flex-col items-center gap-4">
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    </div>
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <div className="flex flex-col items-center gap-5">
                     <div className="flex gap-1.5">
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="w-5 h-5 border-2 border-white/70 border-t-white rounded-full"
+                        className="w-8 h-8 border-2 border-white/40 border-t-white rounded-full"
                       />
                     </div>
                     <div className="text-center">
-                      <p className="text-white font-bold text-[16px] tracking-[0.22em] uppercase drop-shadow-sm">Under Development</p>
-                      <p className="text-white/60 text-[12px] mt-1.5 tracking-wide font-medium">Coming soon</p>
+                      <p className="text-white/90 font-bold text-[20px] md:text-[26px] tracking-[0.25em] uppercase">Under Development</p>
+                      <p className="text-white/40 text-[13px] mt-2 tracking-wide">Coming soon</p>
                     </div>
-                    <div className="flex gap-1.5">
+                    <div className="flex gap-2">
                       <motion.div
                         animate={{ scaleY: [1, 0.3, 1] }}
                         transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-                        className="w-1 h-5 bg-white/50 rounded-full"
+                        className="w-1 h-6 bg-white/30 rounded-full"
                       />
                       <motion.div
                         animate={{ scaleY: [1, 0.3, 1] }}
                         transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
-                        className="w-1 h-5 bg-white/50 rounded-full"
+                        className="w-1 h-6 bg-white/30 rounded-full"
                       />
                       <motion.div
                         animate={{ scaleY: [1, 0.3, 1] }}
                         transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                        className="w-1 h-5 bg-white/50 rounded-full"
+                        className="w-1 h-6 bg-white/30 rounded-full"
                       />
                     </div>
                   </div>
@@ -480,20 +489,21 @@ export default function Platforms() {
                 ))}
               </div>
 
-              {/* CTAs */}
+              {/* Download Specification */}
               <div className="flex flex-col xs:flex-row gap-3">
-                <a
-                  href="#contact"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
-                >
-                  View Platform <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="#contact"
-                  className="flex-1 inline-flex items-center justify-center bg-[#51B8AB] text-slate-950 py-3.5 rounded-xl font-bold text-[14px] hover:bg-[#3FA89A] active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(81,184,171,0.25)]"
-                >
-                  Get a Quote
-                </a>
+                {pdfPath(platform.id) ? (
+                  <a
+                    href={pdfPath(platform.id)!}
+                    download
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-xl font-bold text-[14px] hover:bg-slate-800 active:scale-[0.98] transition-all"
+                  >
+                    Download Specification <ArrowRight className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <div className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-300 text-slate-500 py-3.5 rounded-xl font-bold text-[14px] cursor-not-allowed">
+                    Spec Sheet Coming Soon
+                  </div>
+                )}
                 <a
                   href="#roi-calculator"
                   className="sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-[14px] text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all"

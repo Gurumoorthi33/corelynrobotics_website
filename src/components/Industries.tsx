@@ -220,55 +220,56 @@ export default function Industries() {
                 {...swipeProps}
               >
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(81,184,171,0.10),transparent)] pointer-events-none" />
-                <Image
-                  src={current.image}
-                  alt={current.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 980px"
-                  className="object-cover object-center opacity-85"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-[#0d1a18]/5 to-[#0d1a18]/94" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
+                {!(current as any).development && (
+                  <>
+                    <Image
+                      src={current.image}
+                      alt={current.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 980px"
+                      className="object-cover object-center opacity-85"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-[#0d1a18]/5 to-[#0d1a18]/94" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
+                  </>
+                )}
 
-                {/* Under Development overlay */}
-                {(current as any).development && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="relative bg-white/20 backdrop-blur-2xl border border-white/40 rounded-3xl px-12 py-10 shadow-[0_8px_40px_rgba(0,0,0,0.35)] flex flex-col items-center gap-4">
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-white/40 backdrop-blur-md border border-white/50 flex items-center justify-center">
-                        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                      </div>
+                {/* Under Development */}
+                {(current as any).development ? (
+                  <div className="absolute inset-0 flex items-center justify-center p-6">
+                    <div className="flex flex-col items-center gap-5">
                       <div className="flex gap-1.5">
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                          className="w-5 h-5 border-2 border-white/70 border-t-white rounded-full"
+                          className="w-8 h-8 border-2 border-white/40 border-t-white rounded-full"
                         />
                       </div>
                       <div className="text-center">
-                        <p className="text-white font-bold text-[16px] tracking-[0.22em] uppercase drop-shadow-sm">Under Development</p>
-                        <p className="text-white/60 text-[12px] mt-1.5 tracking-wide font-medium">Coming soon</p>
+                        <p className="text-white/90 font-bold text-[20px] md:text-[26px] tracking-[0.25em] uppercase">Under Development</p>
+                        <p className="text-white/40 text-[13px] mt-2 tracking-wide">Coming soon</p>
                       </div>
-                      <div className="flex gap-1.5">
+                      <div className="flex gap-2">
                         <motion.div
                           animate={{ scaleY: [1, 0.3, 1] }}
                           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-                          className="w-1 h-5 bg-white/50 rounded-full"
+                          className="w-1 h-6 bg-white/30 rounded-full"
                         />
                         <motion.div
                           animate={{ scaleY: [1, 0.3, 1] }}
                           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
-                          className="w-1 h-5 bg-white/50 rounded-full"
+                          className="w-1 h-6 bg-white/30 rounded-full"
                         />
                         <motion.div
                           animate={{ scaleY: [1, 0.3, 1] }}
                           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                          className="w-1 h-5 bg-white/50 rounded-full"
+                          className="w-1 h-6 bg-white/30 rounded-full"
                         />
                       </div>
                     </div>
                   </div>
-                )}
+                ) : (
 
                 <div className="relative h-full flex flex-col justify-between p-5 pb-8 sm:p-6 sm:pb-10 md:p-8 md:pb-12">
                   {/* Top */}
@@ -328,6 +329,7 @@ export default function Industries() {
                     </motion.div>
                   </motion.div>
                 </div>
+                )}
               </motion.div>
             </AnimatePresence>
 

@@ -51,22 +51,6 @@ export default function HeroScrolly() {
 
         <div className="max-w-2xl lg:max-w-3xl">
 
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 mt-6 mb-7"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#51B8AB] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#51B8AB]" />
-            </span>
-            <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-[#7dd3cf] border border-[#51B8AB]/30 bg-[#51B8AB]/10 px-3 py-1 rounded-full backdrop-blur-sm">
-              Robotics as a Service
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
@@ -88,16 +72,6 @@ export default function HeroScrolly() {
               Deployed as a Service.
             </span>
           </motion.h1>
-
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-[16px] md:text-[18px] text-white/80 max-w-xl leading-[1.7] mb-8"
-          >
-            Industrial-grade autonomous mobile robots for factories, warehouses, and logistics — on a subscription. No capital investment. No maintenance overhead. Just output.
-          </motion.p>
 
           {/* CTAs */}
           <motion.div
