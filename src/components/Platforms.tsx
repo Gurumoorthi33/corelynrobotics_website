@@ -367,19 +367,6 @@ export default function Platforms() {
                 </div>
               )}
 
-              {/* Key stats at bottom */}
-              <div className="absolute bottom-5 left-5 right-5 flex gap-3">
-                {platform.keyStats.map((s, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl p-3 text-center"
-                  >
-                    <p className="font-heading font-bold text-white text-[14px] leading-none mb-0.5">{s.value}</p>
-                    <p className="text-white/55 text-[10px] uppercase tracking-wider">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-
               {/* Image progress bar */}
               {imageCount > 1 && (
                 <div className="absolute bottom-0 inset-x-0 h-1 bg-white/10">
@@ -401,6 +388,19 @@ export default function Platforms() {
                 <p className="text-[14px] sm:text-[15px] text-slate-500 leading-[1.7]">
                   {platform.description}
                 </p>
+              </div>
+
+              {/* Key stats row */}
+              <div className="flex gap-3 mb-5">
+                {platform.keyStats.map((s, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 bg-[#e8f7f5] border border-[#51B8AB]/25 rounded-xl p-3 text-center"
+                  >
+                    <p className="font-heading font-bold text-slate-900 text-[16px] leading-none mb-0.5">{s.value}</p>
+                    <p className="text-[#2d9d8f] text-[10px] uppercase tracking-wider font-semibold">{s.label}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Spec grid */}
