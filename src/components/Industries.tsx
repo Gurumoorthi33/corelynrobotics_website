@@ -27,6 +27,7 @@ const industries = [
     outcome: "Deploy a real AMR in your lab — not a simulation.",
     badge: "C100", image: "/assets/products/c100.png",
     icon: GraduationCap, stat: "ROS 2", statLabel: "ready out of the box",
+    development: true,
   },
   {
     id: "inspection", name: "Inspection & Surveillance", shortName: "Inspection",
@@ -227,6 +228,15 @@ export default function Industries() {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a18]/10 via-[#0d1a18]/5 to-[#0d1a18]/94" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a18]/60 via-[#0d1a18]/18 to-transparent" />
 
+                {/* Under Development overlay */}
+                {(current as any).development && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-3 shadow-xl">
+                      <p className="text-white/90 text-[13px] font-bold tracking-[0.15em] uppercase">Under Development</p>
+                    </div>
+                  </div>
+                )}
+
                 <div className="relative h-full flex flex-col justify-between p-5 pb-8 sm:p-6 sm:pb-10 md:p-8 md:pb-12">
                   {/* Top */}
                   <div className="flex items-start justify-between">
@@ -384,6 +394,9 @@ export default function Industries() {
                         ? "text-white/70" 
                         : "text-slate-500 group-hover:text-slate-600"
                     }`}>{ind.badge}</p>
+                    {(ind as any).development && (
+                      <span className="text-[8px] font-bold uppercase tracking-wider text-amber-400/80 ml-0.5">(dev)</span>
+                    )}
                   </div>
                   <motion.div 
                     animate={{ width: isActive ? "4px" : "2px" }}
