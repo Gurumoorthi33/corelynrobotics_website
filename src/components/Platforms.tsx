@@ -25,7 +25,7 @@ const platforms = [
     description:
       "A lightweight autonomous platform that moves material between stations without a worker. ROS-ready out of the box — deploy in a lab or a live sorting line with the same hardware.",
     specs: {
-      payload: "10 kg",
+      payload: "100 kg",
       drive: "Differential drive",
       speed: "Up to 1.2 m/s",
       nav: "SLAM + obstacle avoidance",
@@ -34,7 +34,7 @@ const platforms = [
     bestFor: ["Sorting lines", "Robotics education", "R&D prototyping"],
     keyStats: [
       { value: "1.2 m/s", label: "Max Speed" },
-      { value: "10 kg", label: "Payload" },
+      { value: "100 kg", label: "Payload" },
       { value: "8 hrs", label: "Battery" },
     ],
   },
