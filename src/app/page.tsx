@@ -8,6 +8,7 @@ import Platforms from "@/components/Platforms";
 import Industries from "@/components/Industries";
 import TechStack from "@/components/TechStack";
 import ROICalculator from "@/components/ROICalculator";
+import RecognisedBy from "@/components/RecognisedBy";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Industries />
       <TechStack />
       <ROICalculator />
+      <RecognisedBy />
       <Contact />
       <Footer />
     </main>

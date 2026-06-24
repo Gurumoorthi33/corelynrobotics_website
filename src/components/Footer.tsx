@@ -79,16 +79,6 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 pt-10 pb-6">
-          <p className="text-center text-slate-600 text-[15px] font-medium mb-6">
-            The company was incubated by R Shivakumar Foundations, and StartupTN
-          </p>
-          <div className="flex items-center justify-center gap-10 flex-wrap">
-            <img src="/assets/incubation/RshivakumarFoundation.jpeg" alt="R Shivakumar Foundation" className="h-14 w-auto object-contain" />
-            <img src="/assets/incubation/startuptn.jpg" alt="StartupTN" className="h-14 w-auto object-contain" />
-          </div>
-        </div>
-
         <div className="border-t border-slate-200 pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-slate-500 text-[14px]">
           <p>© {currentYear} Corelyn Robotics. Made in India.</p>
           <p className="text-left lg:text-right max-w-xl leading-[1.6]">
