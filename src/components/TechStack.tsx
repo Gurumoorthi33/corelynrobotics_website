@@ -180,7 +180,7 @@ export default function TechStack() {
           </motion.div>
 
           {/* Main heading */}
-          <h2 className="font-heading font-bold text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
+          <h2 className="font-heading font-bold text-[30px] xs:text-[42px] md:text-[64px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
             <span className="text-[#2d9d8f]">Engineering</span> Excellence.
             <br />
             <span className="text-slate-500">Built for</span> <span className="text-[#2d9d8f] relative inline-block">

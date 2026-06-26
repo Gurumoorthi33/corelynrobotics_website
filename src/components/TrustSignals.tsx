@@ -103,17 +103,6 @@ export default function TrustSignals() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-[15px] text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            <span className="font-semibold text-slate-900">Trusted by manufacturers across Tamil Nadu.</span> Incubated at R Shivakumar Foundation – TBIF, SRM TRP Engineering College. Backed by industry expertise and local support infrastructure.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

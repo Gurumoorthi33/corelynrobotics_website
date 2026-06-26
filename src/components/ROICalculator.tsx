@@ -73,7 +73,7 @@ export default function ROICalculator() {
             <Calculator className="w-3.5 h-3.5 text-[#51B8AB]" />
             <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#51B8AB]">ROI Calculator</span>
           </div>
-          <h2 className="font-heading font-bold text-[38px] md:text-[56px] lg:text-[68px] leading-[1.05] text-white mb-5">
+          <h2 className="font-heading font-bold text-[28px] xs:text-[38px] md:text-[56px] lg:text-[68px] leading-[1.05] text-white mb-5">
             See What Automation
             <br />
             <span className="text-[#51B8AB]">Saves You.</span>
@@ -121,7 +121,7 @@ export default function ROICalculator() {
                           ₹{r.hourlyRate}/hr
                         </span>
                       </div>
-                      <p className={`font-heading font-bold text-[15px] leading-tight mb-0.5 ${isSelected ? "text-white" : "text-white/70"}`}>
+                      <p className={`font-heading font-bold text-[13px] xs:text-[15px] leading-tight mb-0.5 ${isSelected ? "text-white" : "text-white/70"}`}>
                         {type.replace("_", " ")}
                       </p>
                       <p className={`text-[11px] ${isSelected ? "text-[#51B8AB]" : "text-white/30"}`}>{r.tag}</p>

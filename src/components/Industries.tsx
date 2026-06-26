@@ -156,7 +156,7 @@ export default function Industries() {
           </motion.div>
 
           {/* Main heading */}
-          <h2 className="font-heading font-bold text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
+          <h2 className="font-heading font-bold text-[24px] xs:text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
             <span className="text-[#2d9d8f]">Robots</span> for
             <br />
             <span className="text-slate-500">Every</span> <span className="text-[#2d9d8f]">Sector</span>.

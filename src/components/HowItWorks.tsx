@@ -98,7 +98,7 @@ function StepCard({ step, index }: StepCardProps) {
           <div className="w-14 h-14 rounded-2xl bg-[#51B8AB]/15 border border-[#51B8AB]/30 flex items-center justify-center shrink-0">
             {step.icon}
           </div>
-          <h4 className="font-heading font-bold text-[24px] md:text-[32px] text-white leading-tight">
+          <h4 className="font-heading font-bold text-[20px] xs:text-[24px] md:text-[32px] text-white leading-tight">
             {step.title}
           </h4>
         </div>
@@ -238,7 +238,7 @@ export default function HowItWorks() {
               </span>
             </motion.div>
 
-            <h2 className="font-heading font-bold text-[32px] md:text-[52px] lg:text-[72px] leading-[1.05] text-white mb-6 mt-4">
+            <h2 className="font-heading font-bold text-[26px] xs:text-[32px] md:text-[52px] lg:text-[72px] leading-[1.05] text-white mb-6 mt-4">
               You <span className="text-white/35">Don&apos;t</span> Buy a Robot.
               <br />
               You <span className="text-[#51B8AB]">Subscribe</span> to an <span className="text-[#51B8AB]">Operation</span>.

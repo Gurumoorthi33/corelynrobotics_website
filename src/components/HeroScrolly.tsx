@@ -56,7 +56,7 @@ export default function HeroScrolly() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="font-heading font-bold text-[36px] xs:text-[40px] md:text-[62px] lg:text-[74px] leading-[1.04] tracking-tight text-white mb-6"
+            className="font-heading font-bold text-[30px] xs:text-[40px] md:text-[62px] lg:text-[74px] leading-[1.04] tracking-tight text-white mb-6"
           >
             Autonomous Robots.
             <br />

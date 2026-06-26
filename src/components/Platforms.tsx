@@ -240,7 +240,7 @@ export default function Platforms() {
             </span>
           </motion.div>
 
-          <h2 className="font-heading font-bold text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
+          <h2 className="font-heading font-bold text-[24px] xs:text-[28px] md:text-[56px] lg:text-[76px] leading-[1.05] text-slate-900 mb-6">
             <span className="text-[#2d9d8f]">Four</span> Platforms.
             <br />
             <span className="text-slate-500">Every</span> Industrial <span className="text-[#2d9d8f]">Need</span>.
@@ -299,7 +299,7 @@ export default function Platforms() {
             <button
               key={p.id}
               onClick={() => handlePlatformSelect(i)}
-              className={`group relative px-5 py-3 rounded-2xl border-2 text-left transition-all duration-300 overflow-hidden ${
+              className={`group relative px-3 xs:px-5 py-2.5 xs:py-3 rounded-xl xs:rounded-2xl border-2 text-left transition-all duration-300 overflow-hidden ${
                 activePlatform === i
                   ? "border-[#51B8AB] bg-[#e8f7f5] shadow-[0_4px_20px_rgba(81,184,171,0.18)]"
                   : "border-slate-200 bg-white hover:border-[#51B8AB]/40 hover:bg-slate-50"
@@ -308,12 +308,12 @@ export default function Platforms() {
               <div className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl transition-all duration-300 ${
                 activePlatform === i ? "bg-[#51B8AB]" : "bg-transparent"
               }`} />
-              <span className={`font-heading font-bold text-[15px] md:text-[18px] leading-none transition-colors ${
+              <span className={`font-heading font-bold text-[13px] xs:text-[15px] md:text-[18px] leading-none transition-colors ${
                 activePlatform === i ? "text-slate-900" : "text-slate-700"
               }`}>
                 {p.id}
               </span>
-              <span className="hidden sm:inline text-[11px] text-slate-400 font-medium ml-2">{p.tag}</span>
+              <span className="hidden xs:inline text-[10px] xs:text-[11px] text-slate-400 font-medium ml-1 xs:ml-2">{p.tag}</span>
               {p.images.length > 1 && (
                 <span className="text-[10px] text-slate-400 ml-2">({p.images.length})</span>
               )}

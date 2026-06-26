@@ -19,13 +19,13 @@ export default function Home() {
       <HeroScrolly />
       <StatsStrip />
       <TrustSignals />
+      <RecognisedBy />
       <Positioning />
       <HowItWorks />
       <Platforms />
       <Industries />
       <TechStack />
       <ROICalculator />
-      <RecognisedBy />
       <Contact />
       <Footer />
     </main>

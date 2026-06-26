@@ -271,7 +271,7 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-5 py-5">
+              <div className="flex-1 overflow-y-auto px-4 xs:px-5 py-5">
                 <div className="mb-5 rounded-2xl border border-[#51B8AB]/25 bg-[#E8F7F5] p-4">
                   <p className="text-[11px] font-bold uppercase text-[#2d9d8f]">Robotics-as-a-Service</p>
                   <p className="mt-1 text-[15px] font-semibold leading-snug text-slate-950">

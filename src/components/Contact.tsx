@@ -77,7 +77,7 @@ export default function Contact() {
             viewport={{ once: true, margin: "-100px", amount: 0.12 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="font-heading font-bold text-[36px] md:text-[48px] leading-[1.1] text-slate-900 mb-6">
+            <h2 className="font-heading font-bold text-[28px] xs:text-[36px] md:text-[48px] leading-[1.1] text-slate-900 mb-6">
               Have an Automation Challenge?
             </h2>
             <p className="text-[18px] text-slate-600 leading-[1.7] mb-12 max-w-lg">

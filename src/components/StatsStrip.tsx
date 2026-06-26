@@ -113,12 +113,12 @@ export default function StatsStrip() {
                   <div className="w-12 h-12 rounded-2xl bg-[#e8f7f5] border border-[#51B8AB]/25 flex items-center justify-center text-[#2d9d8f] group-hover:bg-[#51B8AB]/15 transition-all duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[11px] font-bold tracking-widest uppercase text-[#2d9d8f] bg-[#e8f7f5] border border-[#51B8AB]/20 px-3 py-1.5 rounded-full">
+                  <span className="text-[10px] xs:text-[11px] font-bold tracking-wider uppercase text-[#2d9d8f] bg-[#e8f7f5] border border-[#51B8AB]/20 px-2 xs:px-3 py-1.5 rounded-full whitespace-nowrap">
                     {stat.accent}
                   </span>
                 </div>
 
-                <div className="font-heading font-bold text-[44px] xs:text-[50px] md:text-[58px] leading-none text-slate-900 mb-1 tabular-nums tracking-tight">
+                <div className="font-heading font-bold text-[32px] xs:text-[44px] md:text-[58px] leading-none text-slate-900 mb-1 tabular-nums tracking-tight">
                   <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 </div>
 

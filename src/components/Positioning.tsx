@@ -82,7 +82,7 @@ export default function Positioning() {
             className="space-y-8"
           >
             <div>
-              <h2 className="font-heading font-bold text-[28px] md:text-[48px] lg:text-[64px] leading-tight text-slate-900 mb-6">
+              <h2 className="font-heading font-bold text-[24px] xs:text-[28px] md:text-[48px] lg:text-[64px] leading-tight text-slate-900 mb-6">
                 A <span className="text-[#2d9d8f]">Robotics Infrastructure</span> Company.
                 <br />
                 <span className="text-slate-500">Not a Robot Seller.</span>
